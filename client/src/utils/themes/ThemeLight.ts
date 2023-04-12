@@ -9,6 +9,8 @@ export const ThemeLight = <IThemeProps>{
     secondaryBgColor: "#4d6c95",
     secondaryBorderColor: "",
     secondarySvgColor: "#4d6c95",
+    primaryColorHover: "#6585b5",
+    primaryBgColorHover: "#6585b530",
     headingColor: "#2b2350",
     headingBgColor: "#fff",
     markColor: "#ee4878",

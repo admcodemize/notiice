@@ -7,6 +7,8 @@ export interface IThemeProps {
     secondaryBgColor: string,
     secondaryBorderColor: string,
     secondarySvgColor: string,
+    primaryColorHover: string,
+    primaryBgColorHover: string
     headingColor: string,
     headingBgColor: string,
     markColor: string,

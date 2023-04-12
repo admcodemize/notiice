@@ -48,7 +48,7 @@ export const StyledSidebar = styled("div")`
       span {
         color: #fff;
         font-size: 0.775rem;
-        font-weight: 500;
+        font-weight: 600;
       }
     }
     
