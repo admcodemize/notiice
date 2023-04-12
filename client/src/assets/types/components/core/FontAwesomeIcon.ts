@@ -8,4 +8,4 @@ export interface IFontAwesomeIconProps {
     onClick?: (evt: MouseEvent<SVGSVGElement>) => void
 }
 
-export type TFontAwesomeIconStyle = "solid" | "duotone" | "brands";
+export type TFontAwesomeIconStyle = "solid" | "duotone" | "brands" | "regular" | "thin";

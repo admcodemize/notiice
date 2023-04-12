@@ -9,5 +9,4 @@ export const StyledContent = styled("div")`
   width: calc(100% - calc(${SidebarProps().SIDE}px + ${SidebarProps().LEFT}px));
   height: calc(100% - ${SidebarProps().HEADER}px);
   overflow: hidden;
-  padding: 24px;
 `;
