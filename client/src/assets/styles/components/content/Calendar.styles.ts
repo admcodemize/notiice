@@ -1,11 +1,25 @@
 import styled from "styled-components";
 
 export const StyledCalendar = styled("div")`
-  menu {
+  menu,
+  .content-calendar-hactions {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 12px 24px;
+    
+    .content-calendar-hactionsr,
+    .content-calendar-hactionsl {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+  
+  menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     border-bottom: 1px solid ${({ theme }) => theme.primaryBorderColor};
 
     .content-calendar-hml,
@@ -14,15 +28,8 @@ export const StyledCalendar = styled("div")`
       align-items: center;
       justify-content: flex-start;
       gap: 16px;
-      
-      span {
-        font-size: 0.875rem;
-        font-weight: 500;
-        color: ${({ theme }) => theme.primaryColor};
-        cursor: default;
-      }
 
-      li {
+      > li {
         display: flex;
         align-items: center;
         justify-content: flex-start;

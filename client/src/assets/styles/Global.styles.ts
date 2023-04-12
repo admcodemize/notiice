@@ -28,7 +28,20 @@ export const GlobalStyles = createGlobalStyle`
     overflow: hidden;
   }
   
+  h1, h2, h3, h4, h5, h6 {
+    color: ${({ theme }) => theme.headingColor};
+    font-weight: 700;
+  }
+  
+  span {
+    color: ${({ theme }) => theme.primaryColor};
+  }
+  
   svg {
     color: ${({ theme }) => theme.primarySvgColor};
+  }
+  
+  .pipe-separator {
+    color: ${({ theme }) => theme.primaryBorderColor};
   }
 `

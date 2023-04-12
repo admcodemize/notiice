@@ -6,7 +6,7 @@ import { FaIcon } from "../core/FontAwesomeIcon";
 import { TFontAwesomeIconStyle } from "../../assets/types/components/core/FontAwesomeIcon";
 
 export const Sidebar = (): JSX.Element => {
-    const _addMenuItem = (iconSrc: string, hoverInfo: string, styling: TFontAwesomeIconStyle = "duotone", style: {} = {}): JSX.Element => (
+    const _addMenuItem = (iconSrc: string, hoverInfo: string, styling: TFontAwesomeIconStyle = "thin", style: {} = {}): JSX.Element => (
         <div className="sidebar-menu-svg">
             <FaIcon src={iconSrc} styling={styling} style={style} />
             <div className="sidebar-menu-hover-info">
@@ -30,7 +30,7 @@ export const Sidebar = (): JSX.Element => {
             <footer>
                 <menu>
                     {_addMenuItem("faMoon", "Theme")}
-                    {_addMenuItem("faRightFromBracket", "Sign Out", "duotone", { color: "#bf6464" })}
+                    {_addMenuItem("faRightFromBracket", "Sign Out", "thin", { color: "#bf6464" })}
                 </menu>
             </footer>
         </StyledSidebar>

@@ -14,7 +14,7 @@ export const StyledSidebar = styled("div")`
   border: 1px solid ${({ theme }) => theme.primaryBorderColor};
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.secondaryBgColor};
   padding: 12px 0;
   z-index: 1;
   
@@ -60,6 +60,7 @@ export const StyledSidebar = styled("div")`
       padding: 4px;
       width: 34px;
       height: 34px;
+      border: 1px solid ${({ theme }) => theme.secondaryBgColor};
       border-radius: 6px;
       transition: all 0.2s ease-in 0.1s;
 
@@ -68,7 +69,8 @@ export const StyledSidebar = styled("div")`
       }
 
       :hover {
-        background-color: #1831530a;
+        background-color: ${({ theme }) => theme.primaryBgColor};
+        border-color: ${({ theme }) => theme.primaryBorderColor};
 
         .sidebar-menu-hover-info {
           display: flex;
