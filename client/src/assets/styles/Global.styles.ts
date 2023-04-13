@@ -33,8 +33,19 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 700;
   }
   
+  h4 {
+    font-size: 0.95rem;
+  }
+  
   span {
     color: ${({ theme }) => theme.primaryColor};
+    font-weight: 500;
+  }
+  
+  p {
+    color: ${({ theme }) => theme.paragraphColor};
+    font-weight: 500;
+    font-size: 0.725rem;
   }
   
   svg {

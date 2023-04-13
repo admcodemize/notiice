@@ -22,7 +22,24 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
     font-size: 1rem;
   }
 
-  ${props => props.type === "create" && css`
+  .button-badge {
+    font-size: 0.5rem;
+    color: ${({ theme }) => theme.errorColor};
+  }
+  
+  :hover {
+    border-color: ${({ theme }) => theme.createBorderColor};
+    
+    span, svg {
+      color: ${({ theme }) => theme.createBgColor};
+    }
+
+    .button-badge {
+      color: ${({ theme }) => theme.errorColor};
+    }
+  }
+
+  ${props => props.styling === "create" && css`
     border-color: ${({ theme }) => theme.createBorderColor};
     background-color: ${({ theme }) => theme.createBgColor};
     
@@ -30,9 +47,4 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
       color: ${({ theme }) => theme.createColor};
     }
   `}
-  
-  .button-badge {
-    font-size: 0.5rem;
-    color: ${({ theme }) => theme.errorColor};
-  }
 `;

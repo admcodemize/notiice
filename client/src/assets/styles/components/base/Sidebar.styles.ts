@@ -30,7 +30,7 @@ export const StyledSidebar = styled("div")`
   }
   
   menu {
-    margin: 40px 0 0 0;
+    margin: 5px 0px 0px;
 
     .sidebar-menu-hover-info {
       position: fixed;

@@ -33,5 +33,6 @@ export const ThemeLight = <IThemeProps>{
     informationBgColor: "",
     tagColor: "#464a50",
     tagBorderColor: "#000",
-    tagBgColor: "#464a5030"
+    tagBgColor: "#464a5030",
+    paragraphColor: "#273f5b"
 }

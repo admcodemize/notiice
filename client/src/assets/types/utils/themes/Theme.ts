@@ -31,7 +31,8 @@ export interface IThemeProps {
     informationBgColor: string,
     tagColor: string,
     tagBorderColor: string,
-    tagBgColor: string
+    tagBgColor: string,
+    paragraphColor: string
 }
 
 

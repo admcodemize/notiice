@@ -1,15 +1,17 @@
 import { TFontAwesomeIconStyle } from "./FontAwesomeIcon";
 
 export interface IButtonProps {
+    key?: string,
     iconSrc?: string,
     iconStyling?: TFontAwesomeIconStyle
     text?: string,
-    type?: TButtonType,
+    styling?: TButtonStyling,
+    dropdown?: boolean,
     badge?: boolean
 }
 
 export interface IStyledButtonProps {
-    type: TButtonType
+    styling: TButtonStyling
 }
 
-export type TButtonType = "default" | "success" | "warning" | "error" | "create";
+export type TButtonStyling = "default" | "success" | "warning" | "error" | "create";

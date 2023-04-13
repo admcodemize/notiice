@@ -25,6 +25,7 @@ export const Sidebar = (): JSX.Element => {
                     {_addMenuItem("faBusinessTime", "Work Schedule")}
                     {_addMenuItem("faMicrochip", "Workflow")}
                     {_addMenuItem("faTrowelBricks", "Integrations")}
+                    {_addMenuItem("faPenField", "Variables")}
                 </menu>
             </header>
             <footer>
