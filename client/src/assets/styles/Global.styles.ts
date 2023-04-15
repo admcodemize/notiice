@@ -40,12 +40,15 @@ export const GlobalStyles = createGlobalStyle`
   span {
     color: ${({ theme }) => theme.primaryColor};
     font-weight: 500;
+    font-size: 0.775rem;
+    cursor: default;
   }
   
   p {
     color: ${({ theme }) => theme.paragraphColor};
     font-weight: 500;
     font-size: 0.725rem;
+    cursor: default;
   }
   
   svg {

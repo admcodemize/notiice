@@ -70,51 +70,51 @@ export const Calendar = (): JSX.Element => {
     return (
         <StyledCalendar>
             <div>
-                <header>
-                    <div className="sliderLeft-calendar-hdl">
-                        <Button text="April 2023" dropdown={true} />
-                    </div>
-                    <div className="sliderLeft-calendar-hdr">
-                        <Button iconSrc="faCaretLeft" />
-                        <Button iconSrc="faCaretRight" />
-                    </div>
-                </header>
-                <main>
-                    <div className="sliderLeft-calendar-week">
-                        {getDaysOfWeek(true).map((weekDay) => (
-                            <span>{weekDay}</span>
-                        ))}
-                    </div>
-                    <div className="sliderLeft-calendar-days">
-                        {getDaysOfMonth().map(({ day, month, year, prevOrNext}) => (
-                            <div className="sliderLeft-calendar-day">
-                                <span className={prevOrNext ? "sliderLeft-calendar-day-prevOrNext" : ""}>{day}</span>
-                                <div className="sliderLeft-calendar-day-events">
-                                    {day === 27 && <FaIcon src="faCircle" styling="solid" />}
-                                    {day === 4 && <FaIcon src="faCircle" styling="solid" />}
-                                    {day === 4 && <FaIcon src="faCircle" styling="solid" />}
-                                    {day === 7 && <FaIcon src="faCircle" styling="solid" />}
-                                    {day === 13 && <FaIcon src="faCircle" styling="solid" />}
-                                    {day === 14 && <FaIcon src="faCircle" styling="solid" />}
-                                    {day === 14 && <FaIcon src="faCircle" styling="solid" />}
-                                    {day === 19 && <FaIcon src="faCircle" styling="solid" />}
-                                    {day === 19 && <FaIcon src="faCircle" styling="solid" />}
-                                    {day === 19 && <FaIcon src="faCircle" styling="solid" />}
-                                    {day === 24 && <FaIcon src="faCircle" styling="solid" />}
-                                    {day === 25 && <FaIcon src="faCircle" styling="solid" />}
-                                    {day === 25 && <FaIcon src="faCircle" styling="solid" />}
-                                    {day === 26 && <FaIcon src="faCircle" styling="solid" />}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="sliderLeft-calendar-invitations">
-                        <h4>Invitations</h4>
-                    </div>
-                    <div className="sliderLeft-calendar-upevents">
-                        <h4>Upcoming Events</h4>
-                    </div>
-                </main>
+                {/*<header>*/}
+                {/*    <div className="sliderLeft-calendar-hdl">*/}
+                {/*        <Button text="April 2023" dropdown={true} />*/}
+                {/*    </div>*/}
+                {/*    <div className="sliderLeft-calendar-hdr">*/}
+                {/*        <Button iconSrc="faCaretLeft" />*/}
+                {/*        <Button iconSrc="faCaretRight" />*/}
+                {/*    </div>*/}
+                {/*</header>*/}
+                {/*<main>*/}
+                {/*    <div className="sliderLeft-calendar-week">*/}
+                {/*        {getDaysOfWeek(true).map((weekDay) => (*/}
+                {/*            <span>{weekDay}</span>*/}
+                {/*        ))}*/}
+                {/*    </div>*/}
+                {/*    <div className="sliderLeft-calendar-days">*/}
+                {/*        {getDaysOfMonth().map(({ day, month, year, prevOrNext}) => (*/}
+                {/*            <div className="sliderLeft-calendar-day">*/}
+                {/*                <span className={prevOrNext ? "sliderLeft-calendar-day-prevOrNext" : ""}>{day}</span>*/}
+                {/*                <div className="sliderLeft-calendar-day-events">*/}
+                {/*                    {day === 27 && <FaIcon src="faCircle" styling="solid" />}*/}
+                {/*                    {day === 4 && <FaIcon src="faCircle" styling="solid" />}*/}
+                {/*                    {day === 4 && <FaIcon src="faCircle" styling="solid" />}*/}
+                {/*                    {day === 7 && <FaIcon src="faCircle" styling="solid" />}*/}
+                {/*                    {day === 13 && <FaIcon src="faCircle" styling="solid" />}*/}
+                {/*                    {day === 14 && <FaIcon src="faCircle" styling="solid" />}*/}
+                {/*                    {day === 14 && <FaIcon src="faCircle" styling="solid" />}*/}
+                {/*                    {day === 19 && <FaIcon src="faCircle" styling="solid" />}*/}
+                {/*                    {day === 19 && <FaIcon src="faCircle" styling="solid" />}*/}
+                {/*                    {day === 19 && <FaIcon src="faCircle" styling="solid" />}*/}
+                {/*                    {day === 24 && <FaIcon src="faCircle" styling="solid" />}*/}
+                {/*                    {day === 25 && <FaIcon src="faCircle" styling="solid" />}*/}
+                {/*                    {day === 25 && <FaIcon src="faCircle" styling="solid" />}*/}
+                {/*                    {day === 26 && <FaIcon src="faCircle" styling="solid" />}*/}
+                {/*                </div>*/}
+                {/*            </div>*/}
+                {/*        ))}*/}
+                {/*    </div>*/}
+                {/*    <div className="sliderLeft-calendar-invitations">*/}
+                {/*        <h4>Invitations</h4>*/}
+                {/*    </div>*/}
+                {/*    <div className="sliderLeft-calendar-upevents">*/}
+                {/*        <h4>Upcoming Events</h4>*/}
+                {/*    </div>*/}
+                {/*</main>*/}
             </div>
 
         </StyledCalendar>

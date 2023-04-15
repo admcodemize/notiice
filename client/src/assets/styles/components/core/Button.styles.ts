@@ -27,6 +27,10 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
     color: ${({ theme }) => theme.errorColor};
   }
   
+  .button-dropdown {
+    padding-left: 6px;
+  }
+  
   :hover {
     border-color: ${({ theme }) => theme.createBorderColor};
     
