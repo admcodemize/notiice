@@ -32,7 +32,10 @@ export interface IThemeProps {
     tagColor: string,
     tagBorderColor: string,
     tagBgColor: string,
-    paragraphColor: string
+    dateTimeColor: string,
+    paragraphColor: string,
+    surveyBgColor: string,
+    meetingBgColor: string
 }
 
 

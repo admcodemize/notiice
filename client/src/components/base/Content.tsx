@@ -14,21 +14,25 @@ import { Integrations } from "../content/Integrations";
 
 import { RoleProps, RouteProps } from "../../assets/constants/Properties";
 
+import { CalendarProvider } from "../../utils/context/Calendar";
+
 export const Content = (): JSX.Element => {
     return (
         <StyledContent>
-            <Routes>
-                <Route path="/" element={<Landing />}>
-                    <Route element={<RoleBasedRoute allowedRoles={RoleProps().FREE} />} >
-                        <Route path={`${RouteProps().DASHBOARD}`} element={<Dashboard />} />
-                        <Route path={`${RouteProps().WORKFLOW}`} element={<Workflow />} />
-                        <Route path={`${RouteProps().WORKSCHEDULE}`} element={<WorkSchedule />} />
-                        <Route path={`${RouteProps().CALENDAR}`} element={<Calendar/>} />
-                        <Route path={`${RouteProps().INTEGRATIONS}`} element={<Integrations />} />
+            <CalendarProvider>
+                <Routes>
+                    <Route path="/" element={<Landing />}>
+                        <Route element={<RoleBasedRoute allowedRoles={RoleProps().FREE} />} >
+                            <Route path={`${RouteProps().DASHBOARD}`} element={<Dashboard />} />
+                            <Route path={`${RouteProps().WORKFLOW}`} element={<Workflow />} />
+                            <Route path={`${RouteProps().WORKSCHEDULE}`} element={<WorkSchedule />} />
+                            <Route path={`${RouteProps().CALENDAR}`} element={<Calendar/>} />
+                            <Route path={`${RouteProps().INTEGRATIONS}`} element={<Integrations />} />
+                        </Route>
                     </Route>
-                </Route>
-                <Route path="*" element={<div>404</div>} />
-            </Routes>
+                    <Route path="*" element={<div>404</div>} />
+                </Routes>
+            </CalendarProvider>
         </StyledContent>
     )
 }

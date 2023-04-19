@@ -1,74 +1,191 @@
 import { StyledCalendar } from "../../assets/styles/components/sliderLeft/Calendar.styles";
 
-import { ICalendarDaysOfMonth } from "../../assets/types/components/sliderLeft/Calendar";
-
 import { Button } from "../core/Button";
 import {FaIcon} from "../core/FontAwesomeIcon";
+import {ButtonGroup} from "../core/ButtonGroup";
+import {Tag} from "../core/Tag";
 
 export const Calendar = (): JSX.Element => {
-    const _isLeapYear = (year: number): boolean => (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 === 0);
-
-    const _getDaysLeapMonth = (year: number): number => _isLeapYear(year) ? 29 : 28;
-
-    const _getMonths = (): number[] => ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
-
-    const getFirstDay = (month: number = new Date().getMonth(), year: number = new Date().getFullYear()): number => new Date(year, month, 1).getDay();
-
-    const getLastDay = (month: number = new Date().getMonth(), year: number =new Date().getFullYear()): number => new Date(year, month + 1, 0).getDay();
-
-    const getDayCountOfMonth = (year: number): number[] => ([31, _getDaysLeapMonth(year), 31, 30, 31, 30, 31, 31, 30, 31, 30]);
-
-    const getDaysOfWeek = (bISO8601: boolean = true): Array<string> => bISO8601
-        ? ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-        : ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-    const getDaysOfMonth = (year: number = new Date().getFullYear(), month: number = new Date().getMonth(), startDate:Date|null = null, endDate:Date|null = null, datesBetween:Date[]|[] = []): ICalendarDaysOfMonth[] => {
-        /** @desc 0 = Sunday; 1 = Monday; ... 6 = Saturday */
-        const aPrevDays = [];
-        const aDays = [];
-        const aNextDays = [];
-
-        const iFirstDay = getFirstDay(month, year);
-        const iLastDay = getLastDay(month, year);
-        const iDaysOfMonth = getDayCountOfMonth(year)[month - 1] + 1;
-
-        for (let i = iFirstDay === 0 ? iDaysOfMonth - 6 : (iDaysOfMonth - iFirstDay) + 1; i <= getDayCountOfMonth(year)[month - 1]; i++) {
-            /** @desc Determine class name for previous days and add days */
-            aPrevDays.push({
-                day: i,
-                month: month - 1,
-                year: year,
-                prevOrNext: true
-            });
-        }
-
-        for (let i = getDayCountOfMonth(year)[month]; i > 0; i--) {
-            /** @desc Determine class name for current days of month and add days */
-            aDays.unshift({
-                day: i,
-                month: month,
-                year: year,
-                prevOrNext: false
-            });
-        }
-
-        if (iLastDay !== 0) {
-            for (let i = 1; i <= 7 - iLastDay; i++) {
-                /** @desc Determine class name for following days and add days */
-                aNextDays.push({
-                    day: i,
-                    month: month + 1,
-                    year: year,
-                    prevOrNext: true
-                });
-            }
-        }
-
-        return [...aPrevDays, ...aDays, ...aNextDays];
-    }
 
     return (
         <StyledCalendar>
+
+
+
+            <div className="sliderLeft-calendar-card">
+                <header>
+                    <div className="sliderLeft-calendar-date">
+                        <span className="sliderLeft-calendar-day">24</span>
+                        <span className="sliderLeft-calendar-month">Apr</span>
+                    </div>
+                    <div className="sliderLeft-calendar-info">
+                        <span className="sliderLeft-calendar-title">Workshop meeting</span>
+                        <span>Beschreibung Test 1234</span>
+                    </div>
+                </header>
+                <main>
+                    <div className="sliderLeft-calendar-tags">
+                        <Tag text="Umfrage" className="sliderLeft-calendar-tag" />
+                        <Tag text="AEW FI" iconSrc="faLayerGroup" styling="thin" className="sliderLeft-calendar-tag" />
+                    </div>
+                    <div className="sliderLeft-calendar-time">
+                        <div className="sliderLeft-calender-time-info">
+                            <FaIcon src="faGlobe" styling="solid" />
+                            <span>Mitteleuropäische Zeit MEZ</span>
+                        </div>
+                        <div className="sliderLeft-calender-time-info">
+                            <FaIcon src="faCheckToSlot" styling="solid"/>
+                            <span>75% der Stimmen bestätigt</span>
+                        </div>
+                        <div className="sliderLeft-calender-time-info">
+                            <FaIcon src="faLocationDot" styling="solid" />
+                            <span>Teams-Besprechung</span>
+                        </div>
+                    </div>
+                    <div className="sliderLeft-calendar-actions">
+                        <Button text="Share Link" iconSrc="faShareAll" styling="light"/>
+                        <Button text="Participants" iconSrc="faUsersRays" styling="light"/>
+                    </div>
+                </main>
+            </div>
+
+            <div className="sliderLeft-calendar-card">
+                <header>
+                    <div className="sliderLeft-calendar-date">
+                        <span className="sliderLeft-calendar-day">01</span>
+                        <span className="sliderLeft-calendar-month">Mai</span>
+                    </div>
+                    <div className="sliderLeft-calendar-info">
+                        <span className="sliderLeft-calendar-title">Jour-Fix Fachverantwortung</span>
+                        <span className="webkit-word-break webkit-line-clamp1">Übernahme und Lohnbesprechung</span>
+                    </div>
+                </header>
+                <main>
+                    <div className="sliderLeft-calendar-tags">
+                        <Tag text="Meeting" className="sliderLeft-calendar-tag" />
+                        <Tag text="Google" iconSrc="faLockKeyhole" styling="thin" className="sliderLeft-calendar-tag" />
+                    </div>
+                    <div className="sliderLeft-calendar-time">
+                        <div className="sliderLeft-calender-time-info">
+                            <FaIcon src="faGlobe" styling="solid" />
+                            <span>Mitteleuropäische Zeit MEZ</span>
+                        </div>
+                        <div className="sliderLeft-calender-time-info">
+                            <FaIcon src="faClock" styling="solid"/>
+                            <span>13:00 - 15:30</span>
+                        </div>
+                        <div className="sliderLeft-calender-time-info">
+                            <FaIcon src="faLocationDot" styling="solid" />
+                            <span>Google Meet</span>
+                        </div>
+                    </div>
+                    <div className="sliderLeft-calendar-actions">
+                        <Button text="Join Meeting" iconSrc="faHandshake" styling="light"/>
+                    </div>
+                </main>
+            </div>
+
+            <div className="sliderLeft-calendar-card">
+                <header>
+                    <div className="sliderLeft-calendar-date">
+                        <span className="sliderLeft-calendar-day">01</span>
+                        <span className="sliderLeft-calendar-month">Mai</span>
+                    </div>
+                    <div className="sliderLeft-calendar-info">
+                        <span className="sliderLeft-calendar-title">Jour-Fix Fachverantwortung</span>
+                        <span className="webkit-word-break webkit-line-clamp1">Übernahme und Lohnbesprechung</span>
+                    </div>
+                </header>
+                <main>
+                    <div className="sliderLeft-calendar-tags">
+                        <Tag text="Event" className="sliderLeft-calendar-tag" />
+                        <Tag text="Google" iconSrc="faLockKeyhole" styling="thin" className="sliderLeft-calendar-tag" />
+                    </div>
+                    <div className="sliderLeft-calendar-time">
+                        <div className="sliderLeft-calender-time-info">
+                            <FaIcon src="faGlobe" styling="solid" />
+                            <span>Mitteleuropäische Zeit MEZ</span>
+                        </div>
+                        <div className="sliderLeft-calender-time-info">
+                            <FaIcon src="faClockTwo" styling="solid"/>
+                            <span>13:00</span>
+                            <FaIcon src="faClockEight" styling="solid"/>
+                            <span>15.05.2023 at 17:00</span>
+                        </div>
+                        <div className="sliderLeft-calender-time-info">
+                            <FaIcon src="faLocationDot" styling="solid" />
+                            <span>Industriesstrasse 20, 5000 Aarau</span>
+                        </div>
+                    </div>
+                    <div className="sliderLeft-calendar-actions">
+                        <Button text="Show route" iconSrc="faMapLocationDot" styling="light"/>
+                    </div>
+                </main>
+            </div>
+
+
+
+
+
+            {/*<div className="sliderLeft-calendar-upcoming">*/}
+            {/*    <div className="sliderLeft-calendar-left">*/}
+            {/*        <span className="sliderLeft-calendar-left-day">24</span>*/}
+            {/*        <span className="sliderLeft-calendar-left-month">Apr</span>*/}
+            {/*    </div>*/}
+            {/*    <div className="sliderLeft-calendar-middle">*/}
+            {/*        <div className="sliderLeft-calendar-middle-time">*/}
+            {/*            <FaIcon src="faClock" styling="thin"/>*/}
+            {/*            <span>11:00 - 11:30 Uhr</span>*/}
+            {/*        </div>*/}
+            {/*        <span className="sliderLeft-calendar-middle-title">Workshop meeting</span>*/}
+            {/*        <Tag text="Event" className="slider-left-calendar-middle-tag" />*/}
+            {/*    </div>*/}
+            {/*    <div className="sliderLeft-calendar-right">*/}
+
+            {/*    </div>*/}
+            {/*</div>*/}
+
+            {/*<div className="sliderLeft-calendar-upcoming">*/}
+            {/*    <div className="sliderLeft-calendar-left">*/}
+            {/*        <span className="sliderLeft-calendar-left-day">04</span>*/}
+            {/*        <span className="sliderLeft-calendar-left-month">Mai</span>*/}
+            {/*    </div>*/}
+            {/*    <div className="sliderLeft-calendar-middle">*/}
+            {/*        <div className="sliderLeft-calendar-middle-time">*/}
+            {/*            <FaIcon src="faClock" styling="thin"/>*/}
+            {/*            <span>13:00 - 15:30 Uhr</span>*/}
+            {/*        </div>*/}
+            {/*        <span className="sliderLeft-calendar-middle-title">Workshop meeting</span>*/}
+            {/*        <Tag text="Event" className="slider-left-calendar-middle-tag" />*/}
+            {/*    </div>*/}
+            {/*    <div className="sliderLeft-calendar-right">*/}
+
+            {/*    </div>*/}
+            {/*</div>*/}
+
+            {/*<div className="sliderLeft-calendar-invitations">*/}
+            {/*    <div className="sliderLeft-calendar-top">*/}
+            {/*        <div className="sliderLeft-calendar-left">*/}
+            {/*            <span className="sliderLeft-calendar-left-day">04</span>*/}
+            {/*            <span className="sliderLeft-calendar-left-month">Mai</span>*/}
+            {/*        </div>*/}
+            {/*        <div className="sliderLeft-calendar-middle">*/}
+            {/*            <div className="sliderLeft-calendar-middle-time">*/}
+            {/*                <FaIcon src="faClock" styling="thin"/>*/}
+            {/*                <span>13:00 - 15:30 Uhr</span>*/}
+            {/*            </div>*/}
+            {/*            <span className="sliderLeft-calendar-middle-title">Workshop meeting</span>*/}
+            {/*        </div>*/}
+            {/*        <div className="sliderLeft-calendar-right">*/}
+
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*    <div className="sliderLeft-calendar-bottom">*/}
+            {/*        <Button text="Accept" styling="success" />*/}
+            {/*        <Button text="Decline" styling="error" />*/}
+            {/*        <Button text="Reschedule" />*/}
+            {/*    </div>*/}
+            {/*</div>*/}
             <div>
                 {/*<header>*/}
                 {/*    <div className="sliderLeft-calendar-hdl">*/}

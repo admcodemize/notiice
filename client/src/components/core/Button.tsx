@@ -1,16 +1,40 @@
+import React, { useState, useRef } from "react";
+
 import { StyledButton } from "../../assets/styles/components/core/Button.styles";
+import { StyledDropdown } from "../../assets/styles/components/core/Dropdown.styles";
 
 import { IButtonProps } from "../../assets/types/components/core/Button";
 
 import { FaIcon } from "./FontAwesomeIcon";
 
-export const Button = ({ iconSrc, iconStyling = "thin", text, styling = "default", dropdown, badge }: IButtonProps): JSX.Element => {
+import { useClickOutside } from "../../utils/hooks/useClickOutside";
+import { getCalendarDropdownElemByButtonId } from "../../utils/helpers/Dropdown";
+
+export const Button = ({ id, iconSrc, iconStyling = "thin", text, styling = "default", dropdown, dropdownFloat, badge, onClick, ...props }: IButtonProps): JSX.Element => {
+    const [ isOpen, setIsOpen ] = useState<boolean>(false);
+
+    const refObjDropdown = useRef(null);
+    useClickOutside(refObjDropdown, () => setIsOpen(false));
+
+    const _onClick = (evt: React.MouseEvent<HTMLButtonElement>): void => dropdown ? setIsOpen((prevState) => !prevState) : onClick && onClick(evt, id);
+
     return (
-        <StyledButton styling={styling}>
-            {iconSrc && <FaIcon src={iconSrc} styling={iconStyling} />}
-            {text && <span>{text}</span>}
-            {badge && <FaIcon src="faCircle" styling="solid" className="button-badge"/>}
-            {dropdown && <FaIcon src="faCaretDown" styling="thin" className="button-dropdown" />}
-        </StyledButton>
+        <StyledDropdown float={dropdownFloat || "left"}>
+            <StyledButton
+                styling={styling}
+                onClick={_onClick}
+                isOpen={isOpen}
+                {...props}>
+                {iconSrc && <FaIcon src={iconSrc} styling={iconStyling} />}
+                {text && <span>{text}</span>}
+                {badge && <FaIcon src="faCircle" styling="solid" className="button-badge"/>}
+                {dropdown && <FaIcon src="faCaretDown" styling="thin" className="button-dropdown" />}
+            </StyledButton>
+            {dropdown && <div ref={refObjDropdown} className={`dropdown-content ${isOpen 
+                ? "dropdown-active" 
+                : "dropdown-inactive"}`}>
+                {id && getCalendarDropdownElemByButtonId(id)}
+            </div>}
+        </StyledDropdown>
     )
 }

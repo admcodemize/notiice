@@ -4,10 +4,10 @@ import { ITagProps } from "../../assets/types/components/core/Tag";
 
 import { FaIcon } from "./FontAwesomeIcon";
 
-export const Tag = ({ text, iconSrc, className }: ITagProps): JSX.Element => {
+export const Tag = ({ text, iconSrc, styling = "duotone", className }: ITagProps): JSX.Element => {
     return (
         <StyledTag className={className}>
-            {iconSrc && <FaIcon src={iconSrc} />}
+            {iconSrc && <FaIcon src={iconSrc} styling={styling} />}
             <span>{text}</span>
         </StyledTag>
     )

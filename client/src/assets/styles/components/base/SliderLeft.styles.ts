@@ -12,5 +12,5 @@ export const StyledSliderLeft = styled("aside")`
   // transition: all 0.2s ease .1s;
   border-right: 1px solid ${({ theme }) => theme.primaryBorderColor};
   background-color: #fff;
-  padding: 12px 24px;
+  padding: 6px 24px;
 `;

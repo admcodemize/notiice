@@ -14,14 +14,14 @@ export const ButtonGroup = ({ initialKey, buttons, onClick = () => {} }: IButton
 
     return (
         <StyledButtonGroup>
-            {buttons.map(({ key, iconSrc, text}) => (
+            {buttons.map(({ id, iconSrc, text}) => (
                 <button
-                    key={key}
+                    key={id}
                     onClick={(evt: React.MouseEvent<HTMLButtonElement>) => {
-                        _onClick(key);
-                        onClick(evt, key || initialKey);
+                        _onClick(id);
+                        onClick(evt, id || initialKey);
                     }}
-                    className={activeButtonGroupKey === key ? "active" : "inactive"}>
+                    className={activeButtonGroupKey === id ? "active" : "inactive"}>
                     {iconSrc && <FaIcon src={iconSrc} styling="thin" />}
                     <span>{text}</span>
                 </button>

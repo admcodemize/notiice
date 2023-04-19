@@ -12,6 +12,7 @@ export const StyledTag = styled("div")`
   cursor: default;
   
   svg, span {
-    color: #fff
+    color: #fff;
+    font-weight: 600;
   }
 `;
