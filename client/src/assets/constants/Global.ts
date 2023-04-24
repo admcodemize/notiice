@@ -4,5 +4,5 @@ export const SidebarProps = (): IConstSidebarProps => ({
     SIDE: 75,
     LEFT: 325,
     RIGHT: 325,
-    HEADER: 65,
+    HEADER: 50,
 });

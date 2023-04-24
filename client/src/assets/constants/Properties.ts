@@ -8,6 +8,6 @@ export const RouteProps = (): TConstRouteProps => ({
     DASHBOARD: "dashboard",
     WORKFLOW: "workflow",
     WORKSCHEDULE: "workschedule",
-    CALENDAR: "calendar",
+    SCHEDULEPAGES: "pages",
     INTEGRATIONS: "integrations"
 })

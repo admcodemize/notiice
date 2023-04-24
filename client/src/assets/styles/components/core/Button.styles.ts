@@ -8,11 +8,16 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
   align-items: center;
   gap: 6px;
   height: 32px;
-  outline: none;
   border: 1px solid ${({ theme }) => theme.primaryBorderColor};
-  background: #fff;
+  outline: none;
+  background-color: #fff;
   padding: 4px 8px;
   border-radius: 6px;
+  
+  ${props => !props.showBorder && css`
+    border: none;
+    background-color: transparent;
+  `}
   
   span {
     font-size: 0.775rem;

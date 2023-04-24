@@ -49,79 +49,79 @@ export const Calendar = (): JSX.Element => {
                 </main>
             </div>
 
-            <div className="sliderLeft-calendar-card">
-                <header>
-                    <div className="sliderLeft-calendar-date">
-                        <span className="sliderLeft-calendar-day">01</span>
-                        <span className="sliderLeft-calendar-month">Mai</span>
-                    </div>
-                    <div className="sliderLeft-calendar-info">
-                        <span className="sliderLeft-calendar-title">Jour-Fix Fachverantwortung</span>
-                        <span className="webkit-word-break webkit-line-clamp1">Übernahme und Lohnbesprechung</span>
-                    </div>
-                </header>
-                <main>
-                    <div className="sliderLeft-calendar-tags">
-                        <Tag text="Meeting" className="sliderLeft-calendar-tag" />
-                        <Tag text="Google" iconSrc="faLockKeyhole" styling="thin" className="sliderLeft-calendar-tag" />
-                    </div>
-                    <div className="sliderLeft-calendar-time">
-                        <div className="sliderLeft-calender-time-info">
-                            <FaIcon src="faGlobe" styling="solid" />
-                            <span>Mitteleuropäische Zeit MEZ</span>
-                        </div>
-                        <div className="sliderLeft-calender-time-info">
-                            <FaIcon src="faClock" styling="solid"/>
-                            <span>13:00 - 15:30</span>
-                        </div>
-                        <div className="sliderLeft-calender-time-info">
-                            <FaIcon src="faLocationDot" styling="solid" />
-                            <span>Google Meet</span>
-                        </div>
-                    </div>
-                    <div className="sliderLeft-calendar-actions">
-                        <Button text="Join Meeting" iconSrc="faHandshake" styling="light"/>
-                    </div>
-                </main>
-            </div>
+            {/*<div className="sliderLeft-calendar-card">*/}
+            {/*    <header>*/}
+            {/*        <div className="sliderLeft-calendar-date">*/}
+            {/*            <span className="sliderLeft-calendar-day">01</span>*/}
+            {/*            <span className="sliderLeft-calendar-month">Mai</span>*/}
+            {/*        </div>*/}
+            {/*        <div className="sliderLeft-calendar-info">*/}
+            {/*            <span className="sliderLeft-calendar-title">Jour-Fix Fachverantwortung</span>*/}
+            {/*            <span className="webkit-word-break webkit-line-clamp1">Übernahme und Lohnbesprechung</span>*/}
+            {/*        </div>*/}
+            {/*    </header>*/}
+            {/*    <main>*/}
+            {/*        <div className="sliderLeft-calendar-tags">*/}
+            {/*            <Tag text="Meeting" className="sliderLeft-calendar-tag" />*/}
+            {/*            <Tag text="Google" iconSrc="faLockKeyhole" styling="thin" className="sliderLeft-calendar-tag" />*/}
+            {/*        </div>*/}
+            {/*        <div className="sliderLeft-calendar-time">*/}
+            {/*            <div className="sliderLeft-calender-time-info">*/}
+            {/*                <FaIcon src="faGlobe" styling="solid" />*/}
+            {/*                <span>Mitteleuropäische Zeit MEZ</span>*/}
+            {/*            </div>*/}
+            {/*            <div className="sliderLeft-calender-time-info">*/}
+            {/*                <FaIcon src="faClock" styling="solid"/>*/}
+            {/*                <span>13:00 - 15:30</span>*/}
+            {/*            </div>*/}
+            {/*            <div className="sliderLeft-calender-time-info">*/}
+            {/*                <FaIcon src="faLocationDot" styling="solid" />*/}
+            {/*                <span>Google Meet</span>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*        <div className="sliderLeft-calendar-actions">*/}
+            {/*            <Button text="Join Meeting" iconSrc="faHandshake" styling="light"/>*/}
+            {/*        </div>*/}
+            {/*    </main>*/}
+            {/*</div>*/}
 
-            <div className="sliderLeft-calendar-card">
-                <header>
-                    <div className="sliderLeft-calendar-date">
-                        <span className="sliderLeft-calendar-day">01</span>
-                        <span className="sliderLeft-calendar-month">Mai</span>
-                    </div>
-                    <div className="sliderLeft-calendar-info">
-                        <span className="sliderLeft-calendar-title">Jour-Fix Fachverantwortung</span>
-                        <span className="webkit-word-break webkit-line-clamp1">Übernahme und Lohnbesprechung</span>
-                    </div>
-                </header>
-                <main>
-                    <div className="sliderLeft-calendar-tags">
-                        <Tag text="Event" className="sliderLeft-calendar-tag" />
-                        <Tag text="Google" iconSrc="faLockKeyhole" styling="thin" className="sliderLeft-calendar-tag" />
-                    </div>
-                    <div className="sliderLeft-calendar-time">
-                        <div className="sliderLeft-calender-time-info">
-                            <FaIcon src="faGlobe" styling="solid" />
-                            <span>Mitteleuropäische Zeit MEZ</span>
-                        </div>
-                        <div className="sliderLeft-calender-time-info">
-                            <FaIcon src="faClockTwo" styling="solid"/>
-                            <span>13:00</span>
-                            <FaIcon src="faClockEight" styling="solid"/>
-                            <span>15.05.2023 at 17:00</span>
-                        </div>
-                        <div className="sliderLeft-calender-time-info">
-                            <FaIcon src="faLocationDot" styling="solid" />
-                            <span>Industriesstrasse 20, 5000 Aarau</span>
-                        </div>
-                    </div>
-                    <div className="sliderLeft-calendar-actions">
-                        <Button text="Show route" iconSrc="faMapLocationDot" styling="light"/>
-                    </div>
-                </main>
-            </div>
+            {/*<div className="sliderLeft-calendar-card">*/}
+            {/*    <header>*/}
+            {/*        <div className="sliderLeft-calendar-date">*/}
+            {/*            <span className="sliderLeft-calendar-day">01</span>*/}
+            {/*            <span className="sliderLeft-calendar-month">Mai</span>*/}
+            {/*        </div>*/}
+            {/*        <div className="sliderLeft-calendar-info">*/}
+            {/*            <span className="sliderLeft-calendar-title">Jour-Fix Fachverantwortung</span>*/}
+            {/*            <span className="webkit-word-break webkit-line-clamp1">Übernahme und Lohnbesprechung</span>*/}
+            {/*        </div>*/}
+            {/*    </header>*/}
+            {/*    <main>*/}
+            {/*        <div className="sliderLeft-calendar-tags">*/}
+            {/*            <Tag text="Event" className="sliderLeft-calendar-tag" />*/}
+            {/*            <Tag text="Google" iconSrc="faLockKeyhole" styling="thin" className="sliderLeft-calendar-tag" />*/}
+            {/*        </div>*/}
+            {/*        <div className="sliderLeft-calendar-time">*/}
+            {/*            <div className="sliderLeft-calender-time-info">*/}
+            {/*                <FaIcon src="faGlobe" styling="solid" />*/}
+            {/*                <span>Mitteleuropäische Zeit MEZ</span>*/}
+            {/*            </div>*/}
+            {/*            <div className="sliderLeft-calender-time-info">*/}
+            {/*                <FaIcon src="faClockTwo" styling="solid"/>*/}
+            {/*                <span>13:00</span>*/}
+            {/*                <FaIcon src="faClockEight" styling="solid"/>*/}
+            {/*                <span>15.05.2023 at 17:00</span>*/}
+            {/*            </div>*/}
+            {/*            <div className="sliderLeft-calender-time-info">*/}
+            {/*                <FaIcon src="faLocationDot" styling="solid" />*/}
+            {/*                <span>Industriesstrasse 20, 5000 Aarau</span>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*        <div className="sliderLeft-calendar-actions">*/}
+            {/*            <Button text="Show route" iconSrc="faMapLocationDot" styling="light"/>*/}
+            {/*        </div>*/}
+            {/*    </main>*/}
+            {/*</div>*/}
 
 
 

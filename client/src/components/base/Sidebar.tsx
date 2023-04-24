@@ -21,8 +21,7 @@ export const Sidebar = (): JSX.Element => {
                 <Logo />
                 <menu>
                     {_addMenuItem("faGrid2", "Dashboard")}
-                    {_addMenuItem("faCalendars", "Calender")}
-                    {_addMenuItem("faBusinessTime", "Work Schedule")}
+                    {_addMenuItem("faLayerGroup", "Schedule Pages")}
                     {_addMenuItem("faMicrochip", "Workflow")}
                     {_addMenuItem("faTrowelBricks", "Integrations")}
                     {_addMenuItem("faPenField", "Variables")}

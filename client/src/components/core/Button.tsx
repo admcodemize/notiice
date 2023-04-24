@@ -24,6 +24,7 @@ export const Button = ({ id, iconSrc, iconStyling = "thin", text, styling = "def
                 styling={styling}
                 onClick={_onClick}
                 isOpen={isOpen}
+                showBorder={props?.showBorder || true}
                 {...props}>
                 {iconSrc && <FaIcon src={iconSrc} styling={iconStyling} />}
                 {text && <span>{text}</span>}

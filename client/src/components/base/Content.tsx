@@ -9,7 +9,7 @@ import { Landing } from "./Landing";
 import { Dashboard } from "../content/Dashboard";
 import { Workflow } from "../content/Workflow";
 import { WorkSchedule } from "../content/WorkSchedule";
-import { Calendar } from "../content/Calendar";
+import { SchedulePages } from "../content/SchedulePages";
 import { Integrations } from "../content/Integrations";
 
 import { RoleProps, RouteProps } from "../../assets/constants/Properties";
@@ -26,7 +26,7 @@ export const Content = (): JSX.Element => {
                             <Route path={`${RouteProps().DASHBOARD}`} element={<Dashboard />} />
                             <Route path={`${RouteProps().WORKFLOW}`} element={<Workflow />} />
                             <Route path={`${RouteProps().WORKSCHEDULE}`} element={<WorkSchedule />} />
-                            <Route path={`${RouteProps().CALENDAR}`} element={<Calendar/>} />
+                            <Route path={`${RouteProps().SCHEDULEPAGES}/*`} element={<SchedulePages/>} />
                             <Route path={`${RouteProps().INTEGRATIONS}`} element={<Integrations />} />
                         </Route>
                     </Route>

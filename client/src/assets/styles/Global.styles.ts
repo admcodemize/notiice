@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
   :root {
-    --webkit-scrollbar-width: 2px;
+    --webkit-scrollbar-width: 0;
     --webkit-scrollbar-height: 100%;
     --webkit-scrollbar-background: #fafafa;
     --webkit-scrollbar-thumb-height: 40px;
@@ -38,48 +38,56 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   ul {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
     list-style: none;
     
     li {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-width: 160px;
-      line-height: 24px;
-      
-      .global-li-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 4px;
-        
-        svg {
-          display: flex;
-          align-items: flex-start;
-          width: 24px;
-        }
-      }
-      
-      .global-li-shortcut {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid ${({ theme }) => theme.primaryBorderColor};
-        border-radius: 6px;
-        padding: 4px 6px;
-        max-height: 24px;
-      }
-      
-      :hover {
-        svg, span {
-          color: ${({ theme }) => theme.createBgColor};
-        }
-      }
+      cursor: default;
     }
   }
+  
+  // ul {
+  //   display: flex;
+  //   flex-direction: column;
+  //   gap: 12px;
+  //   list-style: none;
+  //  
+  //   li {
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: space-between;
+  //     min-width: 160px;
+  //     line-height: 24px;
+  //    
+  //     .global-li-content {
+  //       display: flex;
+  //       align-items: center;
+  //       justify-content: space-between;
+  //       gap: 4px;
+  //      
+  //       svg {
+  //         display: flex;
+  //         align-items: flex-start;
+  //         width: 24px;
+  //       }
+  //     }
+  //    
+  //     .global-li-shortcut {
+  //       display: flex;
+  //       align-items: center;
+  //       justify-content: center;
+  //       border: 1px solid ${({ theme }) => theme.primaryBorderColor};
+  //       border-radius: 6px;
+  //       padding: 4px 6px;
+  //       max-height: 24px;
+  //     }
+  //    
+  //     :hover {
+  //       svg, span {
+  //         color: ${({ theme }) => theme.createBgColor};
+  //       }
+  //     }
+  //   }
+  // }
   
   span {
     color: ${({ theme }) => theme.primaryColor};

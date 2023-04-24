@@ -12,12 +12,14 @@ export interface IButtonProps {
     dropdownFloat?: TButtonDropdownFloat
     badge?: boolean,
     disabled?: boolean,
+    showBorder?: boolean,
     onClick?: (evt: React.MouseEvent<HTMLButtonElement>, id: string|undefined) => void
 }
 
 export interface IStyledButtonProps {
     styling: TButtonStyling,
-    isOpen: boolean
+    isOpen: boolean,
+    showBorder?: boolean
 }
 
 export type TButtonStyling = "default" | "success" | "warning" | "error" | "create" | "tag" | "light";

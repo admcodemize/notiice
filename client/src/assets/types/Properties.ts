@@ -6,6 +6,6 @@ export type TConstRouteProps = {
     DASHBOARD: string,
     WORKFLOW: string,
     WORKSCHEDULE: string,
-    CALENDAR: string,
+    SCHEDULEPAGES: string,
     INTEGRATIONS: string
 }
