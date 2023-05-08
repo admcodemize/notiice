@@ -43,7 +43,7 @@ export const StyledSidebar = styled("div")`
       padding: 4px 8px;
       border: 1px solid ${({ theme }) => theme.tagBorderColor};
       border-radius: 6px;
-      background-color: ${({ theme }) => theme.tagColor};
+      background-color: ${({ theme }) => theme.tagBgColor};
 
       span {
         color: #fff;

@@ -33,67 +33,68 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 700;
   }
   
+  h2 {
+    font-size: 1rem;
+    font-weight: 900;
+  }
+  
   h4 {
     font-size: 0.95rem;
   }
   
-  ul {
+  ul.horizontal-list {
+    display: flex;
+    gap: 12px;
     list-style: none;
-    
+    overflow: auto;
+
     li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 6px 12px;
+      border-bottom: 2px solid transparent;
+      line-height: 18px;
       cursor: default;
+
+      svg {
+        font-size: 1rem;
+      }
+    }
+
+    li.active-list-item {
+      border-bottom: 2px solid ${({theme}) => theme.createBgColor};
+
+      span, svg {
+        color: ${({theme}) => theme.createBgColor};
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: var(--webkit-scrollbar-width);
+      height: var(--webkit-scrollbar-width);
+      background: var(--webkit-scrollbar-background);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      height: var(--webkit-scrollbar-thumb-height);
+      background-color: var(--webkit-scrollbar-thumb-background-color);
     }
   }
-  
-  // ul {
-  //   display: flex;
-  //   flex-direction: column;
-  //   gap: 12px;
-  //   list-style: none;
-  //  
-  //   li {
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: space-between;
-  //     min-width: 160px;
-  //     line-height: 24px;
-  //    
-  //     .global-li-content {
-  //       display: flex;
-  //       align-items: center;
-  //       justify-content: space-between;
-  //       gap: 4px;
-  //      
-  //       svg {
-  //         display: flex;
-  //         align-items: flex-start;
-  //         width: 24px;
-  //       }
-  //     }
-  //    
-  //     .global-li-shortcut {
-  //       display: flex;
-  //       align-items: center;
-  //       justify-content: center;
-  //       border: 1px solid ${({ theme }) => theme.primaryBorderColor};
-  //       border-radius: 6px;
-  //       padding: 4px 6px;
-  //       max-height: 24px;
-  //     }
-  //    
-  //     :hover {
-  //       svg, span {
-  //         color: ${({ theme }) => theme.createBgColor};
-  //       }
-  //     }
-  //   }
-  // }
   
   span {
     color: ${({ theme }) => theme.primaryColor};
     font-weight: 500;
     font-size: 0.775rem;
     cursor: default;
+  }
+
+  a {
+    color: ${({ theme }) => theme.linkColor};
+    font-weight: 500;
+    font-size: 0.775rem;
+    cursor: default;
+    text-decoration: none;
   }
   
   p {
@@ -135,10 +136,71 @@ export const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.primaryBgColor};
     border-radius: 4px;
     padding: 4px 6px;
-    color: ${({ theme }) => theme.tagColor} !important;
+    color: ${({ theme }) => theme.tagBgColor} !important;
     font-size: 0.725rem;
     font-weight: 700;
     margin: 0 4px;
+  }
+
+  .flex-justify-between-left,
+  .flex-justify-between-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .flex-header-submenu-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 24px;
+    height: 40px;
+    border-bottom: 1px solid ${({ theme }) => theme.primaryBorderColor};
+
+    button {
+      height: 28px;
+    }
+  }
+  
+  .flex-header-block-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .flex-svg-with-text {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    width: 100%;
+
+    svg {
+      width: 24px;
+    }
+  }
+
+  .translate-blur-hidden-top-animation {
+    transform: translateY(-50px);
+  }
+  
+  .translate-blur-hidden-animation {
+    opacity: 0;
+    filter: blur(5px);
+    transition: all 1s;
+  }
+  
+  .translate-blur-show-animation {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate(0);
+  }
+  
+  span.title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: ${({ theme }) => theme.titleColor};
   }
   
   p.webkit-word-break, span.webkit-word-break {
@@ -151,5 +213,9 @@ export const GlobalStyles = createGlobalStyle`
   
   p.webkit-line-clamp1, span.webkit-line-clamp1 {
     -webkit-line-clamp: 1;
+  }
+
+  p.webkit-line-clamp2, span.webkit-line-clamp2 {
+    -webkit-line-clamp: 2;
   }
 `

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledCalendar = styled("div")`
+export const StyledSchedulePages = styled("div")`
   .sliderLeft-calendar-card {
     display: flex;
     flex-direction: column;
@@ -103,7 +103,7 @@ export const StyledCalendar = styled("div")`
 
     .sliderLeft-calendar-tag {
       height: 24px;
-      background-color: ${({ theme }) => theme.tagColor};
+      background-color: ${({ theme }) => theme.tagBgColor};
       border-radius: 4px;
     }
   }

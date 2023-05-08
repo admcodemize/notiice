@@ -12,8 +12,6 @@ export const StyledDropdown = styled("div")<IStyledDropdownProps>`
     width: auto;
     height: auto;
     z-index: 10;
-    
-      
 
     ${props => props.float === "left" && css`
       left: 0;

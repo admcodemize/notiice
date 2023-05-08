@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
 export const StyledSchedule = styled("div")`
-  padding: 12px 24px;
+    .schedulePages-schedule-content {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 24px;
+    }
 `;

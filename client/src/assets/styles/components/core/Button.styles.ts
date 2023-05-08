@@ -8,7 +8,7 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
   align-items: center;
   gap: 6px;
   height: 32px;
-  border: 1px solid ${({ theme }) => theme.primaryBorderColor};
+  border: 1px solid ${({ theme }) => theme.secondaryBorderColor};
   outline: none;
   background-color: #fff;
   padding: 4px 8px;

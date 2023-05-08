@@ -28,8 +28,8 @@ export const StyledSchedulePages = styled("div")`
         height: 50px;
         width: 50px;
         border-radius: 12px;
-        border: 1px solid #464a50;
-        background-color: #464a50;
+        border: 1px solid ${({ theme }) => theme.tagBorderColor};
+        background-color: ${({ theme }) => theme.tagBgColor};
 
         svg {
           width: 26px;
@@ -52,32 +52,6 @@ export const StyledSchedulePages = styled("div")`
           > div {
             display: flex;
             gap: 12px;
-          }
-        }
-
-        ul {
-          display: flex;
-          gap: 12px;
-
-          li {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 0 6px 12px;
-            border-bottom: 2px solid transparent;
-            line-height: 18px;
-            
-            svg {
-              font-size: 1rem;
-            }
-          }
-
-          li.content-pages-menu-item-active {
-            border-bottom: 2px solid ${({theme}) => theme.createBgColor};
-            
-            span, svg {
-              color: ${({theme}) => theme.createBgColor};
-            }
           }
         }
       }

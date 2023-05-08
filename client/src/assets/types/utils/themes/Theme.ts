@@ -35,7 +35,9 @@ export interface IThemeProps {
     dateTimeColor: string,
     paragraphColor: string,
     surveyBgColor: string,
-    meetingBgColor: string
+    meetingBgColor: string,
+    linkColor: string,
+    titleColor: string
 }
 
 

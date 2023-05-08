@@ -4,13 +4,16 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { StyledSchedulePages } from "../../assets/styles/components/content/SchedulePages.styles";
 
 import { EventTypes } from "./schedulePages/EventTypes";
-import { List } from "./schedulePages/List";
+import { Events } from "./schedulePages/Events";
 import { Calendar } from "./schedulePages/Calendar";
 import { Schedule } from "./schedulePages/Schedule";
 import { Settings } from "./schedulePages/Settings";
 
 import { FaIcon } from "../core/FontAwesomeIcon";
 import { Button } from "../core/Button";
+
+import { addListItem } from "../../utils/helpers/UnorderedList";
+
 import { DatePicker } from "../core/DatePicker";
 import { Tag } from "../core/Tag";
 import { Search } from "../core/Search";
@@ -35,13 +38,6 @@ export const SchedulePages = (): JSX.Element => {
         setActiveItem(path);
     };
 
-    const _addMenuItem = (path: string, iconSrc: string, text: string): JSX.Element => (
-        <li key={path} className={activeItem === path ? "content-pages-menu-item-active" : ""} onClick={() => _onMenuItemClick(path)}>
-            <FaIcon src={iconSrc} styling="thin" />
-            <span>{text}</span>
-        </li>
-    );
-
     return (
         <StyledSchedulePages>
             <header className="content-pages-header">
@@ -52,23 +48,24 @@ export const SchedulePages = (): JSX.Element => {
                     <div className="content-pages-project-menu">
                         <div className="content-pages-project-actions">
                             <div>
-                                <Button text="AEW FI" styling="default" dropdown={true} />
-                                <Button iconSrc="faLink" styling="default" />
+                                <Button text="Marc Stöckli" iconSrc="faLockKeyhole" styling="default" dropdown={true} />
+                                <FaIcon src="faPipe" styling="thin" className="pipe-separator"/>
+                                <Button iconSrc="faPenToSquare" styling="default" />
+                                <Button iconSrc="faArrowUpRightFromSquare" styling="default" />
                             </div>
                             <div>
-                                <Search />
-                                <FaIcon src="faPipe" styling="thin" className="pipe-separator"/>
+
                                 <Button iconSrc="faPlus" text="Create" styling="create"/>
                                 <FaIcon src="faPipe" styling="thin" className="pipe-separator"/>
                                 <Button id="inbox" iconSrc="faMegaphone" text="Inbox" badge={true} dropdown={true} dropdownFloat="right"/>
                             </div>
                         </div>
-                        <ul>
-                            {_addMenuItem("types", "faToolbox", "Event Types")}
-                            {_addMenuItem("list", "faList", "List")}
-                            {_addMenuItem("calendar", "faCalendar", "Calendar")}
-                            {_addMenuItem("schedule", "faBusinessTime", "Work Schedule")}
-                            {_addMenuItem("settings", "faCog", "Settings")}
+                        <ul className="horizontal-list">
+                            {addListItem(activeItem, "types", "faToolbox", "Event Types", _onMenuItemClick)}
+                            {addListItem(activeItem, "events", "faCalendarLines", "Events", _onMenuItemClick)}
+                            {addListItem(activeItem, "calendar", "faCalendar", "Calendar", _onMenuItemClick)}
+                            {addListItem(activeItem, "schedule", "faBusinessTime", "Work Schedule", _onMenuItemClick)}
+                            {addListItem(activeItem, "settings", "faCog", "Settings", _onMenuItemClick)}
                         </ul>
                     </div>
                 </div>
@@ -76,7 +73,7 @@ export const SchedulePages = (): JSX.Element => {
             <div className="content-pages-routes">
                 <Routes>
                     <Route path={`types`} element={<EventTypes />} />
-                    <Route path={`list`} element={<List />} />
+                    <Route path={`events`} element={<Events />} />
                     <Route path={`calendar`} element={<Calendar />} />
                     <Route path={`schedule`} element={<Schedule />} />
                     <Route path={`settings`} element={<Settings />} />

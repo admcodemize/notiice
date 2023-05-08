@@ -23,7 +23,7 @@ export const StyledSearch = styled("div")`
   
   > span {
     white-space: nowrap;
-    background-color: ${({ theme}) => theme.tagColor};
+    background-color: ${({ theme}) => theme.tagBgColor};
     padding: 4px 6px;
     border-radius: 6px;
     border: 1px solid ${({ theme}) => theme.tagBorderColor};

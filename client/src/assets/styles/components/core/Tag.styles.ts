@@ -7,7 +7,7 @@ export const StyledTag = styled("div")`
   gap: 6px;
   height: 32px;
   padding: 0 12px;
-  background-color: ${({ theme }) => theme.tagColor};
+  background-color: ${({ theme }) => theme.tagBgColor};
   border-radius: 6px;
   cursor: default;
   

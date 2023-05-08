@@ -1,53 +1,66 @@
-import { StyledCalendar } from "../../assets/styles/components/sliderLeft/Calendar.styles";
+import { StyledSchedulePages } from "../../assets/styles/components/sliderLeft/SchedulePages.styles";
 
 import { Button } from "../core/Button";
 import {FaIcon} from "../core/FontAwesomeIcon";
 import {ButtonGroup} from "../core/ButtonGroup";
 import {Tag} from "../core/Tag";
+import {Route, Routes} from "react-router-dom";
+import {EventTypes} from "../sliderLeft/schedulePages/EventTypes";
+import {Events} from "./schedulePages/Events";
+import {Calendar} from "../sliderLeft/schedulePages/Calendar";
+import {Schedule} from "../content/schedulePages/Schedule";
+import {Settings} from "../content/schedulePages/Settings";
+import React from "react";
 
-export const Calendar = (): JSX.Element => {
+export const SchedulePages = (): JSX.Element => {
 
     return (
-        <StyledCalendar>
+        <StyledSchedulePages>
+            <Routes>
+                <Route path={`types`} element={<EventTypes />} />
+                <Route path={`events`} element={<Events />} />
+                <Route path={`calendar`} element={<Calendar />} />
+                <Route path={`schedule`} element={<Schedule />} />
+                <Route path={`settings`} element={<Settings />} />
+            </Routes>
 
 
-
-            <div className="sliderLeft-calendar-card">
-                <header>
-                    <div className="sliderLeft-calendar-date">
-                        <span className="sliderLeft-calendar-day">24</span>
-                        <span className="sliderLeft-calendar-month">Apr</span>
-                    </div>
-                    <div className="sliderLeft-calendar-info">
-                        <span className="sliderLeft-calendar-title">Workshop meeting</span>
-                        <span>Beschreibung Test 1234</span>
-                    </div>
-                </header>
-                <main>
-                    <div className="sliderLeft-calendar-tags">
-                        <Tag text="Umfrage" className="sliderLeft-calendar-tag" />
-                        <Tag text="AEW FI" iconSrc="faLayerGroup" styling="thin" className="sliderLeft-calendar-tag" />
-                    </div>
-                    <div className="sliderLeft-calendar-time">
-                        <div className="sliderLeft-calender-time-info">
-                            <FaIcon src="faGlobe" styling="solid" />
-                            <span>Mitteleuropäische Zeit MEZ</span>
-                        </div>
-                        <div className="sliderLeft-calender-time-info">
-                            <FaIcon src="faCheckToSlot" styling="solid"/>
-                            <span>75% der Stimmen bestätigt</span>
-                        </div>
-                        <div className="sliderLeft-calender-time-info">
-                            <FaIcon src="faLocationDot" styling="solid" />
-                            <span>Teams-Besprechung</span>
-                        </div>
-                    </div>
-                    <div className="sliderLeft-calendar-actions">
-                        <Button text="Share Link" iconSrc="faShareAll" styling="light"/>
-                        <Button text="Participants" iconSrc="faUsersRays" styling="light"/>
-                    </div>
-                </main>
-            </div>
+            {/*<div className="sliderLeft-calendar-card">*/}
+            {/*    <header>*/}
+            {/*        <div className="sliderLeft-calendar-date">*/}
+            {/*            <span className="sliderLeft-calendar-day">24</span>*/}
+            {/*            <span className="sliderLeft-calendar-month">Apr</span>*/}
+            {/*        </div>*/}
+            {/*        <div className="sliderLeft-calendar-info">*/}
+            {/*            <span className="sliderLeft-calendar-title">Workshop meeting</span>*/}
+            {/*            <span>Beschreibung Test 1234</span>*/}
+            {/*        </div>*/}
+            {/*    </header>*/}
+            {/*    <main>*/}
+            {/*        <div className="sliderLeft-calendar-tags">*/}
+            {/*            <Tag text="Umfrage" className="sliderLeft-calendar-tag" />*/}
+            {/*            <Tag text="AEW FI" iconSrc="faLayerGroup" styling="thin" className="sliderLeft-calendar-tag" />*/}
+            {/*        </div>*/}
+            {/*        <div className="sliderLeft-calendar-time">*/}
+            {/*            <div className="sliderLeft-calender-time-info">*/}
+            {/*                <FaIcon src="faGlobe" styling="solid" />*/}
+            {/*                <span>Mitteleuropäische Zeit MEZ</span>*/}
+            {/*            </div>*/}
+            {/*            <div className="sliderLeft-calender-time-info">*/}
+            {/*                <FaIcon src="faCheckToSlot" styling="solid"/>*/}
+            {/*                <span>75% der Stimmen bestätigt</span>*/}
+            {/*            </div>*/}
+            {/*            <div className="sliderLeft-calender-time-info">*/}
+            {/*                <FaIcon src="faLocationDot" styling="solid" />*/}
+            {/*                <span>Teams-Besprechung</span>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*        <div className="sliderLeft-calendar-actions">*/}
+            {/*            <Button text="Share Link" iconSrc="faShareAll" styling="light"/>*/}
+            {/*            <Button text="Participants" iconSrc="faUsersRays" styling="light"/>*/}
+            {/*        </div>*/}
+            {/*    </main>*/}
+            {/*</div>*/}
 
             {/*<div className="sliderLeft-calendar-card">*/}
             {/*    <header>*/}
@@ -234,6 +247,6 @@ export const Calendar = (): JSX.Element => {
                 {/*</main>*/}
             </div>
 
-        </StyledCalendar>
+        </StyledSchedulePages>
     )
 }
