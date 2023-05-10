@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import compression from "compression";
 import helmet from "helmet";
+import mongoose from "mongoose";
 
 import { databaseConnect } from "./config/Mongoose";
 import { getPort, getCors } from "./config/Environment";
@@ -56,13 +57,13 @@ api.use(cors(getCors()));
 api.use(initialize());
 strategies();
 
-api.get("/api", (req: Request, res: Response) => res.send("API is running"));
+api.get("/api", (req: Request, res: Response) => res.send("API MeetNGo"));
 api.use("/api/auth", authRouter);
 api.use("/api/user", userRouter);
 
 /** @desc Overwrite default express  error handling */
 api.use(errHandler);
 
-databaseConnect()
-    .then(() => api.listen(getPort(), () => console.log(`Server is running at port ${getPort()}`)));
-
+databaseConnect();
+mongoose.connection.on("error", () => console.log("Error! Have a look at 'mongoErrorLog.log'"));
+mongoose.connection.once("open", () => api.listen(getPort(), () => console.log(`Server is running at port ${getPort()}`)));

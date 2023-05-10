@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { Link } from "react-router-dom";
 
 import { StyledSignUp } from "../../assets/styles/components/base/SignUp.styles";
+import { SignUpProps } from "../../assets/constants/Properties";
+import { isValidEmail } from "../../assets/api/components/base/SignUp";
 import Logo from "../../assets/images/img.png";
 import { ModelProviders, ModelIndustries, ModelInput } from "../../assets/models/components/base/SignUp";
 import { TSignUpInputPhases, TSignUpMessages, TSignUpForm, TDispatchSignUpFormPatternMatches } from "../../assets/types/utils/reducer/SignUp";
@@ -47,17 +49,18 @@ export const SignUp = (): JSX.Element => {
     };
 
     const _patternMatches = (evt: React.ChangeEvent<HTMLInputElement>, id: string): void => {
-        // if (id !== SignUpProps().MAIL && id !== SignUpProps().USERNAME) {
+        if (id !== SignUpProps().EMAIL) {
             _dispatchSignUpFormPatternMatches({
                 id, data: {
                     ...state.formPatternMatches,
                     [id]: new RegExp(coreRegexExp(id)).test(evt.target.value)
                 }
-            }); return;
-        // }
-        //
-        // _checkInputValidity(id, evt.target.value, isValidMail, state.phases.phase1, id === SignUpProps().MAIL);
-        // _checkInputValidity(id, evt.target.value, isValidUsername, state.phases.phase2, id === SignUpProps().USERNAME);
+            });
+        } else _checkInputValidity(id, evt.target.value, isValidEmail);
+    };
+
+    const _checkInputValidity = (id: string, value: any, check: (id: string, value: any) => Promise<any>): void => {
+
     };
 
     const _isPatternMatching = (): boolean => {

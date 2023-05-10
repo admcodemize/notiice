@@ -19,6 +19,7 @@
     "@fortawesome/pro-solid-svg-icons": "^6.2.1",
     "@fortawesome/pro-thin-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
+    "axios": "^1.4.0",
     "chart.js": "^4.3.0",
     "i18next": "^22.4.15",
     "jwt-decode": "^3.1.2",
@@ -30,6 +31,7 @@
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
+    "@types/node": "^20.1.1",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@types/styled-components": "^5.1.26",

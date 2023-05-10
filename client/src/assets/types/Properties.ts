@@ -9,3 +9,7 @@ export type TConstRouteProps = {
     SCHEDULEPAGES: string,
     INTEGRATIONS: string
 }
+
+export type TConstSignUpProps = {
+    EMAIL: string
+}

@@ -1,14 +1,8 @@
-import mongoose, {Connection, Error, ConnectOptions, mongo} from 'mongoose';
-
-import { IMongooseConnections } from "../types/config/Mongoose";
-
-import { userSchema } from '../models';
+import mongoose, { ConnectOptions } from 'mongoose';
 
 import { getDatabase } from './Environment';
 
 import { logEvents } from "../middleware/Logger";
-
-import { IUserSchema } from "../types/models/Users";
 
 mongoose.Promise = global.Promise;
 
@@ -20,13 +14,8 @@ const options: ConnectOptions = {
     family: 4 // Use IPv4, skip trying IPv6
 };
 
-export const databaseConnections = <IMongooseConnections>{
-    users: null
-}
-
-export const databaseConnect = async (): Promise<void> => {
+export const databaseConnect = (): void => {
+    mongoose.set("strictQuery", false);
     mongoose.connect(getDatabase(), options)
-        .then(() => {
-            databaseConnections.users = mongoose.model<IUserSchema>("users", userSchema);
-        }, async (err) => await logEvents(`${err.errno}: ${err.code}\t${err.syscall}\t${err.hostname}`, "mongoErrorLog.log"))
+        .catch(async (err) => await logEvents(`${err.errno}: ${err.code}\t${err.syscall}\t${err.hostname}`, "mongoErrorLog.log"));
 }
