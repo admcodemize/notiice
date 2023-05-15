@@ -19,6 +19,7 @@ import { initialize, strategies } from "./services/Passport";
 
 import authRouter from "./routes/AuthRoute";
 import userRouter from "./routes/UserRoute";
+import fileRouter from "./routes/FileRoute";
 
 dotenv.config();
 
@@ -57,13 +58,16 @@ api.use(cors(getCors()));
 api.use(initialize());
 strategies();
 
-api.get("/api", (req: Request, res: Response) => res.send("API MeetNGo"));
+api.get("/api", (req: Request, res: Response) => res.send("API is running"));
 api.use("/api/auth", authRouter);
 api.use("/api/user", userRouter);
+api.use("/api/file", fileRouter);
 
 /** @desc Overwrite default express  error handling */
 api.use(errHandler);
 
 databaseConnect();
 mongoose.connection.on("error", () => console.log("Error! Have a look at 'mongoErrorLog.log'"));
-mongoose.connection.once("open", () => api.listen(getPort(), () => console.log(`Server is running at port ${getPort()}`)));
+mongoose.connection.once("open", () => {
+    api.listen(getPort(), () => console.log(`Server is running at port ${getPort()}`))
+});

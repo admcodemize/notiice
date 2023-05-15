@@ -37,6 +37,20 @@ export function signUpReducer(state: ISignUpReducerState, action: TActionType) {
             ...state,
             form: { ...state.form, ...action.payload }
         }
+        case "formPattern": return {
+            ...state,
+            formPatternMatches: ({
+                ...state.formPatternMatches,
+                [action.payload.id]: action.payload.data[action.payload.id]
+            })
+        }
+        case "messages": return {
+            ...state,
+            messages: state.messages.hasOwnProperty(action.payload.id) ? ({
+                ...state.messages,
+                [action.payload.id]: action.payload.data[action.payload.id]
+            }) : ({ ...state.messages })
+        }
         default: return state;
     }
 }

@@ -195,8 +195,7 @@ export const StyledSignUp = styled("div")`
     .signup-phaseFour-img-container {
       display: flex;
       align-items: center;
-      justify-content: center;
-      flex-direction: column;
+      justify-content: space-evenly;
       gap: 6px;
       width: 100%;
       height: 100px;
@@ -204,24 +203,34 @@ export const StyledSignUp = styled("div")`
       border-radius: 6px;
       cursor: pointer;
       
+      > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 6px;
+        
+        svg {
+          font-size: 1.25rem;
+        }
+
+        span, p {
+          font-weight: 600;
+        }
+
+        p {
+          font-size: 0.675rem;
+        }
+      }
+      
       > * {
         cursor: pointer;
       }
       
-      svg {
-        font-size: 1.25rem;
-      }
-      
-      span, p {
-        font-weight: 600;
-      }
-      
-      p {
-        font-size: 0.675rem;
-      }
-      
-      input {
-        display: none;
+      img {
+        border: 1px solid ${({ theme }) => theme.tagBorderColor};
+        padding: 2px;
+        cursor: default;
       }
     }
   }

@@ -1,6 +1,6 @@
-import { NextFunction } from 'express';
-import mongoose, { Schema } from 'mongoose';
-import bcrypt from 'bcryptjs';
+import { NextFunction } from "express";
+import mongoose, { Schema } from "mongoose";
+import bcrypt from "bcryptjs";
 
 import { IUserSchema } from "../types/models/Users";
 
@@ -23,18 +23,19 @@ export const userSchema: Schema = new mongoose.Schema<IUserSchema>({
         required: true
     },
     profilePicture: {
-        type: mongoose.Schema.Types.String
+        data: mongoose.Schema.Types.Buffer,
+        contentType: mongoose.Schema.Types.String
     },
     coverPicture: {
-        type: mongoose.Schema.Types.String,
+        data: mongoose.Schema.Types.Buffer,
+        contentType: mongoose.Schema.Types.String
     },
     roles: [{
         type: mongoose.Schema.Types.Number,
         default: 1000
     }],
     isActive: {
-        type: mongoose.Schema.Types.Boolean,
-        default: true
+        type: mongoose.Schema.Types.Boolean
     },
     refreshToken: {
         type: mongoose.Schema.Types.String,
@@ -59,4 +60,4 @@ userSchema.methods.comparePassword = function(password: string, next: NextFuncti
     });
 };
 
-export const userModel = mongoose.model<IUserSchema>("Users", userSchema);
+export const userModel = mongoose.model<IUserSchema>("users", userSchema);

@@ -19,8 +19,7 @@ export const Input = ({ id, label, info, required, iconSrc, message, height, mes
             messageType={messageType || "default"}>
             <label className={required ? "required": String()}>{label}</label>
             <div className={`input-container ${props.disabled ? "input-disabled" : String()}`}>
-                {/** @ts-ignore */}
-                <FaIcon src={iconSrc} styling="regular"/>
+                {iconSrc && <FaIcon src={iconSrc} styling="regular"/>}
                 <input
                     onChange={(evt: React.ChangeEvent<HTMLInputElement>) => onChange && onChange(evt, id)}
                     {...props} />

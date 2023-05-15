@@ -7,8 +7,9 @@ export const ModelForm = <TSignUpForm>{
     firstname: String(),
     lastname: String(),
     password: String(),
+    passwordConfirm: String(),
     profileImage: String(),
-    coverImage: String(),
+    companyImage: String(),
     industry: String(),
     isActive: false
 };

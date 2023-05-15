@@ -1,7 +1,7 @@
-import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
+import { Request, Response, NextFunction } from "express";
+import jwt from "jsonwebtoken";
 
-import { getJsonWebToken } from '../config/Environment';
+import { getJsonWebToken } from "../config/Environment";
 
 export const isSignedIn = (req: Request, res: Response, next: NextFunction) => {
     try {

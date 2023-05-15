@@ -1,7 +1,7 @@
-import dotenv from 'dotenv';
-import { allowedOriginsDev, allowedOriginsProd } from './Cors';
+import dotenv from "dotenv";
+import { allowedOriginsDev, allowedOriginsProd } from "./Cors";
 
-import { TEnvironment, TEnvironmentCors, TEnvironmentJsonWebToken } from '../types/config/Environment';
+import { TEnvironment, TEnvironmentCors, TEnvironmentJsonWebToken } from "../types/config/Environment";
 
 dotenv.config();
 
@@ -46,7 +46,7 @@ const dev = <TEnvironment>{
     jsonWebToken: <TEnvironmentJsonWebToken>{
         accessKey: process.env.JWT_DEV_ACCESS_KEY,
         refreshKey: process.env.JWT_DEV_REFRESH_KEY,
-        aud: "http://localhost:8010"
+        aud: "http://localhost:5173"
     },
     database:  process.env.MONGODB_DEV_URI,
     cors: <TEnvironmentCors>{

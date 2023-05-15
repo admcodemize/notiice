@@ -141,7 +141,7 @@ const _accessToken = (user: IUserSchema) => ({
     aud: getJsonWebToken().aud,
     sub: {
         userId: user._id,
-        username: user.username,
+        email: user.email,
         stripeCustomerId: "",
         roles: user?.roles || []
     },
