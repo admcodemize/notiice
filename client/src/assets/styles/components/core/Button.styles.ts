@@ -13,6 +13,7 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
   background-color: #fff;
   padding: 4px 8px;
   border-radius: 6px;
+  transition: all 0.2s ease-in-out;
   
   ${props => !props.showBorder && css`
     border: none;
@@ -53,7 +54,7 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
     background-color: ${({ theme }) => theme.createBgColor};
     
     svg, span {
-      color: ${({ theme }) => theme.createColor};
+      color: ${({ theme }) => theme.createColorInside};
     }
   `}
 
@@ -62,7 +63,7 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
     background-color: ${({ theme }) => theme.successBgColor};
     
     svg, span {
-      color: ${({ theme }) => theme.successColor};
+      color: ${({ theme }) => theme.successColorInside};
     }
   `}
 
@@ -71,7 +72,7 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
     background-color: ${({ theme }) => theme.errorBgColor};
     
     svg, span {
-      color: ${({ theme }) => theme.errorColor};
+      color: ${({ theme }) => theme.errorColorInside};
     }
   `}
 
@@ -80,7 +81,7 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
     background-color: ${({ theme }) => theme.warningBgColor};
     
     svg, span {
-      color: ${({ theme }) => theme.warningColor};
+      color: ${({ theme }) => theme.warningColorInside};
     }
   `}
 
@@ -89,7 +90,16 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
     background-color: ${({ theme }) => theme.tagBgColor};
     
     svg, span {
-      color: ${({ theme }) => theme.tagColor};
+      color: ${({ theme }) => theme.tagColorInside};
+    }
+    
+    :hover {
+      border-color: ${({ theme }) => theme.secondaryBorderColor};
+      background-color: ${({ theme }) => theme.primaryBgColor};
+      
+      svg, span {
+        color: ${({ theme }) => theme.tagBgColor};
+      }
     }
   `}
 
@@ -97,7 +107,7 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
     border-color: ${({ theme }) => theme.createBgColor};
     
     svg, span {
-      color: ${({ theme }) => theme.createBgColor};
+      color: ${({ theme }) => theme.createColor};
     }
   `}
 
@@ -105,11 +115,26 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
     border-color: ${({ theme }) => theme.createBorderColor};
     
     span, svg {
-      color: ${({ theme }) => theme.createBgColor};
+      color: ${({ theme }) => theme.createColor};
     }
 
     .button-badge {
       color: ${({ theme }) => theme.errorColor};
+    }
+  `}
+
+  ${props => props.disabled && css`
+    background: #6e717a;
+    border: 1px solid #5f626a;
+    cursor: default;
+    
+    :hover {
+      border-color: #5f626a;
+      background-color: #6e717a;
+      
+      span, svg {
+        color: #fff;
+      }
     }
   `}
 `;

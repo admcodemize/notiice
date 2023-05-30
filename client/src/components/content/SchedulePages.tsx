@@ -13,6 +13,7 @@ import { FaIcon } from "../core/FontAwesomeIcon";
 import { Button } from "../core/Button";
 
 import { addListItem } from "../../utils/helpers/UnorderedList";
+import { useAuthDecoder } from "../../utils/hooks/useAuthDecoder";
 
 import { DatePicker } from "../core/DatePicker";
 import { Tag } from "../core/Tag";
@@ -33,6 +34,9 @@ export const SchedulePages = (): JSX.Element => {
     const [ activeItem, setActiveItem ] = useState<string>("types");
     const navigate = useNavigate();
 
+    /** @desc Decode JWT access token */
+    const authDecoded = useAuthDecoder();
+
     const _onMenuItemClick = (path: string): void => {
         navigate(path);
         setActiveItem(path);
@@ -48,7 +52,7 @@ export const SchedulePages = (): JSX.Element => {
                     <div className="content-pages-project-menu">
                         <div className="content-pages-project-actions">
                             <div>
-                                <Button text="Marc Stöckli" iconSrc="faLockKeyhole" styling="default" dropdown={true} />
+                                <Button text={`${authDecoded()?.sub?.firstname} ${authDecoded()?.sub?.lastname}`} iconSrc="faLockKeyhole" styling="default" dropdown={true} />
                                 <FaIcon src="faPipe" styling="thin" className="pipe-separator"/>
                                 <Button iconSrc="faPenToSquare" styling="default" />
                                 <Button iconSrc="faArrowUpRightFromSquare" styling="default" />

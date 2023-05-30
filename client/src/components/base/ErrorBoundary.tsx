@@ -1,5 +1,5 @@
 import React, { Component, ErrorInfo } from "react";
-import { IErrorBoundaryProps, IErrorBoundaryState } from "../../assets/types/base/ErrorBoundary";
+import { IErrorBoundaryProps, IErrorBoundaryState } from "../../assets/types/components/base/ErrorBoundary";
 
 export class ErrorBoundary extends Component<IErrorBoundaryProps, IErrorBoundaryState> {
     public state: IErrorBoundaryState = {

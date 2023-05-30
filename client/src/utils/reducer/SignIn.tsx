@@ -1,15 +1,15 @@
-import { ISignUpReducerState, TActionType } from "../../assets/types/utils/reducer/SignUp";
-import { ModelPhases, ModelForm, ModelUserForm, ModelFormPatternMatches } from "../../assets/models/components/base/SignUp";
+import { ISignInReducerState, TActionType } from "../../assets/types/utils/reducer/SignIn";
+import { ModelPhases, ModelMessages, ModelForm, ModelFormPatternMatches } from "../../assets/models/components/base/SignIn";
 
-export const signUpReducerInitState: ISignUpReducerState = {
+export const signInReducerInitState: ISignInReducerState = {
     phases: ModelPhases,
     form: ModelForm,
     formPatternMatches: ModelFormPatternMatches,
-    userForm: ModelUserForm
+    messages: ModelMessages
 }
 
 let activeKey: number = 0;
-export function signUpReducer(state: ISignUpReducerState, action: TActionType) {
+export function signInReducer(state: ISignInReducerState, action: TActionType) {
     switch (action.type) {
         case "next": {
             return {
@@ -32,6 +32,13 @@ export function signUpReducer(state: ISignUpReducerState, action: TActionType) {
                         : { ...phase, isActive: false }
                 })
             }
+        }
+        case "messages": return {
+            ...state,
+            messages: state.messages.hasOwnProperty(action.payload.id) ? ({
+                ...state.messages,
+                [action.payload.id]: action.payload.data[action.payload.id]
+            }) : ({ ...state.messages })
         }
         case "form": return {
             ...state,

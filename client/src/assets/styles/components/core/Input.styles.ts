@@ -8,6 +8,7 @@ export const StyledInput = styled("div")<IStyledInputProps>`
     font-size: 0.775rem;
     font-weight: 600;
     padding: 0 0 4px 8px;
+    color: ${({ theme }) => theme.labelColor};
   }
   
   label.required:before {
@@ -26,7 +27,7 @@ export const StyledInput = styled("div")<IStyledInputProps>`
     flex-direction: row;
     border: 1px solid ${({ theme }) => theme.secondaryBorderColor};
     border-radius: 6px;
-    background : ${({ theme }) => theme.primaryBgColor};
+    background-color: ${({ theme }) => theme.primaryBgColor};
     align-items : center;
     overflow: hidden;
     height: ${props => props.height};
@@ -53,6 +54,7 @@ export const StyledInput = styled("div")<IStyledInputProps>`
       font-size: 0.725rem;
       font-weight: 600;
       color: ${({theme}) => theme.primaryColor};
+      background-color: transparent;
       border: none;
       width: 100%;
       outline: none;
@@ -117,20 +119,20 @@ export const StyledInput = styled("div")<IStyledInputProps>`
 
   ${props => props.messageType === "error" && css`
     span.input-message {
-      color: #d15555;
+      color: ${({ theme }) => theme.errorBgColor};
     }
     
     .input-container {
-      border-color: ${({ theme }) => theme.errorColor};
-      background: ${({ theme }) => `${theme.errorBgColor}10`};
+      border-color: ${({ theme }) => theme.errorBorderColor};
+      background-color: #fff;
       
-      svg,
       input {
-        color: ${({ theme }) => theme.errorColor};
+        color: ${({ theme }) => theme.errorBgColor};
       }
 
       svg {
-        background: ${({ theme }) => `${theme.errorBgColor}40`};
+        color: #fff;
+        background: ${({ theme }) => `${theme.errorBgColor}`};
       }
 
       input {        

@@ -1,0 +1,63 @@
+{
+  "translation": {
+    "global": {
+      "signIn": "Sign In",
+      "signUp": "Sign Up",
+      "terms": "Terms of Use and Privacy Policy",
+      "email": "Email",
+      "password": "Password",
+      "resetPassword": "Reset",
+      "next": "Next",
+      "back": "Back"
+    },
+    "buttons": {
+      "support": "Support",
+      "cancel": "Cancel",
+      "ok": "OK"
+    },
+    "providers": {
+      "provider": "Provider",
+      "google": "Sign Up with Google",
+      "apple": "Sign Up with Apple",
+      "microsoft": "Sign Up with Microsoft",
+      "mail": "Sign Up with Email"
+    },
+    "signIn": {
+      "phaseOne": {
+        "account": "Don't have an account yet?"
+      },
+      "phaseTwo": {
+        "user": "Benutzer",
+        "forgotPassword": "Forgot your Password? That's no fun."
+      }
+    },
+    "signUp": {
+      "phaseOne": {
+        "description": "Organizing meetings has never been easier. Sign up takes only 2 minutes!",
+        "account": "Already have an account?",
+        "terms": "By signing up to create an account I accept Company's"
+      },
+      "phaseTwo": {
+        "about": "About You",
+        "firstname": "Firstname",
+        "lastname": "Lastname",
+        "company": "Company"
+      },
+      "phaseThree": {
+        "passwordConfirm": "Confirm Password",
+        "generate": "Generate secure password"
+      },
+      "phaseFour": {
+        "photos": "Profile Photos",
+        "avatar": "Avatar",
+        "companyImage": "Company Image",
+        "upload": "Upload a Photo",
+        "types": "*.JP(E)G, *.PNG up to 5MB"
+      },
+      "phaseFive": {
+        "industry": "Industry",
+        "description": "Choose your current industry and get access to specific templates"
+      }
+    }
+  }
+}

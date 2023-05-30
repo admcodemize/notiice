@@ -9,6 +9,7 @@ export const PrivateRoute = (): JSX.Element => {
 
     /** @desc Decode JWT access token */
     const authDecoded = useAuthDecoder();
+    debugger
 
     /** @desc <Outlet> represents each private component which is defined nested in private route */
     return (

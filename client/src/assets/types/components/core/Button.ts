@@ -1,12 +1,13 @@
 import React from "react";
 
+import { DefaultTFuncReturn } from "i18next";
 import { TFontAwesomeIconStyle } from "./FontAwesomeIcon";
 
 export interface IButtonProps {
     id?: string,
     iconSrc?: string,
     iconStyling?: TFontAwesomeIconStyle
-    text?: string,
+    text?: string|DefaultTFuncReturn,
     styling?: TButtonStyling,
     dropdown?: boolean,
     dropdownFloat?: TButtonDropdownFloat

@@ -23,7 +23,13 @@ export const rejectObj = (err: any): any => ({
             : err?.response?.data?.message?.message || err?.response?.data?.message || err?.message?.message || err?.message || "axios.internalServerError"
 });
 
-export const useAxiosPublic = () => {
+export const useAxiosPublic = (headers: {} = {}) => {
+    if (Object.keys(headers).length === 0 && headers.constructor === Object)
+    Object.keys(headers).forEach((key) => {
+        /** @ts-ignore */
+        axiosConfig.headers[key] = headers[key];
+    });
+
     /** @desc Axios post request */
     const publicPost = async ({ routerPath, data = {} }: TAxiosPost): Promise<AxiosResponse> => new Promise((resolve, reject) => axios.create(axiosConfig).post(routerPath, data, {})
         .then((res) => resolve(res))

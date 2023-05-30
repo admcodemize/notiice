@@ -7,7 +7,7 @@ export const isSignedIn = (req: Request, res: Response, next: NextFunction) => {
     try {
         if (req?.headers?.authorization) {
             if (!req.headers.authorization.startsWith("Bearer ")) return res.status(401).json({
-                message: "Keine Berechtigung"
+                message: "No authority"
             });
 
             let accessTocken = req.headers.authorization.split(" ")[1];
@@ -23,7 +23,7 @@ export const isSignedIn = (req: Request, res: Response, next: NextFunction) => {
                 });
             });
         } else res.status(401).json({
-            message: "Keine Berechtigung"
+            message: "No authority"
         });
     } catch (err: any) {
         res.status(401).json({

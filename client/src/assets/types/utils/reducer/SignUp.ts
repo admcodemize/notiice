@@ -1,10 +1,10 @@
-import * as buffer from "buffer";
+import { TUserForm } from "../../components/base/User";
 
 export interface ISignUpReducerState {
     phases: TSignUpPhases,
     form: TSignUpForm,
     formPatternMatches: TSignUpFormPatternMatches,
-    messages: TSignUpMessages
+    userForm: TUserForm
 }
 
 export type TSignUpPhases = TSignUpPhase[];
@@ -24,13 +24,13 @@ export type TSignUpForm = {
     lastname: string,
     password: string,
     passwordConfirm: string,
-    profileImage: string,
+    avatar: string,
     companyImage: string
     industry: string
-    isActive: boolean
 }
 
 export type TSignUpFormPatternMatches = {
+    [key: string]: any,
     email: boolean,
     firstname: boolean,
     lastname: boolean,
@@ -42,16 +42,6 @@ export type TSignUpFormPatternMatches = {
 export type TDispatchSignUpFormPatternMatches = {
     id: string,
     data: TSignUpFormPatternMatches
-}
-
-export type TSignUpMessages = {
-    [key: string]: string,
-    email: string
-}
-
-export type TDispatchSignUpMessages = {
-    id: string,
-    data: TSignUpMessages
 }
 
 export type TSignUpInput = {
@@ -78,4 +68,3 @@ export type TActionType =
     | { type: "back" }
     | { type: "form", payload: TSignUpForm }
     | { type: "formPattern", payload: TDispatchSignUpFormPatternMatches }
-    | { type: "messages", payload: TDispatchSignUpMessages }

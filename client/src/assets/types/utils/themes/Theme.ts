@@ -13,23 +13,29 @@ export interface IThemeProps {
     headingBgColor: string,
     markColor: string,
     markBorderColor: string,
-    markBgColor: string
+    markBgColor: string,
     createColor: string,
+    createColorInside: string,
     createBorderColor: string,
     createBgColor: string,
     errorColor: string,
+    errorColorInside: string,
     errorBorderColor: string,
     errorBgColor: string,
     warningColor: string,
+    warningColorInside: string,
     warningBorderColor: string,
     warningBgColor: string,
     successColor: string,
+    successColorInside: string,
     successBorderColor: string,
     successBgColor: string,
     informationColor: string,
+    informationColorInside: string,
     informationBorderColor: string,
     informationBgColor: string,
     tagColor: string,
+    tagColorInside: string,
     tagBorderColor: string,
     tagBgColor: string,
     dateTimeColor: string,
@@ -37,7 +43,8 @@ export interface IThemeProps {
     surveyBgColor: string,
     meetingBgColor: string,
     linkColor: string,
-    titleColor: string
+    titleColor: string,
+    labelColor: string
 }
 
 

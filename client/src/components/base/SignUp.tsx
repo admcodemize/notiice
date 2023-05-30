@@ -1,33 +1,46 @@
 import React, { useReducer } from "react";
-import { useTranslation } from 'react-i18next';
-import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { Link, useNavigate } from "react-router-dom";
 
-import { StyledSignUp } from "../../assets/styles/components/base/SignUp.styles";
-import { SignUpProps } from "../../assets/constants/Properties";
-import { isAlreadyUsed, postImages } from "../../assets/api/components/base/SignUp";
+import { StyledAuth } from "../../assets/styles/components/base/Auth.styles";
 import Logo from "../../assets/images/img.png";
-import { ModelProviders, ModelIndustries, ModelInput } from "../../assets/models/components/base/SignUp";
-import { TSignUpInputPhases, TSignUpMessages, TSignUpForm, TDispatchSignUpFormPatternMatches, TDispatchSignUpMessages } from "../../assets/types/utils/reducer/SignUp";
+import { ModelIndustries, ModelInput } from "../../assets/models/components/base/SignUp";
+import { ModelProviders } from "../../assets/models/components/base/User";
+import { TSignUpInputPhases, TSignUpForm, TDispatchSignUpFormPatternMatches, TSignUpPhase } from "../../assets/types/utils/reducer/SignUp";
 
 import { Button } from "../core/Button";
 import { FaIcon } from "../core/FontAwesomeIcon";
 import { Input } from "../core/Input";
 
+import { create as createUser } from "../../utils/api/components/base/User";
 import { generatePassword } from "../../utils/helpers/User";
 import { signUpReducer, signUpReducerInitState } from "../../utils/reducer/SignUp";
 import { coreRegexExp } from "../../utils/helpers/RegexExp";
-import { base64Converter } from "../../utils/helpers/Files";
+import { base64Converter, checkFileSizeMb, sizeConverter } from "../../utils/helpers/Files";
+import { addListItem } from "../../utils/helpers/UnorderedList";
+import { useLoader } from "../../utils/hooks/useLoader";
+import { useMessage } from "../../utils/hooks/useMessage";
 
 export const SignUp = (): JSX.Element => {
     /** @desc Load reducer state which handles the signup data like patternMatches, phases or messages */
     const [ state, dispatch ] = useReducer(signUpReducer, signUpReducerInitState);
 
+    /** @desc In a suspense-enabled app, the navigate function is aware of when your app is suspending. */
+    const navigate = useNavigate();
+
     /** @desc Returns the translation function for reading from the locales files */
     const { t } = useTranslation();
+
+    /** @desc Get function for displaying page loader */
+    const { setLoader } = useLoader();
+
+    /** @desc Get function for displaying alert dialog */
+    const { setMessageDialog } = useMessage();
 
     const _onProviderClick = (providerKey: string): void => dispatch({ type: "next" });
     const _onGeneratePasswordClick = (): void => {
         const generatedPassword = generatePassword();
+        navigator.clipboard.writeText(generatedPassword);
         _dispatchSignUpForm({
             ...state.form,
             password: generatedPassword,
@@ -42,11 +55,27 @@ export const SignUp = (): JSX.Element => {
     const _onBackClick = (): void => dispatch({ type: "back" });
     const _onNextClick = (): void => dispatch({ type: "next" });
 
-    const _onSignUpClick = (): void => {};
+    const _onSignUpClick = (evt: React.MouseEvent<HTMLButtonElement>): void => {
+        /** @desc Cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur. */
+        evt.preventDefault();
+        setLoader();
+        Object.keys(state.userForm).forEach((key): void => state.userForm[key] = state.form[key]);
+        createUser(state.userForm)
+            .then((res) => {
+                navigate("/signin");
+                setLoader();
+            })
+            .catch((err) => {
+                setLoader();
+                setMessageDialog({
+                    title: err.code,
+                    info: err.tFunc ? t(err.message) : err.message
+                });
+            });
+    };
 
     const _dispatchSignUpForm = (payload: TSignUpForm): void => dispatch({ type: "form", payload });
     const _dispatchSignUpFormPatternMatches = (payload: TDispatchSignUpFormPatternMatches): void => dispatch({ type: "formPattern", payload });
-    const _dispatchMessage = (payload: TDispatchSignUpMessages): void => dispatch({ type: "messages", payload: payload });
 
     const _onInputChange = async (evt: React.ChangeEvent<HTMLInputElement>, id: string): Promise<void> => {
         _dispatchSignUpForm({
@@ -58,28 +87,8 @@ export const SignUp = (): JSX.Element => {
         _patternMatches(id, evt?.target?.value);
     };
 
-    const _onInputValidityPromise = (id: string, patternMatches: boolean, message: string = String()): void => {
-        state.messages.hasOwnProperty(id) && _dispatchMessage({
-            id, data: {
-                ...state.messages,
-                [id]: message
-            }
-        });
-
-        _dispatchSignUpFormPatternMatches({
-            id, data: {
-                ...state.formPatternMatches,
-                [id]: patternMatches
-            }
-        });
-    };
-
-    const _onProfileImageSubmit = async (evt): Promise<void> => {
-        evt.preventDefault();
-        const a = await postImages("image", "/file", evt.target.value);
-    };
-
-    const _onProfileImageClick = (evt): void => {
+    const _onProfileImageClick = (evt: React.MouseEvent<HTMLFormElement>): void => {
+        /** @ts-ignore */
         const inputUpload = evt.target.firstChild;
         if (inputUpload instanceof HTMLInputElement) {
             /** @desc Open file browser */
@@ -87,44 +96,38 @@ export const SignUp = (): JSX.Element => {
         }
     };
 
-    const _onProfileImageChange = async (id: string, evt): Promise<void> => {
-        _dispatchSignUpForm({
-            ...state.form,
-            [id]: await base64Converter(evt.target.files[0])
+    const _onProfileImageChange = async (id: string, evt: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
+        if (evt?.target?.files) {
+            if (checkFileSizeMb(evt.target.files[0].size || 0)) {
+                _dispatchSignUpForm({
+                    ...state.form,
+                    [id]: evt?.target?.files && await base64Converter(evt.target.files[0])
+                });
+            } else setMessageDialog({
+                title: "413",
+                info: `Uploaded profile picture "${evt.target.files[0].name}" with a size of "${sizeConverter(evt.target.files[0].size)}" to large`
+            });
+        }
+    };
+
+    const _onIndustryClick = (key: string): void => _dispatchSignUpForm({
+        ...state.form,
+        industry: key
+    });
+
+    const _patternMatches = (id: string, value: any): void => {
+        _dispatchSignUpFormPatternMatches({
+            id, data: {
+                ...state.formPatternMatches,
+                [id]: new RegExp(coreRegexExp(id)).test(value)
+            }
         });
     };
 
-    const _patternMatches = (id: string, value: any): void => {
-        if (id !== SignUpProps().EMAIL) {
-            _dispatchSignUpFormPatternMatches({
-                id, data: {
-                    ...state.formPatternMatches,
-                    [id]: new RegExp(coreRegexExp(id)).test(value)
-                }
-            });
-        } else _checkInputValidity(id, value, isAlreadyUsed);
-    };
-
-    const _checkInputValidity = (id: string, value: any, check: (id: string, value: any) => Promise<any>): void => {
-        if (state.phases[1] && new RegExp(coreRegexExp(id)).test(value)) {
-            check(id, value)
-                .then(({ id, res }) => {
-                    if (res.status === 200) _onInputValidityPromise(id, false, "Email already used");
-                    else _onInputValidityPromise(id, true);
-                })
-                .catch((err) => {
-                    if (err.internalError) {
-                        console.log(err.code, err.tFunc ? t(err.message) : err.message)
-                    } else _onInputValidityPromise(err.id, true);
-                });
-        } else _onInputValidityPromise(id, false);
-    };
-
     const _isPatternMatching = (): boolean => {
-        return true;
-        // return state.phases[1].isActive ? state.formPatternMatches.email && state.formPatternMatches.firstname && state.formPatternMatches.lastname
-        //     : state.phases[2].isActive  ? state.formPatternMatches.password && state.formPatternMatches.passwordConfirm
-        //         && (state.form.password === state.form.passwordConfirm) : true
+        return state.phases[1].isActive ? state.formPatternMatches.email && state.formPatternMatches.firstname && state.formPatternMatches.lastname
+            : state.phases[2].isActive  ? state.formPatternMatches.password && state.formPatternMatches.passwordConfirm
+                && (state.form.password === state.form.passwordConfirm) : true
     };
 
     const _addInput = ({ id, label, info, required, iconSrc, placeholder, type, ...props }: TSignUpInputPhases, value: any): JSX.Element => (
@@ -138,45 +141,43 @@ export const SignUp = (): JSX.Element => {
             type={type}
             value={value}
             height="40px"
-            message={(state.messages as TSignUpMessages)[id] || String()}
-            messageType={(state.messages as TSignUpMessages)[id] ? "error" : "default"}
             onChange={_onInputChange}
             {...props}/>
     );
 
     const _addPhaseStep = (key: number, iconSrc: string, phase: boolean, title: string): JSX.Element => (
-        <div className="signup-phases-step">
+        <div key={key} className="auth-phases-step">
             <Button iconSrc={iconSrc} iconStyling={phase ? "regular" : "thin"} styling={phase ? "tag" : "default"} />
-            <div className={`signup-phases-step-info ${phase ? "signup-phases-step-show" : String()}`}>
+            <div className={`auth-phases-step-info ${phase ? "auth-phases-step-show" : String()}`}>
                 <p>{`Step ${phase && key}/5`}</p>
-                <span>{title}</span>
+                <span>{t(title)}</span>
             </div>
         </div>
     );
 
     const _addPhaseHeader = (title: string, text: string): JSX.Element => (
         <div className="flex-header-block-column">
-            <h2>{title}</h2>
+            <h2>{t(title)}</h2>
             <span>{text}</span>
         </div>
     );
 
     const _addPhaseOne = (): JSX.Element => (
-        <div className={`signup-phaseOne ${state.phases[0].isActive ? "signup-phase-active" : String()}`}>
-            {_addPhaseHeader("Provider", "Organizing meetings has never been easier. Sign up takes only 2 minutes! Choose your entry-level provider.")}
+        <div className={`signup-phaseOne ${state.phases[0].isActive ? "auth-phase-active" : String()}`}>
+            {_addPhaseHeader("providers.provider", t("signUp.phaseOne.description"))}
             {ModelProviders().map(({ key, text, iconSrc, styling, iconStyling}): JSX.Element => (
-                <Button text={text} iconSrc={iconSrc} styling={styling} iconStyling={iconStyling} onClick={() => _onProviderClick(key)}/>
+                <Button key={key} text={t(text)} iconSrc={iconSrc} styling={styling} iconStyling={iconStyling} onClick={() => _onProviderClick(key)}/>
             ))}
-            <div className="signup-phaseOne-additional-info">
-                <span>Already have an account? <Link to="/signin">Sign In</Link></span>
-                <span>By signing up to create an account I accept Company's <Link to="/terms">Terms of Use and Privacy Policy</Link></span>
+            <div className="auth-additional-info">
+                <span>{t("signUp.phaseOne.account")} <Link to="/signin">{t("global.signIn")}</Link></span>
+                <span>{t("signUp.phaseOne.terms")} <Link to="/terms">{t("global.terms")}</Link></span>
             </div>
         </div>
     );
 
     const _addPhaseTwo = (): JSX.Element => (
-        <div className={`signup-phaseTwo ${state.phases[1].isActive ? "signup-phase-active" : String()}`}>
-            {_addPhaseHeader("About You", "Choose your preferred provider which will be your primary user for app authentication.")}
+        <div className={`signup-phaseTwo ${state.phases[1].isActive ? "auth-phase-active" : String()}`}>
+            {_addPhaseHeader(t("signUp.phaseTwo.about"), t("signUp.phaseTwo.description"))}
             {ModelInput.phaseTwo1.map((input) => _addInput(input, state.form[input.id]))}
             <div className="signup-phaseTwo-name">
                 {ModelInput.phaseTwo2.map((input) => _addInput(input, state.form[input.id]))}
@@ -185,56 +186,53 @@ export const SignUp = (): JSX.Element => {
     );
 
     const _addPhaseThree = (): JSX.Element => (
-        <div className={`signup-phaseThree ${state.phases[2].isActive ? "signup-phase-active" : String()}`}>
-            {_addPhaseHeader("Password", "Choose your preferred provider which will be your primary user for app authentication.")}
-            <Button text="Generate secure password" iconSrc="faShieldKeyhole" iconStyling="solid"  styling="light" showBorder={false} onClick={_onGeneratePasswordClick}/>
+        <div className={`signup-phaseThree ${state.phases[2].isActive ? "auth-phase-active" : String()}`}>
+            {_addPhaseHeader(t("global.password"), t("signUp.phaseThree.description"))}
+            <Button text={t("signUp.phaseThree.generate")} iconSrc="faShieldKeyhole" iconStyling="solid"  styling="light" showBorder={false} onClick={_onGeneratePasswordClick}/>
             {ModelInput.phaseThree.map((input) => _addInput(input, state.form[input.id]))}
         </div>
     );
 
     const _addPhaseFour = (): JSX.Element => (
-        <div className={`signup-phaseFour ${state.phases[3].isActive ? "signup-phase-active" : String()}`}>
-            {_addPhaseHeader("Profile Photos", "Choose your preferred provider which will be your primary user for app authentication.")}
+        <div className={`signup-phaseFour ${state.phases[3].isActive ? "auth-phase-active" : String()}`}>
+            {_addPhaseHeader(t("signUp.phaseFour.photos"), t("signUp.phaseFour.description"))}
             <div className="flex-header-block-column">
-                <span className="signup-phaseFour-img-title">Profile Image</span>
-                {_addImageContainer("profileImage")}
-                <span className="signup-phaseFour-img-title">Company Image</span>
+                <span className="signup-phaseFour-img-title">{t("signUp.phaseFour.avatar")}</span>
+                {_addImageContainer("avatar")}
+                <span className="signup-phaseFour-img-title">{t("signUp.phaseFour.companyImage")}</span>
                 {_addImageContainer("companyImage")}
             </div>
         </div>
     );
 
     const _addPhaseFive = (): JSX.Element => (
-        <div className={`signup-phaseFive ${state.phases[4].isActive ? "signup-phase-active" : String()}`}>
-            {_addPhaseHeader("Industry", "Choose your current industry and get access to specific templates")}
+        <div className={`signup-phaseFive ${state.phases[4].isActive ? "auth-phase-active" : String()}`}>
+            {_addPhaseHeader(t("signUp.phaseFive.industry"), t("signUp.phaseFive.description"))}
             <ul className="horizontal-list">
-                {ModelIndustries().map(({ key, iconSrc, text }): JSX.Element => <li key={key}>
-                    <FaIcon src={iconSrc} styling="thin"/>
-                    <span>{text}</span>
-                </li>)}
+                {ModelIndustries().map(({ key, iconSrc, text }): JSX.Element => addListItem(state.form.industry, key, iconSrc, text, _onIndustryClick))}
             </ul>
         </div>
     );
 
     const _addImageContainer = (id: string) => (
-        <form action="#" method="POST" encType="multipart/form-data" className="signup-phaseFour-img-container" onSubmit={_onProfileImageSubmit} onClick={_onProfileImageClick}>
+        <form action="#" method="POST" encType="multipart/form-data" className="signup-phaseFour-img-container" onClick={_onProfileImageClick}>
             <div>
                 <input className="file-input" type="file" name="file" accept=".jpeg, .png, .jpg" onChange={(evt) => _onProfileImageChange(id, evt)} hidden />
                 <FaIcon src="faImagePolaroid" styling="thin" />
-                <span>Upload a Photo</span>
-                <p>*.JPG, *.PNG up to 5MB</p>
+                <span>{t("signUp.phaseFour.upload")}</span>
+                <p>{t("signUp.phaseFour.types")}</p>
             </div>
-            <img src={state.form[id]} height="80px" width="80px" hidden={!state.form[id]} alt="id"/>
+            <img src={state.form[id]} height="80px" width="80px" hidden={!state.form[id]} alt={id}/>
         </form>
     );
 
     return (
-        <StyledSignUp>
-            <div className="signup-phases">
-                <img className="signup-phases-steps" src={Logo} />
-                <div>
-                    <header className="signup-phases-steps">
-                        {state.phases.map(({ key, iconSrc, isActive, title}) =>
+        <StyledAuth>
+            <div className="auth-phases">
+                <img className="auth-phases-steps" src={Logo} alt="logo" />
+                <div style={{ width: "100%" }}>
+                    <header className="auth-phases-steps">
+                        {state.phases.map(({ key, iconSrc, isActive, title}: TSignUpPhase) =>
                             _addPhaseStep(key, iconSrc, isActive, title))}
                     </header>
                     {_addPhaseOne()}
@@ -243,13 +241,12 @@ export const SignUp = (): JSX.Element => {
                     {_addPhaseFour()}
                     {_addPhaseFive()}
                 </div>
-                <footer className="signup-phases-steps">
-                    {(!state.phases[0].isActive) && <Button text="Back" iconSrc="faCaretLeft" onClick={_onBackClick} />}
-                    {(state.phases[3].isActive) && <Button text="Skip" iconSrc="faForward" />}
-                    {(!state.phases[0].isActive && !state.phases[4].isActive) && <Button text="Next" iconSrc="faCaretRight" styling="tag" onClick={_onNextClick} disabled={!_isPatternMatching()} />}
-                    {(state.phases[4].isActive) && <Button text="Sign Up" styling="tag" onClick={_onSignUpClick} disabled={!_isPatternMatching()}/>}
+                <footer className="auth-phases-steps">
+                    {(!state.phases[0].isActive) && <Button text={t("global.back")} iconSrc="faCaretLeft" onClick={_onBackClick} />}
+                    {(!state.phases[0].isActive && !state.phases[4].isActive) && <Button text={t("global.next")} iconStyling="solid" iconSrc="faCaretRight" styling="tag" onClick={_onNextClick} disabled={!_isPatternMatching()} />}
+                    {(state.phases[4].isActive) && <Button text={t("global.signUp")} iconSrc="faRightToBracket" iconStyling="solid" styling="tag" onClick={_onSignUpClick} disabled={!_isPatternMatching()}/>}
                 </footer>
             </div>
-        </StyledSignUp>
+        </StyledAuth>
     )
 }

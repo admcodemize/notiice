@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Outlet } from "react-router-dom";
 
-//import { Loader } from '../core/Loader';
+import { Loader } from "../core/Loader";
 
-import { useRefreshToken } from '../../utils/hooks/useRefreshToken';
-import { useAuthContext } from '../../utils/hooks/useAuthContext';
+import { useRefreshToken } from "../../utils/hooks/useRefreshToken";
+import { useAuthContext } from "../../utils/hooks/useAuthContext";
 
 export const PersistRoute = (): JSX.Element => {
     const [ isLoading, setIsLoading ] = useState(true);
@@ -38,7 +38,7 @@ export const PersistRoute = (): JSX.Element => {
             {!persist
                 ? <Outlet />
                 : isLoading
-                    ? "loader"
+                    ? <Loader />
                     : <Outlet />}
         </>
     )

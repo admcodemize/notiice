@@ -5,7 +5,10 @@ export interface IRouteJWT {
     iss: string,
     sub: {
         userId: string,
-        username: string,
+        email: string,
+        firstname: string,
+        lastname: string,
+        stripeCustomerId: string,
         roles: number[]
     }
 }

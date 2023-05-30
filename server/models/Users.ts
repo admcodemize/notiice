@@ -22,24 +22,17 @@ export const userSchema: Schema = new mongoose.Schema<IUserSchema>({
         type: mongoose.Schema.Types.String,
         required: true
     },
+    industry: { type: mongoose.Schema.Types.String },
     profilePicture: {
-        data: mongoose.Schema.Types.Buffer,
-        contentType: mongoose.Schema.Types.String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "files"
     },
     coverPicture: {
-        data: mongoose.Schema.Types.Buffer,
-        contentType: mongoose.Schema.Types.String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "files"
     },
-    roles: [{
-        type: mongoose.Schema.Types.Number,
-        default: 1000
-    }],
-    isActive: {
-        type: mongoose.Schema.Types.Boolean
-    },
-    refreshToken: {
-        type: mongoose.Schema.Types.String,
-    }
+    roles: [{ type: mongoose.Schema.Types.Number, default: [1000] }],
+    refreshToken: { type: mongoose.Schema.Types.String, }
 });
 
 /** @ts-ignore */

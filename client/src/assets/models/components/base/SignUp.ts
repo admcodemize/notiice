@@ -1,5 +1,6 @@
-import { IModelIndustries, IModelProviders } from "../../../types/base/SignUp";
-import { TSignUpForm, TSignUpFormPatternMatches, TSignUpMessages, TSignUpInput, TSignUpInputPhases, TSignUpPhase } from "../../../types/utils/reducer/SignUp";
+import { IModelIndustries } from "../../../types/components/base/SignUp";
+import { TSignUpForm, TSignUpFormPatternMatches, TSignUpInput, TSignUpInputPhases, TSignUpPhase } from "../../../types/utils/reducer/SignUp";
+import { TUserForm } from "../../../types/components/base/User";
 
 export const ModelForm = <TSignUpForm>{
     email: String(),
@@ -8,37 +9,45 @@ export const ModelForm = <TSignUpForm>{
     lastname: String(),
     password: String(),
     passwordConfirm: String(),
-    profileImage: String(),
+    avatar: String(),
     companyImage: String(),
-    industry: String(),
-    isActive: false
+    industry: String()
+};
+
+export const ModelUserForm = <TUserForm>{
+    email: String(),
+    company: String(),
+    firstname: String(),
+    lastname: String(),
+    password: String(),
+    industry: String()
 };
 
 export const ModelPhases = [<TSignUpPhase>{
     key: 1,
     iconSrc: "faEnvelope",
     isActive: true,
-    title: "Provider"
+    title: "providers.provider"
 }, {
     key: 2,
     iconSrc: "faAddressCard",
     isActive: false,
-    title: "About You"
+    title: "signUp.phaseTwo.about"
 }, {
     key: 3,
     iconSrc: "faKey",
     isActive: false,
-    title: "Password"
+    title: "global.password"
 }, {
     key: 4,
     iconSrc: "faCameraRetro",
     isActive: false,
-    title: "Profile Photos"
+    title: "signUp.phaseFour.photos"
 }, {
     key: 5,
     iconSrc: "faBriefcase",
     isActive: false,
-    title: "Industry"
+    title: "signUp.phaseFive.industry"
 }];
 
 export const ModelFormPatternMatches = <TSignUpFormPatternMatches>{
@@ -49,21 +58,17 @@ export const ModelFormPatternMatches = <TSignUpFormPatternMatches>{
     isActive: false
 }
 
-export const ModelMessages = <TSignUpMessages>{
-    email: String()
-}
-
 export const ModelInput = <TSignUpInput>{
     phaseTwo1: [<TSignUpInputPhases>{
         id: "company",
-        label: "signUp.company",
+        label: "signUp.phaseTwo.company",
         required: false,
         iconSrc: "faBuildings",
         type: "text",
         placeholder: "Codemize GmbH"
     }, {
         id: "email",
-        label: "signUp.email",
+        label: "global.email",
         required: true,
         iconSrc: "faEnvelope",
         type: "text",
@@ -71,59 +76,33 @@ export const ModelInput = <TSignUpInput>{
     }],
     phaseTwo2: [<TSignUpInputPhases>{
         id: "firstname",
-        label: "signUp.firstname",
+        label: "signUp.phaseTwo.firstname",
         required: true,
         type: "text",
         placeholder: "Marc"
     }, {
         id: "lastname",
-        label: "signUp.lastname",
+        label: "signUp.phaseTwo.lastname",
         required: true,
         type: "text",
         placeholder: "Stöckli"
     }],
     phaseThree: [<TSignUpInputPhases>{
         id: "password",
-        label: "signUp.password",
+        label: "global.password",
         required: true,
         iconSrc: "faKey",
         type: "password",
         placeholder: "Gh3*asdf?"
     }, {
         id: "passwordConfirm",
-        label: "signUp.passwordConfirm",
+        label: "signUp.phaseThree.passwordConfirm",
         required: true,
         iconSrc: "faKey",
         type: "password",
         placeholder: "Gh3*asdf?"
     }]
 }
-
-export const ModelProviders = (): IModelProviders[] => [{
-    key: "google",
-    iconSrc: "faGoogle",
-    iconStyling: "brands",
-    styling: "default",
-    text: "Sign up with Google"
-}, {
-    key: "apple",
-    iconSrc: "faApple",
-    iconStyling: "brands",
-    styling: "default",
-    text: "Sign up with Apple"
-}, {
-    key: "microsoft",
-    iconSrc: "faMicrosoft",
-    iconStyling: "brands",
-    styling: "default",
-    text: "Sign up with Microsoft"
-}, {
-    key: "mail",
-    iconSrc: "faPaperPlane",
-    iconStyling: "solid",
-    styling: "tag",
-    text: "Sign up with Email"
-}];
 
 export const ModelIndustries = (): IModelIndustries[] => [{
     key: "utilities",
@@ -153,8 +132,4 @@ export const ModelIndustries = (): IModelIndustries[] => [{
     key: "tourism",
     iconSrc: "faPlaneProp",
     text: "Tourism"
-}, {
-    key: "others",
-    iconSrc: "faEllipsis",
-    text: "Others"
 }];
