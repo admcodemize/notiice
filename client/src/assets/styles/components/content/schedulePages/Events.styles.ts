@@ -28,15 +28,14 @@ export const StyledEvents = styled("div")`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    flex-direction: column;
     gap: 12px;
     margin: 6px 0;
     padding: 12px;
     max-width: 400px;
     min-width: 350px;
-    border: 1px solid ${({theme}) => theme.primaryBorderColor};
     border-radius: 6px;
     background-color: ${({theme}) => theme.primaryBgColor};
+    box-shadow: rgba(0, 0, 0, 0.024) 0 1px 6px 0, rgba(0, 0, 0, 0.1) 0 0 0 1px;
 
     ul {
       border-bottom: 1px solid #e9e9e9;

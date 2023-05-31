@@ -11,6 +11,7 @@ export const StyledDropdown = styled("div")<IStyledDropdownProps>`
     background-color: transparent;
     width: auto;
     height: auto;
+    min-width: fill-available;
     z-index: 10;
 
     ${props => props.float === "left" && css`

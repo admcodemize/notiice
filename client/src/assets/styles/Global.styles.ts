@@ -82,6 +82,25 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
   
+  ul.vertical-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+    overflow: auto;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: default;
+
+      svg {
+        font-size: 1rem;
+      }
+    }
+  }
+  
   span {
     color: ${({ theme }) => theme.primaryColor};
     font-weight: 500;

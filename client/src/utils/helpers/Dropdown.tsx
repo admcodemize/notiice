@@ -4,14 +4,18 @@ import { Settings as CalendarSettings } from "../../components/dropdown/calendar
 import { Inbox as CalendarInbox } from "../../components/dropdown/calendar/Inbox";
 import { View as CalendarView } from "../../components/dropdown/calendar/View";
 import { SearchClick as CalendarSearchClick } from "../../components/dropdown/calendar/SearchClick";
+import { Expire as SignInExpire } from "../../components/dropdown/signin/Expire";
 
-export const getCalendarDropdownElemByButtonId = (id: string): JSX.Element|undefined => ({
-    spaces: <CalendarSpaces />,
-    datePicker: <CalendarDatePicker />,
-    settings: <CalendarSettings />,
-    inbox: <CalendarInbox />,
-    view: <CalendarView />
-})[id];
+import { IDropdownProps } from "../../assets/types/components/dropdown/Global";
+
+export const getDropdownElemByButtonId = (props: IDropdownProps): JSX.Element|undefined => ({
+    spaces: <CalendarSpaces {...props}/>,
+    datePicker: <CalendarDatePicker {...props}/>,
+    settings: <CalendarSettings {...props}/>,
+    inbox: <CalendarInbox {...props}/>,
+    view: <CalendarView {...props}/>,
+    expire: <SignInExpire {...props}/>
+})[props.id];
 
 export const getCalendarDropdownElemBySearch = (): JSX.Element => (
     <div>search</div>

@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 
 export const create = (req: Request, res: Response, next: NextFunction) => {
     console.log("called");
-    res.status(200).json({ test: req.file })
+    res.status(200).json({ test: "" })
 }
 
 export const read = (req: Request, res: Response, next: NextFunction) => {

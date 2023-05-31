@@ -138,6 +138,26 @@ export const StyledAuth = styled("div")`
     }
   }
   
+  .signin-header-container {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .signin-phaseOne-expire {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    
+    div {
+      width: 100%;
+
+      button {
+        height: 40px;
+        width: 100%;
+      }
+    }
+  }
+  
   .signup-phaseTwo-name {
     display: flex;
     gap: 12px;

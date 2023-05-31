@@ -8,9 +8,9 @@ import { IButtonProps } from "../../assets/types/components/core/Button";
 import { FaIcon } from "./FontAwesomeIcon";
 
 import { useClickOutside } from "../../utils/hooks/useClickOutside";
-import { getCalendarDropdownElemByButtonId } from "../../utils/helpers/Dropdown";
+import { getDropdownElemByButtonId } from "../../utils/helpers/Dropdown";
 
-export const Button = ({ id, iconSrc, iconStyling = "thin", text, styling = "default", dropdown, dropdownFloat, badge, onClick, ...props }: IButtonProps): JSX.Element => {
+export const Button = ({ id, iconSrc, iconStyling = "thin", text, styling = "default", dropdown, dropdownFloat, dropdownCallback, badge, onClick, ...props }: IButtonProps): JSX.Element => {
     const [ isOpen, setIsOpen ] = useState<boolean>(false);
 
     const refObjDropdown = useRef(null);
@@ -34,7 +34,12 @@ export const Button = ({ id, iconSrc, iconStyling = "thin", text, styling = "def
             {dropdown && <div ref={refObjDropdown} className={`dropdown-content ${isOpen 
                 ? "dropdown-active" 
                 : "dropdown-inactive"}`}>
-                {id && getCalendarDropdownElemByButtonId(id)}
+                {id && getDropdownElemByButtonId({
+                    id, callback: (isOpen) => {
+                        setIsOpen(isOpen);
+                        dropdownCallback && dropdownCallback();
+                    }
+                })}
             </div>}
         </StyledDropdown>
     )

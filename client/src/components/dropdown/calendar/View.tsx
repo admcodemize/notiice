@@ -1,6 +1,7 @@
+import { IDropdownProps } from "../../../assets/types/components/dropdown/Global";
 import { FaIcon } from "../../core/FontAwesomeIcon";
 
-export const View = (): JSX.Element => {
+export const View = ({ callback }: IDropdownProps): JSX.Element => {
     return (
         <ul>
             <li>

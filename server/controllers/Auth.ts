@@ -19,7 +19,6 @@ export const signUp = async (req: Request, res: Response, next: NextFunction) =>
 
 export const signIn = (req: Request, res: Response, next: NextFunction) => {
     passport.authenticate("local", { session: false }, (err: any, user: IUserSchema, options: any) => {
-        console.log(err, user, options);
         if (err) return next(err);
         if (user && !options) {
             const accessToken: string = jwt.sign(_accessToken(user), getJsonWebToken().accessKey);
@@ -110,7 +109,7 @@ const _accessToken = (user: IUserSchema) => ({
         roles: user?.roles || []
     },
     iat: Date.now(),
-    exp: Math.floor(Date.now() / 1000) + 60 // Expiring in 60 seconds
+    exp: Math.floor(Date.now() / 1000) + 60 * 60 // Expiring in 60 seconds
 });
 
 const _refreshToken = (user: IUserSchema) => ({

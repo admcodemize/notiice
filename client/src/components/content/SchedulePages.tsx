@@ -52,7 +52,7 @@ export const SchedulePages = (): JSX.Element => {
                     <div className="content-pages-project-menu">
                         <div className="content-pages-project-actions">
                             <div>
-                                <Button text={`${authDecoded()?.sub?.firstname} ${authDecoded()?.sub?.lastname}`} iconSrc="faLockKeyhole" styling="default" dropdown={true} />
+                                <Button id="spaces" text={`${authDecoded()?.sub?.firstname} ${authDecoded()?.sub?.lastname}`} iconSrc="faLockKeyhole" styling="default" dropdown={true} />
                                 <FaIcon src="faPipe" styling="thin" className="pipe-separator"/>
                                 <Button iconSrc="faPenToSquare" styling="default" />
                                 <Button iconSrc="faArrowUpRightFromSquare" styling="default" />

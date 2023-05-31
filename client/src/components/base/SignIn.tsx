@@ -165,16 +165,21 @@ export const SignIn = (): JSX.Element => {
             <div className="auth-phases">
                 <img className="auth-phases-steps" src={Logo} alt="logo" />
                 <div style={{ width: "100%" }}>
-                    <header className="auth-phases-steps">
-                        {state.phases.map(({ key, iconSrc, isActive, title}: TSignInPhase) =>
-                            _addPhaseStep(key, iconSrc, isActive, title))}
-                    </header>
+                    <div className="signin-header-container">
+                        <header className="auth-phases-steps">
+                            {state.phases.map(({ key, iconSrc, isActive, title}: TSignInPhase) =>
+                                _addPhaseStep(key, iconSrc, isActive, title))}
+                        </header>
+                        <header className="signin-phaseOne-expire">
+                            {/*<p>Trust this device</p>*/}
+                            {/*<input type="checkbox" onChange={_togglePersist} checked={persist} />*/}
+                            <Button id="expire" text="Session Expire" iconSrc="faStopwatch" dropdown={true} dropdownCallback={() => {
+                                debugger
+                            }}/>
+                        </header>
+                    </div>
                     {_addPhaseOne()}
                     {_addPhaseTwo()}
-                </div>
-                <div>
-                    <p>Trust this device</p>
-                    <input type="checkbox" onChange={_togglePersist} checked={persist} />
                 </div>
                 <footer className="auth-phases-steps">
                     {(!state.phases[0].isActive) && <Button text={t("global.back")} iconSrc="faCaretLeft" onClick={_onBackClick} />}

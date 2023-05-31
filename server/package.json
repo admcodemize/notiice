@@ -31,6 +31,7 @@
     "mongoose": "^6.7.5",
     "nodemailer": "^6.8.0",
     "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
     "stripe": "^11.6.0",
     "uuid": "^9.0.0"
@@ -48,6 +49,7 @@
     "@types/node": "^18.11.10",
     "@types/nodemailer": "^6.4.7",
     "@types/passport": "^1.0.11",
+    "@types/passport-google-oauth20": "^2.0.11",
     "@types/passport-local": "^1.0.34",
     "@types/stripe": "^8.0.417",
     "@types/uuid": "^9.0.0",

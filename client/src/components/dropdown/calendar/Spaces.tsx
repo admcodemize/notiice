@@ -1,8 +1,10 @@
 import { StyledSpaces } from "../../../assets/styles/components/dropdown/calendar/Spaces.styles";
 
+import { IDropdownProps } from "../../../assets/types/components/dropdown/Global";
+
 import { FaIcon } from "../../core/FontAwesomeIcon";
 
-export const Spaces = (): JSX.Element => {
+export const Spaces = ({ callback }: IDropdownProps): JSX.Element => {
     return (
         <StyledSpaces>
             <header>
@@ -12,7 +14,7 @@ export const Spaces = (): JSX.Element => {
                 <div className="spaces-group">
                     <div className="spaces-group-header">
                         <span className="spaces-group-title">Integrated Calendars</span>
-                        <FaIcon src="faAdd" styling="solid" />
+                        <FaIcon src="faAdd" styling="solid" onClick={(evt) => callback(false)}/>
                     </div>
                     <ul>
                         <li>
