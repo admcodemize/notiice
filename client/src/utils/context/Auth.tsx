@@ -13,10 +13,9 @@ export const AuthProvider = ({ children }: any): JSX.Element => {
     const [ persist, _setPersist ] = useState<boolean>(JSON.parse(localStorage.getItem("persist")) || false);
 
     /** @desc Update loader state with reverse value */
-    const setPersist = (): void => _setPersist((prevState): boolean => {
-        debugger
-        localStorage.setItem("persist", String(!prevState));
-        return !prevState;
+    const setPersist = (state: boolean): void => _setPersist((): boolean => {
+        localStorage.setItem("persist", String(state));
+        return state;
     });
 
     return (

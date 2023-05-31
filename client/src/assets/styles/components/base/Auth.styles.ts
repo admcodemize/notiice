@@ -57,7 +57,7 @@ export const StyledAuth = styled("div")`
     width: 100%;
     background: #fbfbfb;
     border-radius: 12px;
-    padding: 24px;
+    padding: 24px 16px;
     box-shadow: rgba(0, 0, 0, 0.02) 0 3px 12px 0, rgba(0, 0, 0, 0.06) 0 0 0 1px;
 
     @media (max-height: 928px), (pointer:none) and (pointer:coarse) {
@@ -140,7 +140,7 @@ export const StyledAuth = styled("div")`
   
   .signin-header-container {
     display: flex;
-    gap: 12px;
+    gap: 8px;
   }
   
   .signin-phaseOne-expire {
@@ -150,6 +150,7 @@ export const StyledAuth = styled("div")`
     
     div {
       width: 100%;
+      line-height: 16px;
 
       button {
         height: 40px;

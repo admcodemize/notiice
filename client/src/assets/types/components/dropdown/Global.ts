@@ -1,4 +1,4 @@
 export interface IDropdownProps {
     id: string,
-    callback?: (isOpen: boolean) => void
+    callback?: (isOpen: boolean, data: Object) => void
 }

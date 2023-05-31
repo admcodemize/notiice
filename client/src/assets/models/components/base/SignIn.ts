@@ -3,6 +3,7 @@ import { TSignInForm, TSignInFormPatternMatches, TSignInInput, TSignInMessages, 
 export const ModelForm = <TSignInForm>{
     email: String(),
     password: String(),
+    expireDate: "Session Expire"
 };
 
 export const ModelMessages = <TSignInMessages>{
@@ -18,7 +19,7 @@ export const ModelPhases = [<TSignInPhase>{
     key: 2,
     iconSrc: "faAddressCard",
     isActive: false,
-    title: "signIn.phaseTwo.user"
+    title: "signIn.phaseTwo.account"
 }];
 
 export const ModelFormPatternMatches = <TSignInFormPatternMatches>{

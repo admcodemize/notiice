@@ -37,7 +37,14 @@ export const SignUp = (): JSX.Element => {
     /** @desc Get function for displaying alert dialog */
     const { setMessageDialog } = useMessage();
 
-    const _onProviderClick = (providerKey: string): void => dispatch({ type: "next" });
+    const _onProviderClick = (providerKey: string): void => {
+        if (providerKey === "email") dispatch({ type: "next" });
+        else setMessageDialog({
+            title: "Support",
+            info: "Provider is not supported within beta version",
+        });
+    };
+
     const _onGeneratePasswordClick = (): void => {
         const generatedPassword = generatePassword();
         navigator.clipboard.writeText(generatedPassword);

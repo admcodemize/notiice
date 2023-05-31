@@ -27,7 +27,7 @@
         "account": "Don't have an account yet?"
       },
       "phaseTwo": {
-        "user": "Benutzer",
+        "account": "Account",
         "forgotPassword": "Forgot your Password? That's no fun."
       }
     },

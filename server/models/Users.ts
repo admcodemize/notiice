@@ -8,7 +8,8 @@ export const userSchema: Schema = new mongoose.Schema<IUserSchema>({
     email: {
         type: mongoose.Schema.Types.String,
         unique: true,
-        lowercase: true
+        lowercase: true,
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "signUp.matchEmail"]
     },
     password: {
         type: mongoose.Schema.Types.String,

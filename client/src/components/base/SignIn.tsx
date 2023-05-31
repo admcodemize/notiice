@@ -33,7 +33,7 @@ export const SignIn = (): JSX.Element => {
     const fromPath = location.state?.from?.pathname || '/*';
 
     /** @desc Destructuring auth context -> ../context.Auth.tsx */
-    const { setAuth, setPersist, persist } = useAuthContext();
+    const { setAuth, setPersist } = useAuthContext();
 
     /** @desc Get function for displaying page loader */
     const { setLoader } = useLoader();
@@ -41,7 +41,13 @@ export const SignIn = (): JSX.Element => {
     /** @desc Get function for displaying alert dialog */
     const { setMessageDialog } = useMessage();
 
-    const _onProviderClick = (providerKey: string): void => dispatch({ type: "next" });
+    const _onProviderClick = (providerKey: string): void => {
+        if (providerKey === "email") dispatch({ type: "next" });
+        else setMessageDialog({
+            title: "Support",
+            info: "Provider is not supported within beta version",
+        });
+    };
 
     const _onBackClick = (): void => dispatch({ type: "back" });
     const _onNextClick = (): void => dispatch({ type: "next" });
@@ -80,8 +86,6 @@ export const SignIn = (): JSX.Element => {
     const _dispatchSignInForm = (payload: TSignInForm): void => dispatch({ type: "form", payload });
     const _dispatchSignInFormPatternMatches = (payload: TDispatchSignInFormPatternMatches): void => dispatch({ type: "formPattern", payload });
     const _dispatchMessage = (payload: TDispatchSignInMessages): void => dispatch({ type: "messages", payload: payload });
-
-    const _togglePersist = () => setPersist && setPersist((prev) => !prev);
 
     const _onInputChange = async (evt: React.ChangeEvent<HTMLInputElement>, id: string): Promise<void> => {
         _dispatchSignInForm({
@@ -152,7 +156,7 @@ export const SignIn = (): JSX.Element => {
 
     const _addPhaseTwo = (): JSX.Element => (
         <div className={`signin-phaseTwo ${state.phases[1].isActive ? "auth-phase-active" : String()}`}>
-            {_addPhaseHeader(t("signIn.phaseTwo.user"), t("signIn.phaseTwo.description"))}
+            {_addPhaseHeader(t("signIn.phaseTwo.account"), t("signIn.phaseTwo.description"))}
             {ModelInput.phaseTwo.map((input) => _addInput(input, state.form[input.id]))}
             <div className="auth-additional-info">
                 <span>{t("signIn.phaseTwo.forgotPassword")} <Link to="/resetPassword">{t("global.resetPassword")}</Link></span>
@@ -171,10 +175,12 @@ export const SignIn = (): JSX.Element => {
                                 _addPhaseStep(key, iconSrc, isActive, title))}
                         </header>
                         <header className="signin-phaseOne-expire">
-                            {/*<p>Trust this device</p>*/}
-                            {/*<input type="checkbox" onChange={_togglePersist} checked={persist} />*/}
-                            <Button id="expire" text="Session Expire" iconSrc="faStopwatch" dropdown={true} dropdownCallback={() => {
-                                debugger
+                            <Button id="expire" text={state.form.expireDate.toLocaleString()} iconSrc="faStopwatch" dropdown={true} dropdownCallback={(data) => {
+                                setPersist && setPersist(data.expireDate instanceof Date);
+                                _dispatchSignInForm({
+                                    ...state.form,
+                                    expireDate: data.expireDate
+                                });
                             }}/>
                         </header>
                     </div>

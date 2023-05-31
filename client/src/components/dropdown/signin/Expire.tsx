@@ -2,14 +2,14 @@ import { StyledExpire } from "../../../assets/styles/components/dropdown/signin/
 
 import { IDropdownProps } from "../../../assets/types/components/dropdown/Global";
 
-import { FaIcon } from "../../core/FontAwesomeIcon";
+import { compareDates } from "../../../utils/helpers/Calendar";
 
 export const Expire = ({ callback }: IDropdownProps): JSX.Element => {
     const _addExpireTimes = (timeRange: string, hour: number, days = 0): JSX.Element => {
         const expireDate = new Date(new Date().setTime(new Date().getTime() + (days > 0 ? (hour*60*60*1000*days) : (hour*60*60*1000))));
         return (
-            <li onClick={() => callback && callback(false)}>
-                <div><span>{timeRange}</span> <p>{days > 0 ? expireDate.toLocaleString() : expireDate.toLocaleTimeString()}</p></div>
+            <li onClick={() => callback && callback(false, { expireDate })}>
+                <div><span>{timeRange}</span> <p>{compareDates(new Date(), expireDate) ? expireDate.toLocaleTimeString() : expireDate.toLocaleString()}</p></div>
             </li>
         );
     }

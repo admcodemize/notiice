@@ -21,7 +21,7 @@ const prod = <TEnvironment>{
     jsonWebToken: <TEnvironmentJsonWebToken>{
         accessKey: process.env.JWT_PROD_ACCESS_KEY,
         refreshKey: process.env.JWT_PROD_REFRESH_KEY,
-        aud: "http://localhost:8010"
+        aud: "http://localhost:5173"
     },
     database: "",
     cors: <TEnvironmentCors>{

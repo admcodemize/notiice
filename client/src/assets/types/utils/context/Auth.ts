@@ -4,5 +4,5 @@ export interface IAuthContextProps {
     auth?: any|null,
     setAuth?: Dispatch<SetStateAction<{}>>,
     persist?: boolean,
-    setPersist?: Dispatch<SetStateAction<boolean>>
+    setPersist?: (state: boolean) => void
 }

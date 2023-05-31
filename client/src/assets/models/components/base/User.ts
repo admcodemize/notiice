@@ -19,7 +19,7 @@ export const ModelProviders = (): IModelProviders[] => [{
     styling: "default",
     text: "providers.microsoft"
 }, {
-    key: "mail",
+    key: "email",
     iconSrc: "faPaperPlane",
     iconStyling: "solid",
     styling: "tag",

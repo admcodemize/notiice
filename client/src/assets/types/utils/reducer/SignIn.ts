@@ -17,7 +17,8 @@ export type TSignInPhase = {
 export type TSignInForm = {
     [key: string]: any,
     email: string,
-    password: string
+    password: string,
+    expireDate: Date|string
 }
 
 export type TSignInFormPatternMatches = {
