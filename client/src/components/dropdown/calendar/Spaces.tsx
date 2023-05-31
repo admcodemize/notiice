@@ -14,7 +14,7 @@ export const Spaces = ({ callback }: IDropdownProps): JSX.Element => {
                 <div className="spaces-group">
                     <div className="spaces-group-header">
                         <span className="spaces-group-title">Integrated Calendars</span>
-                        <FaIcon src="faAdd" styling="solid" onClick={(evt) => callback(false)}/>
+                        <FaIcon src="faAdd" styling="solid" onClick={(evt) => callback && callback(false)}/>
                     </div>
                     <ul>
                         <li>
