@@ -18,18 +18,22 @@ export const signUp = async (req: Request, res: Response, next: NextFunction) =>
 };
 
 export const signIn = (req: Request, res: Response, next: NextFunction) => {
+    /** @desc Calculate seconds for cookie expiring. -> Date.parse() returns number like for example "1685562075273" if it is a valid string format */
+    let expireSeconds: number = 10;
+    if (typeof Date.parse(req.body.expireDate) === "number") expireSeconds = Math.abs((new Date(req.body.expireDate).getTime() - new Date().getTime()) / 1000);
+
     passport.authenticate("local", { session: false }, (err: any, user: IUserSchema, options: any) => {
         if (err) return next(err);
         if (user && !options) {
-            const accessToken: string = jwt.sign(_accessToken(user), getJsonWebToken().accessKey);
-            const refreshToken: string = jwt.sign(_refreshToken(user), getJsonWebToken().refreshKey);
+            const accessToken: string = jwt.sign(_accessToken(user, expireSeconds), getJsonWebToken().accessKey);
+            const refreshToken: string = jwt.sign(_refreshToken(user, expireSeconds), getJsonWebToken().refreshKey);
 
             /** @desc Set token id as a browser cookie */
             res.cookie("refreshToken", refreshToken, {
                 httpOnly: true, // Accessible only by web server
                 secure: true, // https://
                 sameSite: false, // Cross-site cookie
-                maxAge: 24 * 60  * 60 * 1000 // Expiring cookie (1 days)
+                maxAge: 24 * 60  * 60 * 30 // Expiring cookie (30 days)
             });
 
             user.refreshToken = refreshToken;
@@ -43,30 +47,30 @@ export const signIn = (req: Request, res: Response, next: NextFunction) => {
 
 /** @desc Clear cookie if exists */
 export const signOut = (req: Request, res: Response, next: NextFunction) => {
-    // if (!req.cookies?.refreshToken) return res.status(204).json({
-    //     message: "Fehlerhafte Benutzer-Authentifizierung"
-    // });
-    //
-    // try {
-    //     connectionModels.school.users.findOne({ refreshToken: req.cookies.refreshToken })
-    //         .then((user: IUserSchema) => {
-    //             user.refreshToken = String();
-    //             connectionModels.school.users.findOneAndUpdate({ _id: user._id }, user)
-    //                 .then(() => {
-    //                     _clearCookie(res);
-    //                     res.status(204).json({
-    //                         message: "Erfolgreiche Löschung Cookie"
-    //                     });
-    //                 })
-    //                 .catch(next)
-    //         })
-    //         .catch(() => {
-    //             _clearCookie(res);
-    //             res.status(204).json({
-    //                 message: "Erfolgreiche Löschung Cooke"
-    //             });
-    //         });
-    // } catch { res.status(500) }
+    if (!req.cookies?.refreshToken) return res.status(204).json({
+        message: "Incorrect user authentication"
+    });
+
+    try {
+        userModel.findOne({ refreshToken: req.cookies.refreshToken })
+            .then((user: IUserSchema|any): void => {
+                user.refreshToken = String();
+                userModel.findOneAndUpdate({ _id: user._id }, user)
+                    .then(() => {
+                        _clearCookie(res);
+                        res.status(204).json({
+                            message: "Cooke successfully deleted"
+                        });
+                    })
+                    .catch(next)
+            })
+            .catch(() => {
+                _clearCookie(res);
+                res.status(204).json({
+                    message: "Cooke successfully deleted"
+                });
+            });
+    } catch { res.status(500) }
 }
 
 /** @desc Used when access token has expired */
@@ -83,7 +87,7 @@ export const refresh = (req: Request, res: Response, next: NextFunction) => {
         try {
             userModel.findById(decoded.sub).select("-password -refreshToken")
                 .then((user: IUserSchema|any): void => {
-                    const accessToken = jwt.sign(_accessToken(user), getJsonWebToken().accessKey);
+                    const accessToken = jwt.sign(_accessToken(user, 3600), getJsonWebToken().accessKey);
 
                     /** @desc Successfully refreshed access token */
                     res.status(200).json({ accessToken });
@@ -97,7 +101,7 @@ const _createStripeCustomer = async (name: string, email: string) => stripe.cust
     email: email
 }, { apiKey: getStripeKey().secret });
 
-const _accessToken = (user: IUserSchema) => ({
+const _accessToken = (user: IUserSchema, expireSeconds: number) => ({
     iss: "meetngo-access",
     aud: getJsonWebToken().aud,
     sub: {
@@ -109,15 +113,15 @@ const _accessToken = (user: IUserSchema) => ({
         roles: user?.roles || []
     },
     iat: Date.now(),
-    exp: Math.floor(Date.now() / 1000) + 60 * 60 // Expiring in 60 seconds
+    exp: Math.floor(Date.now() / 1000) + expireSeconds
 });
 
-const _refreshToken = (user: IUserSchema) => ({
+const _refreshToken = (user: IUserSchema, expireSeconds: number) => ({
     iss: "meetngo-refresh",
     aud: getJsonWebToken().aud,
     sub: user._id,
     iat: Date.now(),
-    exp: Math.floor(Date.now() / 1000) + 60 * 60 // Expiring (1 day)
+    exp: Math.floor(Date.now() / 1000) + expireSeconds
 });
 
 const _clearCookie = (res: Response): void => {

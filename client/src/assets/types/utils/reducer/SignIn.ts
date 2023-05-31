@@ -18,7 +18,7 @@ export type TSignInForm = {
     [key: string]: any,
     email: string,
     password: string,
-    expireDate: Date|string
+    expireDate: Date|null
 }
 
 export type TSignInFormPatternMatches = {

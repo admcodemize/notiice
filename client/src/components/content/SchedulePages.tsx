@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
 import { StyledSchedulePages } from "../../assets/styles/components/content/SchedulePages.styles";
@@ -32,10 +32,18 @@ import {Integrations} from "./Integrations";
 
 export const SchedulePages = (): JSX.Element => {
     const [ activeItem, setActiveItem ] = useState<string>("types");
+
+    /** @desc In a suspense-enabled app, the navigate function is aware of when your app is suspending. */
     const navigate = useNavigate();
 
     /** @desc Decode JWT access token */
     const authDecoded = useAuthDecoder();
+
+    useEffect(() => {
+        debugger
+        navigate(activeItem);
+    }, []);
+
 
     const _onMenuItemClick = (path: string): void => {
         navigate(path);

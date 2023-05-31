@@ -7,7 +7,7 @@ export const RoleProps = (): TConstRoleProps => ({
 export const RouteProps = (): TConstRouteProps => ({
     DASHBOARD: "dashboard",
     WORKFLOW: "workflow",
-    WORKSCHEDULE: "workschedule",
+    VARIABLE: "variable",
     SCHEDULEPAGES: "pages",
     INTEGRATIONS: "integrations"
 });

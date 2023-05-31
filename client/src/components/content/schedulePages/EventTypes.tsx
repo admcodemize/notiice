@@ -85,7 +85,7 @@ export const EventTypes = (): JSX.Element => {
                                 <header>
                                     <div className="flex-justify-between-left">
                                         <div className="schedulePages-types-content-eventtypes-icon">
-                                            <FaIcon src="faCalendar" />
+                                            <FaIcon src="faCalendar" styling="solid" />
                                         </div>
                                         <div className="schedulePages-types-content-eventtypes-info">
                                             <span className="title">Event Type 1</span>

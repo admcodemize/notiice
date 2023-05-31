@@ -30,7 +30,7 @@ export const StyledSidebar = styled("div")`
   }
   
   menu {
-    margin: 5px 0px 0px;
+    margin: 5px 0 0;
 
     .sidebar-menu-hover-info {
       position: fixed;
@@ -80,6 +80,15 @@ export const StyledSidebar = styled("div")`
         svg {
           color: ${({theme}) => theme.secondarySvgColor};
         }
+      }
+    }
+    
+    .sidebar-menu-svg-active {
+      background-color: ${({ theme }) => theme.primaryBgColor};
+      border-color: ${({ theme }) => theme.createBorderColor};
+
+      svg {
+        color: ${({theme}) => theme.secondarySvgColor};
       }
     }
   }

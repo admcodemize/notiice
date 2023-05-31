@@ -3,7 +3,7 @@ import { TSignInForm, TSignInFormPatternMatches, TSignInInput, TSignInMessages, 
 export const ModelForm = <TSignInForm>{
     email: String(),
     password: String(),
-    expireDate: "Session Expire"
+    expireDate: null
 };
 
 export const ModelMessages = <TSignInMessages>{

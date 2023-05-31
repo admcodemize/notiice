@@ -8,12 +8,21 @@
       "password": "Password",
       "resetPassword": "Reset",
       "next": "Next",
-      "back": "Back"
+      "back": "Back",
+      "sessionExpire": "Session Expire"
     },
     "buttons": {
       "support": "Support",
       "cancel": "Cancel",
       "ok": "OK"
+    },
+    "times": {
+      "15minutes": "15 Minutes",
+      "30minutes": "30 Minutes",
+      "1hour": "1 Hour",
+      "8hours": "8 Hours",
+      "1week": "1 Week",
+      "1month": "1 Month"
     },
     "providers": {
       "provider": "Provider",

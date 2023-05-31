@@ -30,7 +30,7 @@ export const SignIn = (): JSX.Element => {
 
     /** @desc Returns current location */
     const location = useLocation();
-    const fromPath = location.state?.from?.pathname || '/*';
+    const fromPath = location.state?.from?.pathname || '/pages/types';
 
     /** @desc Destructuring auth context -> ../context.Auth.tsx */
     const { setAuth, setPersist } = useAuthContext();
@@ -175,7 +175,7 @@ export const SignIn = (): JSX.Element => {
                                 _addPhaseStep(key, iconSrc, isActive, title))}
                         </header>
                         <header className="signin-phaseOne-expire">
-                            <Button id="expire" text={state.form.expireDate.toLocaleString()} iconSrc="faStopwatch" dropdown={true} dropdownCallback={(data) => {
+                            <Button id="expire" text={state.form.expireDate === null ? t("global.sessionExpire") : state.form.expireDate.toLocaleString()} iconSrc="faStopwatch" dropdown={true} dropdownCallback={(data) => {
                                 setPersist && setPersist(data.expireDate instanceof Date);
                                 _dispatchSignInForm({
                                     ...state.form,

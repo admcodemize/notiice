@@ -5,7 +5,7 @@ export type TConstRoleProps = {
 export type TConstRouteProps = {
     DASHBOARD: string,
     WORKFLOW: string,
-    WORKSCHEDULE: string,
+    VARIABLE: string,
     SCHEDULEPAGES: string,
     INTEGRATIONS: string
 }
