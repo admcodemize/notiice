@@ -16,6 +16,10 @@ export const StyledExpire = styled("div")`
       span {
         font-weight: 600;
       }
+      
+      p {
+        font-size: 0.675rem;
+      }
     }
   }
 `;

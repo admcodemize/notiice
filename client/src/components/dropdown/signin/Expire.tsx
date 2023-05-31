@@ -20,6 +20,7 @@ export const Expire = ({ callback }: IDropdownProps): JSX.Element => {
                 {_addExpireTimes("1 Hour", 1)}
                 {_addExpireTimes("8 Hours", 8)}
                 {_addExpireTimes("1 Week", 24, 7)}
+                {_addExpireTimes("1 Month", 24, 30)}
             </ul>
         </StyledExpire>
     )
