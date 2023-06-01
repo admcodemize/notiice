@@ -24,6 +24,11 @@
       "1week": "1 Week",
       "1month": "1 Month"
     },
+    "axios": {
+      "networkError": "Unfortunately, we are unable to connect to our servers. Please check your network connection.",
+      "econnAborted": "Server not reachable",
+      "internalServerError": "Internal server error. Please contact support"
+    },
     "providers": {
       "provider": "Provider",
       "google": "Sign Up with Google",
