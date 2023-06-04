@@ -14,12 +14,14 @@ import { Integrations } from "../content/Integrations";
 
 import { RoleProps, RouteProps } from "../../assets/constants/Properties";
 
+import { SchedulePageProvider } from "../../utils/context/SchedulePage";
 import { CalendarProvider } from "../../utils/context/Calendar";
 
 export const Content = (): JSX.Element => {
     return (
         <StyledContent>
             <CalendarProvider>
+            <SchedulePageProvider>
                 <Routes>
                     <Route path="/" element={<Landing />}>
                         <Route element={<RoleBasedRoute allowedRoles={RoleProps().FREE} />} >
@@ -32,6 +34,7 @@ export const Content = (): JSX.Element => {
                     </Route>
                     <Route path="*" element={<div>404</div>} />
                 </Routes>
+            </SchedulePageProvider>
             </CalendarProvider>
         </StyledContent>
     )

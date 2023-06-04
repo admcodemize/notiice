@@ -9,7 +9,17 @@
       "resetPassword": "Reset",
       "next": "Next",
       "back": "Back",
-      "sessionExpire": "Session Expire"
+      "sessionExpire": "Session Expire",
+      "calendar": "Calendar",
+      "eventTypes": "Event Types",
+      "eventType": "Event Type",
+      "template": "Template",
+      "event": "Event",
+      "survey": "Survey",
+      "team": "Team",
+      "workSchedule": "Work Schedule",
+      "others": "Others",
+      "primary": "Primary"
     },
     "buttons": {
       "support": "Support",
@@ -71,6 +81,11 @@
       "phaseFive": {
         "industry": "Industry",
         "description": "Choose your current industry and get access to specific templates"
+      }
+    },
+    "dropdown": {
+      "create": {
+
       }
     }
   }

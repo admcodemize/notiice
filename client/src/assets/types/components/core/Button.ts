@@ -11,7 +11,7 @@ export interface IButtonProps {
     styling?: TButtonStyling,
     dropdown?: boolean,
     dropdownFloat?: TButtonDropdownFloat
-    dropdownCallback?: (data: any) => void,
+    dropdownCallback?: (key: string, data: any) => void,
     badge?: boolean,
     disabled?: boolean,
     showBorder?: boolean,

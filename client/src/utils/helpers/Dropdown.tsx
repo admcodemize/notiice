@@ -3,6 +3,7 @@ import { DatePicker as CalendarDatePicker } from "../../components/dropdown/cale
 import { Settings as CalendarSettings } from "../../components/dropdown/calendar/Settings";
 import { Inbox as CalendarInbox } from "../../components/dropdown/calendar/Inbox";
 import { View as CalendarView } from "../../components/dropdown/calendar/View";
+import { Create as CalendarCreate } from "../../components/dropdown/calendar/Create";
 import { SearchClick as CalendarSearchClick } from "../../components/dropdown/calendar/SearchClick";
 import { Expire as SignInExpire } from "../../components/dropdown/signin/Expire";
 
@@ -14,6 +15,7 @@ export const getDropdownElemByButtonId = (props: IDropdownProps): JSX.Element|un
     settings: <CalendarSettings {...props}/>,
     inbox: <CalendarInbox {...props}/>,
     view: <CalendarView {...props}/>,
+    create: <CalendarCreate {...props}/>,
     expire: <SignInExpire {...props}/>
 })[props.id];
 

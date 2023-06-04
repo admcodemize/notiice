@@ -8,7 +8,7 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
   align-items: center;
   gap: 6px;
   height: 32px;
-  border: 1px solid ${({ theme }) => theme.secondaryBorderColor};
+    border: 1px solid ${({ theme }) => theme.secondaryBorderColor};
   outline: none;
   background-color: #fff;
   padding: 4px 8px;
@@ -55,6 +55,15 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
     
     svg, span {
       color: ${({ theme }) => theme.createColorInside};
+    }
+    
+    :hover {
+      border-color: ${({ theme }) => theme.createBgColor};
+      background-color: ${({ theme }) => theme.primaryBgColor};
+      
+      svg, span {
+        color: ${({ theme }) => theme.createColor};
+      }
     }
   `}
 
@@ -113,6 +122,7 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
 
   ${props => props.isOpen && css`
     border-color: ${({ theme }) => theme.createBorderColor};
+    background-color: ${({ theme }) => theme.primaryBgColor};
     
     span, svg {
       color: ${({ theme }) => theme.createColor};

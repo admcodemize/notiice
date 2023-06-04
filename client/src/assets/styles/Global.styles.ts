@@ -92,11 +92,19 @@ export const GlobalStyles = createGlobalStyle`
     li {
       display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: space-between;
+      gap: 12px;
       cursor: default;
 
       svg {
+        width: 20px;
         font-size: 1rem;
+      }
+      
+      :hover {
+        span, svg {
+          color: ${({theme}) => theme.createBgColor};
+        }
       }
     }
   }
@@ -147,18 +155,57 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
   
+  .li-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  
+  .unorderlist-group {
+    margin: 12px 0 0 0;
+
+    :first-child {
+      margin: 0;
+    }
+
+    .unorderlist-group-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+
+      :first-child {
+        padding: 0 0 12px 0;
+      }
+      
+      span {
+        font-weight: 700;
+      }
+
+      svg {
+        font-size: 0.825rem;
+      }
+    }
+  }
+  
   .pipe-separator {
     color: ${({ theme }) => theme.primaryBorderColor};
   }
   
   .keyboard-shortcut-dark {
-    background: ${({ theme }) => theme.primaryBgColor};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: ${({ theme }) => theme.tagBgColor};
     border-radius: 4px;
     padding: 4px 6px;
-    color: ${({ theme }) => theme.tagBgColor} !important;
-    font-size: 0.725rem;
-    font-weight: 700;
-    margin: 0 4px;
+    
+    mask {
+      font-size: 0.725rem;
+      font-weight: 700; 
+      color: #fff;
+    }
   }
 
   .flex-justify-between-left,

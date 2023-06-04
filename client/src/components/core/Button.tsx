@@ -35,9 +35,9 @@ export const Button = ({ id, iconSrc, iconStyling = "thin", text, styling = "def
                 ? "dropdown-active" 
                 : "dropdown-inactive"}`}>
                 {id && getDropdownElemByButtonId({
-                    id, callback: (isOpen, data) => {
+                    id, callback: (key, isOpen, data) => {
                         setIsOpen(isOpen);
-                        dropdownCallback && dropdownCallback(data);
+                        dropdownCallback && dropdownCallback(key, data);
                     }
                 })}
             </div>}

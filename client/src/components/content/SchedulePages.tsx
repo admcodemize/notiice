@@ -14,6 +14,8 @@ import { Button } from "../core/Button";
 
 import { addListItem } from "../../utils/helpers/UnorderedList";
 import { useAuthDecoder } from "../../utils/hooks/useAuthDecoder";
+import { useSchedulePageContext } from "../../utils/hooks/useSchedulePageContext";
+import { useKeyPress } from "../../utils/hooks/useKeyPress";
 
 import { DatePicker } from "../core/DatePicker";
 import { Tag } from "../core/Tag";
@@ -31,23 +33,22 @@ import {WorkSchedule} from "./WorkSchedule";
 import {Integrations} from "./Integrations";
 
 export const SchedulePages = (): JSX.Element => {
-    const [ activeItem, setActiveItem ] = useState<string>("types");
-
     /** @desc In a suspense-enabled app, the navigate function is aware of when your app is suspending. */
     const navigate = useNavigate();
 
-    /** @desc Decode JWT access token */
-    const authDecoded = useAuthDecoder();
+    /** @desc Load overall schedule page information */
+    const { state, dispatch } = useSchedulePageContext();
 
     useEffect(() => {
-        debugger
-        navigate(activeItem);
+        navigate(state.activeItem || "pages/types");
     }, []);
 
 
+    useKeyPress(() => {}, ["Shift", "Ctrl", "KeyP"])
+
     const _onMenuItemClick = (path: string): void => {
         navigate(path);
-        setActiveItem(path);
+        dispatch({ type: "item", payload: { ...state, activeItem: path }});
     };
 
     return (
@@ -60,36 +61,45 @@ export const SchedulePages = (): JSX.Element => {
                     <div className="content-pages-project-menu">
                         <div className="content-pages-project-actions">
                             <div>
-                                <Button id="spaces" text={`${authDecoded()?.sub?.firstname} ${authDecoded()?.sub?.lastname}`} iconSrc="faLockKeyhole" styling="default" dropdown={true} />
+                                <Button id="spaces" text={state.space.text} iconSrc={state.space.iconSrc} styling="default" dropdown={true} dropdownCallback={(key, data) => {
+                                    dispatch({ type: "space", payload: {
+                                        ...state,
+                                        space: {
+                                            id: key,
+                                            text: data.text,
+                                            iconSrc: data.iconSrc
+                                        }
+                                    }})
+                                }} />
                                 <FaIcon src="faPipe" styling="thin" className="pipe-separator"/>
                                 <Button iconSrc="faPenToSquare" styling="default" />
                                 <Button iconSrc="faArrowUpRightFromSquare" styling="default" />
                             </div>
                             <div>
 
-                                <Button iconSrc="faPlus" text="Create" styling="create"/>
+                                <Button id="create" iconSrc="faPlus" iconStyling="solid" text="Create" styling="create" dropdown={true} dropdownFloat="right" />
                                 <FaIcon src="faPipe" styling="thin" className="pipe-separator"/>
                                 <Button id="inbox" iconSrc="faMegaphone" text="Inbox" badge={true} dropdown={true} dropdownFloat="right"/>
                             </div>
                         </div>
                         <ul className="horizontal-list">
-                            {addListItem(activeItem, "types", "faToolbox", "Event Types", _onMenuItemClick)}
-                            {addListItem(activeItem, "events", "faCalendarLines", "Events", _onMenuItemClick)}
-                            {addListItem(activeItem, "calendar", "faCalendar", "Calendar", _onMenuItemClick)}
-                            {addListItem(activeItem, "schedule", "faBusinessTime", "Work Schedule", _onMenuItemClick)}
-                            {addListItem(activeItem, "settings", "faCog", "Settings", _onMenuItemClick)}
+                            {addListItem(state.activeItem, "types", "faToolbox", "Event Types", _onMenuItemClick)}
+                            {addListItem(state.activeItem, "events", "faCalendarLines", "Events", _onMenuItemClick)}
+                            {addListItem(state.activeItem, "calendar", "faCalendar", "Calendar", _onMenuItemClick)}
+                            {addListItem(state.activeItem, "schedule", "faBusinessTime", "Work Schedule", _onMenuItemClick)}
+                            {addListItem(state.activeItem, "settings", "faCog", "Settings", _onMenuItemClick)}
                         </ul>
                     </div>
                 </div>
             </header>
             <div className="content-pages-routes">
-                <Routes>
-                    <Route path={`types`} element={<EventTypes />} />
-                    <Route path={`events`} element={<Events />} />
-                    <Route path={`calendar`} element={<Calendar />} />
-                    <Route path={`schedule`} element={<Schedule />} />
-                    <Route path={`settings`} element={<Settings />} />
-                </Routes>
+                    <Routes>
+                        <Route path={`types`} element={<EventTypes />} />
+                        <Route path={`events`} element={<Events />} />
+                        <Route path={`calendar`} element={<Calendar />} />
+                        <Route path={`schedule`} element={<Schedule />} />
+                        <Route path={`settings`} element={<Settings />} />
+                    </Routes>
             </div>
 
         </StyledSchedulePages>
