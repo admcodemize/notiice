@@ -9,7 +9,7 @@ export const Header = (): JSX.Element => {
             <Search />
             <div></div>
             <div>
-                <Button id="inbox" iconSrc="faMegaphone" text="Inbox" badge={true} dropdown={true} dropdownFloat="right"/>
+                <Button id="headerInbox" iconSrc="faMegaphone" text="Inbox" badge={true} dropdown={true} dropdownFloat="right"/>
             </div>
         </StyledHeader>
     )

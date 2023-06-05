@@ -2,9 +2,9 @@ import { FaIcon } from "../../components/core/FontAwesomeIcon";
 
 import { getShortcutByKey } from "./Shortcuts";
 
-export const addListItem = (activeItem: string, key: string, iconSrc: string, text: string, onClick: (key: string) => void): JSX.Element => (
-    <li key={key} className={activeItem === key ? "active-list-item" : ""} onClick={() => onClick(key)}>
-        <FaIcon src={iconSrc} styling="thin" />
+export const addListItem = (activeItem: string, key: string, iconSrc: string, text: string, onClick: (key: string, isOpen: boolean, data?: Object) => void = () => {}): JSX.Element => (
+    <li key={key} style={{ justifyContent: "flex-start" }} className={activeItem === key ? "active-list-item" : ""} onClick={() => onClick(key, false, { iconSrc, text })}>
+        <FaIcon src={iconSrc} styling="thin"  />
         <span>{text}</span>
     </li>
 );

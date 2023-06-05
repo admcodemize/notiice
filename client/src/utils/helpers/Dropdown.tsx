@@ -1,26 +1,30 @@
-import { Spaces as CalendarSpaces } from "../../components/dropdown/calendar/Spaces";
-import { DatePicker as CalendarDatePicker } from "../../components/dropdown/calendar/DatePicker";
-import { Settings as CalendarSettings } from "../../components/dropdown/calendar/Settings";
-import { Inbox as CalendarInbox } from "../../components/dropdown/calendar/Inbox";
-import { View as CalendarView } from "../../components/dropdown/calendar/View";
-import { Create as CalendarCreate } from "../../components/dropdown/calendar/Create";
-import { SearchClick as CalendarSearchClick } from "../../components/dropdown/calendar/SearchClick";
-import { Expire as SignInExpire } from "../../components/dropdown/signin/Expire";
+import { Expire as SignInExpire } from "../../components/dropdown/base/signin/Expire";
+
+import { SearchClick as HeaderSearchClick } from "../../components/dropdown/base/header/SearchClick";
+import { Inbox as HeaderInbox } from "../../components/dropdown/base/header/Inbox";
+
+import { Settings as EventTypesSettings } from "../../components/dropdown/core/eventTypes/Settings";
+
+import { Spaces as SchedulePageSpaces } from "../../components/dropdown/content/schedulePages/Spaces";
+import { Create as SchedulePageCreate } from "../../components/dropdown/content/schedulePages/Create";
+
+import { DatePicker as CalendarDatePicker } from "../../components/dropdown/content/schedulePages/calendar/DatePicker";
+import { Settings as CalendarSettings } from "../../components/dropdown/content/schedulePages/calendar/Settings";
 
 import { IDropdownProps } from "../../assets/types/components/dropdown/Global";
 
 export const getDropdownElemByButtonId = (props: IDropdownProps): JSX.Element|undefined => ({
-    spaces: <CalendarSpaces {...props}/>,
-    datePicker: <CalendarDatePicker {...props}/>,
-    settings: <CalendarSettings {...props}/>,
-    inbox: <CalendarInbox {...props}/>,
-    view: <CalendarView {...props}/>,
-    create: <CalendarCreate {...props}/>,
-    expire: <SignInExpire {...props}/>
+    schedulePageSpaces: <SchedulePageSpaces {...props}/>,
+    schedulePageCreate: <SchedulePageCreate {...props}/>,
+    headerInbox: <HeaderInbox {...props}/>,
+    calendarDatePicker: <CalendarDatePicker {...props}/>,
+    calendarSettings: <CalendarSettings {...props}/>,
+    signInExpire: <SignInExpire {...props}/>,
+    eventTypesSettings: <EventTypesSettings {...props} />
 })[props.id];
 
 export const getCalendarDropdownElemBySearch = (): JSX.Element => (
     <div>search</div>
 )
 
-export const getCalendarDropdownElemBySearchClick = (): JSX.Element => ( <CalendarSearchClick /> );
+export const getCalendarDropdownElemBySearchClick = (): JSX.Element => ( <HeaderSearchClick /> );

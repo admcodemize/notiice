@@ -83,13 +83,13 @@ export const SchedulePages = (): JSX.Element => {
                             <div>
                                 {isSliderToggleVisible && <Button iconSrc="faSlidersSimple" styling="default" onClick={() => toggleSliderLeft()}/>}
                                 {isSliderToggleVisible && <FaIcon src="faPipe" styling="solid" className="pipe-separator"/>}
-                                <Button id="spaces" text={state.space.text} iconSrc={state.space.iconSrc} styling="default" dropdown={true} />
+                                <Button id="schedulePageSpaces" text={state.space.text} iconSrc={state.space.iconSrc} styling="default" dropdown={true} />
                                 <FaIcon src="faPipe" styling="solid" className="pipe-separator"/>
                                 <Button iconSrc="faPenToSquare" styling="default" />
                                 <Button iconSrc="faArrowUpRightFromSquare" styling="default" />
                             </div>
                             <div>
-                                <Button id="create" iconSrc="faPlus" iconStyling="solid" text="Create" styling="create" dropdown={true} dropdownFloat="right" />
+                                <Button id="schedulePageCreate" iconSrc="faPlus" iconStyling="solid" text="Create" styling="create" dropdown={true} dropdownFloat="right" />
                             </div>
                         </div>
                         <ul className="horizontal-list">

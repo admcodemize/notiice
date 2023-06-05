@@ -1,14 +1,14 @@
 import { useLayoutEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { StyledSpaces } from "../../../assets/styles/components/dropdown/calendar/Spaces.styles";
+import { StyledSpaces } from "../../../../assets/styles/components/dropdown/schedulePages/Spaces.styles";
 
-import { IDropdownProps } from "../../../assets/types/components/dropdown/Global";
-import { ISchedulePageSpace } from "../../../assets/types/utils/reducer/SchedulePage";
+import { IDropdownProps } from "../../../../assets/types/components/dropdown/Global";
+import { ISchedulePageSpace } from "../../../../assets/types/utils/reducer/SchedulePage";
 
-import { useAuthDecoder } from "../../../utils/hooks/useAuthDecoder";
-import { useSchedulePageContext } from "../../../utils/hooks/useContext";
-import { addGroup, addListItemWithShortcut } from "../../../utils/helpers/UnorderedList";
-import { schedulePageReducerInitState } from "../../../utils/reducer/SchedulePage";
+import { useAuthDecoder } from "../../../../utils/hooks/useAuthDecoder";
+import { useSchedulePageContext } from "../../../../utils/hooks/useContext";
+import { addGroup, addListItemWithShortcut } from "../../../../utils/helpers/UnorderedList";
+import { schedulePageReducerInitState } from "../../../../utils/reducer/SchedulePage";
 
 export const Spaces = ({ callback }: IDropdownProps): JSX.Element => {
     let primaryKeyUser: string = "primaryUser";

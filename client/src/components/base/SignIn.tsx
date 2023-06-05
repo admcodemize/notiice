@@ -175,7 +175,7 @@ export const SignIn = (): JSX.Element => {
                                 _addPhaseStep(key, iconSrc, isActive, title))}
                         </header>
                         <header className="signin-phaseOne-expire">
-                            <Button id="expire" text={state.form.expireDate === null ? t("global.sessionExpire") : state.form.expireDate.toLocaleString()} iconSrc="faStopwatch" dropdown={true} dropdownCallback={(key, data) => {
+                            <Button id="signInExpire" text={state.form.expireDate === null ? t("global.sessionExpire") : state.form.expireDate.toLocaleString()} iconSrc="faStopwatch" dropdown={true} dropdownCallback={(key, data) => {
                                 setPersist && setPersist(data.expireDate instanceof Date);
                                 _dispatchSignInForm({
                                     ...state.form,

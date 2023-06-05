@@ -1,6 +1,6 @@
-import { StyledSearchClick } from "../../../assets/styles/components/dropdown/calendar/SearchClick.styles";
+import { StyledSearchClick } from "../../../../assets/styles/components/dropdown/header/SearchClick.styles";
 
-import { FaIcon } from "../../core/FontAwesomeIcon";
+import { FaIcon } from "../../../core/FontAwesomeIcon";
 
 export const SearchClick = (): JSX.Element => {
     return (

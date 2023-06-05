@@ -1,9 +1,9 @@
 import { useTranslation } from "react-i18next";
-import { StyledCreate } from "../../../assets/styles/components/dropdown/calendar/Create.styles";
+import { StyledCreate } from "../../../../assets/styles/components/dropdown/schedulePages/Create.styles";
 
-import { IDropdownProps } from "../../../assets/types/components/dropdown/Global";
+import { IDropdownProps } from "../../../../assets/types/components/dropdown/Global";
 
-import { addListItemWithShortcut, addGroup } from "../../../utils/helpers/UnorderedList";
+import { addListItemWithShortcut, addGroup } from "../../../../utils/helpers/UnorderedList";
 
 export const Create = ({ callback }: IDropdownProps): JSX.Element => {
     /** @desc Returns the translation function for reading from the locales files */

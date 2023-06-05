@@ -119,7 +119,7 @@ export const Calendar = (): JSX.Element => {
                     <Button text="Today" />
                     <FaIcon src="faPipe" styling="thin" className="pipe-separator"/>
                     <Button iconSrc="faCaretLeft" onClick={_onPrevWeek} />
-                    <DatePicker id="datePicker" {...state} />
+                    <DatePicker id="calendarDatePicker" {...state} />
                     <Button iconSrc="faCaretRight" onClick={_onNextWeek} />
                 </div>
             </header>

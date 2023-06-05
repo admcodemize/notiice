@@ -16,7 +16,10 @@ export const Button = ({ id, iconSrc, iconStyling = "thin", text, styling = "def
     const refObjDropdown = useRef(null);
     useClickOutside(refObjDropdown, () => setIsOpen(false));
 
-    const _onClick = (evt: React.MouseEvent<HTMLButtonElement>): void => dropdown ? setIsOpen((prevState) => !prevState) : onClick && onClick(evt, id);
+    const _onClick = (evt: React.MouseEvent<HTMLButtonElement>): void => {
+        if (dropdown) setIsOpen((prevState) => !prevState);
+        onClick && onClick(evt, id);
+    };
 
     return (
         <StyledDropdown float={dropdownFloat || "left"}>
@@ -29,7 +32,7 @@ export const Button = ({ id, iconSrc, iconStyling = "thin", text, styling = "def
                 {iconSrc && <FaIcon src={iconSrc} styling={iconStyling} />}
                 {text && <span>{text}</span>}
                 {badge && <FaIcon src="faCircle" styling="solid" className="button-badge"/>}
-                {dropdown && <FaIcon src="faCaretDown" styling="thin" className="button-dropdown" />}
+                {dropdown && text && <FaIcon src="faCaretDown" styling="thin" className="button-dropdown" />}
             </StyledButton>
             {dropdown && <div ref={refObjDropdown} className={`dropdown-content ${isOpen 
                 ? "dropdown-active" 

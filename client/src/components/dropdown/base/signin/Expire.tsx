@@ -1,9 +1,9 @@
 import { useTranslation } from "react-i18next";
-import { StyledExpire } from "../../../assets/styles/components/dropdown/signin/Expire.styles";
+import { StyledExpire } from "../../../../assets/styles/components/dropdown/signin/Expire.styles";
 
-import { IDropdownProps } from "../../../assets/types/components/dropdown/Global";
+import { IDropdownProps } from "../../../../assets/types/components/dropdown/Global";
 
-import { compareDates } from "../../../utils/helpers/Calendar";
+import { compareDates } from "../../../../utils/helpers/Calendar";
 
 export const Expire = ({ callback }: IDropdownProps): JSX.Element => {
     /** @desc Returns the translation function for reading from the locales files */
