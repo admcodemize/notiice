@@ -4,7 +4,9 @@ export const schedulePageReducerInitState: ISchedulePageReducerState = {
     space: {
         id: String(),
         text: String(),
-        iconSrc: "faLockKeyhole"
+        iconSrc: "faLockKeyhole",
+        logoSrc: "faBolt",
+        logoBgColor: "#2c3e50"
     },
     activeItem: "types"
 }
@@ -13,11 +15,7 @@ export function schedulePageReducer(state: ISchedulePageReducerState, action: TA
     switch (action.type) {
         case "space": {
             return {
-                ...state, space: {
-                    id: action.payload.space.id,
-                    text: action.payload.space.text,
-                    iconSrc: action.payload.space.iconSrc
-                }
+                ...state, space: { ...action.payload.space }
             }
         }
         case "item": {

@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { IStyledSchedulePage } from "../../../types/components/content/SchedulePages";
 
-export const StyledSchedulePages = styled("div")`
+export const StyledSchedulePages = styled("div")<IStyledSchedulePage>`
   height: 100%;
   
   header.content-pages-header {
@@ -29,7 +30,7 @@ export const StyledSchedulePages = styled("div")`
         width: 50px;
         border-radius: 12px;
         border: 1px solid ${({ theme }) => theme.tagBorderColor};
-        background-color: ${({ theme }) => theme.tagBgColor};
+        background-color: ${props => props.logoBgColor ? props.logoBgColor : props.theme.tagBgColor};
 
         svg {
           width: 26px;
@@ -52,6 +53,7 @@ export const StyledSchedulePages = styled("div")`
           > div {
             display: flex;
             gap: 12px;
+            align-items: center;
           }
         }
       }

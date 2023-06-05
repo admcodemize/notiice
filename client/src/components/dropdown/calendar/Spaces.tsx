@@ -3,14 +3,15 @@ import { useTranslation } from "react-i18next";
 import { StyledSpaces } from "../../../assets/styles/components/dropdown/calendar/Spaces.styles";
 
 import { IDropdownProps } from "../../../assets/types/components/dropdown/Global";
+import { ISchedulePageSpace } from "../../../assets/types/utils/reducer/SchedulePage";
 
 import { useAuthDecoder } from "../../../utils/hooks/useAuthDecoder";
-import { useSchedulePageContext } from "../../../utils/hooks/useSchedulePageContext";
+import { useSchedulePageContext } from "../../../utils/hooks/useContext";
 import { addGroup, addListItemWithShortcut } from "../../../utils/helpers/UnorderedList";
+import { schedulePageReducerInitState } from "../../../utils/reducer/SchedulePage";
 
 export const Spaces = ({ callback }: IDropdownProps): JSX.Element => {
-    let primarySpaceKey: string = "primaryUser"; // -> Used to be the same as in function "getShortcutByKey (Shortcut.tsx)"
-    let primarySpaceIconSrc: string = "faLockKeyhole";
+    let primaryKeyUser: string = "primaryUser";
 
     /** @desc Returns the translation function for reading from the locales files */
     const { t } = useTranslation();
@@ -25,21 +26,32 @@ export const Spaces = ({ callback }: IDropdownProps): JSX.Element => {
         !state.space.id && dispatch({
             type: "space",
             payload: { ...state, space: {
-                id: primarySpaceKey,
-                text: `${authDecoded()?.sub?.firstname} ${authDecoded()?.sub?.lastname}`,
-                iconSrc: primarySpaceIconSrc
+                ...schedulePageReducerInitState.space,
+                id: primaryKeyUser,
+                text: `${authDecoded()?.sub?.firstname} ${authDecoded()?.sub?.lastname}`
             }}
         });
     }, []);
 
+    const _onListItemClick = (key: string, isOpen: boolean, data?: any): void => {
+        dispatch({ type: "space", payload: { ...state, space: _getSpaceState(key, data) }});
+        callback && callback(key, isOpen, _getSpaceState(key, data));
+    };
+
+    const _getSpaceState = (key: string, data: any): ISchedulePageSpace => ({ ...state.space,
+        id: key,
+        text: data?.text || schedulePageReducerInitState.space.text,
+        iconSrc: data?.iconSrc || schedulePageReducerInitState.space.iconSrc
+    });
+
     return (
         <StyledSpaces>
             {addGroup(t("global.primary"), [
-                addListItemWithShortcut(primarySpaceKey, primarySpaceIconSrc, `${authDecoded()?.sub?.firstname} ${authDecoded()?.sub?.lastname}`, callback)
+                addListItemWithShortcut(primaryKeyUser, schedulePageReducerInitState.space.iconSrc, `${authDecoded()?.sub?.firstname} ${authDecoded()?.sub?.lastname}`, _onListItemClick)
             ])}
             {addGroup(t("global.teams"), [
-                addListItemWithShortcut("space-a01d3kdfh", "faPlanetRinged", "React Project Youtube", callback),
-                addListItemWithShortcut("space-4djfd7c89", "faPlanetRinged", "Codemize GmbH", callback)
+                addListItemWithShortcut("space-a01d3kdfh", "faPlanetRinged", "React Project Youtube", _onListItemClick),
+                addListItemWithShortcut("space-4djfd7c89", "faPlanetRinged", "Codemize GmbH", _onListItemClick)
             ])}
         </StyledSpaces>
     )

@@ -19,7 +19,8 @@
       "team": "Team",
       "workSchedule": "Work Schedule",
       "others": "Others",
-      "primary": "Primary"
+      "primary": "Primary",
+      "teams": "Teams"
     },
     "buttons": {
       "support": "Support",
@@ -81,6 +82,17 @@
       "phaseFive": {
         "industry": "Industry",
         "description": "Choose your current industry and get access to specific templates"
+      }
+    },
+    "content": {
+      "schedulePages": {
+        "menuItems": {
+          "types": "Event Types",
+          "events": "Events",
+          "calendar": "Calendar",
+          "schedule": "Work Schedule",
+          "settings": "Settings"
+        }
       }
     },
     "dropdown": {

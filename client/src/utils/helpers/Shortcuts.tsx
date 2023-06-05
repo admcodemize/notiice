@@ -5,5 +5,6 @@ export const getShortcutByKey = (key: string) => ({
     survey: "⇧ ⌘ + S",
     team: "⌘ + T",
     workSchedule: "⌘ + W",
-    primaryUser: "⇧ ⌘ + P"
+    primaryUser: "⇧ ⌘ + P",
+    search: "⇧ + S"
 })[key]

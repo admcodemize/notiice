@@ -200,9 +200,10 @@ export const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.tagBgColor};
     border-radius: 4px;
     padding: 4px 6px;
+    min-width: fit-content;
     
     mask {
-      font-size: 0.725rem;
+      font-size: 0.65rem;
       font-weight: 700; 
       color: #fff;
     }

@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import { StyledContent } from "../../assets/styles/components/base/Content.styles";
+import { RoleProps, RouteProps } from "../../assets/constants/Properties";
 
 import { RoleBasedRoute } from "../routes/RoleBasedRoute";
 
@@ -12,14 +13,21 @@ import { WorkSchedule } from "../content/WorkSchedule";
 import { SchedulePages } from "../content/SchedulePages";
 import { Integrations } from "../content/Integrations";
 
-import { RoleProps, RouteProps } from "../../assets/constants/Properties";
-
 import { SchedulePageProvider } from "../../utils/context/SchedulePage";
 import { CalendarProvider } from "../../utils/context/Calendar";
+import { useGlobalContext } from "../../utils/hooks/useContext";
+import { useKeyPress } from "../../utils/hooks/useKeyPress";
 
 export const Content = (): JSX.Element => {
+    /** @desc Destructuring global context which handles show/hide of slider left/right -> ../context/Global.tsx **/
+    const { sliderLeft, sliderRight } = useGlobalContext();
+
+    useKeyPress(() => {
+
+    }, ["Shift", "KeyS"]);
+
     return (
-        <StyledContent>
+        <StyledContent sliderLeft={sliderLeft} sliderRight={sliderRight}>
             <CalendarProvider>
             <SchedulePageProvider>
                 <Routes>

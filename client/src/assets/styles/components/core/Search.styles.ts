@@ -8,7 +8,7 @@ export const StyledSearch = styled("div")`
   width: 100%;
   max-width: 600px;
   min-width: 300px;
-  border: 1px solid ${({ theme}) => theme.primaryBorderColor};
+  border: 1px solid ${({ theme}) => theme.secondaryBorderColor};
   border-radius: 6px;
   background-color: ${({ theme}) => theme.primaryBgColor};
   padding: 6px;

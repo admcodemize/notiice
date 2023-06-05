@@ -14,4 +14,9 @@ export const StyledHeader = styled("header")`
   border-bottom: 1px solid #e9e9e9;
   background-color: #fff;
   padding: 0 24px;
+  z-index: 10;
+  
+  button {
+    
+  }
 `;

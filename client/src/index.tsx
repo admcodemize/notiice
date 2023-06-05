@@ -12,6 +12,7 @@ import { MessageDialog } from "./components/core/MessageDialog";
 
 import { ThemeLight } from "./utils/themes/ThemeLight";
 import { MessageProvider } from "./utils/context/Message";
+import { GlobalProvider } from "./utils/context/Global";
 import { AuthProvider } from "./utils/context/Auth";
 
 import "./i18n";
@@ -22,11 +23,13 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
           <ErrorBoundary>
             <ThemeProvider theme={ThemeLight}>
                 <AuthProvider>
+                <GlobalProvider>
                 <GlobalStyles />
                 <MessageProvider>
                     <MessageDialog />
                     <App />
                 </MessageProvider>
+                </GlobalProvider>
                 </AuthProvider>
               </ThemeProvider>
           </ErrorBoundary>

@@ -8,6 +8,7 @@ import { FaIcon } from "./FontAwesomeIcon";
 import { getCalendarDropdownElemBySearch, getCalendarDropdownElemBySearchClick } from "../../utils/helpers/Dropdown";
 
 import { useClickOutside } from "../../utils/hooks/useClickOutside";
+import {getShortcutByKey} from "../../utils/helpers/Shortcuts";
 
 export const Search = (): JSX.Element => {
     const [ isOpenChange, setIsOpenChange ] = useState<boolean>(false);
@@ -26,11 +27,13 @@ export const Search = (): JSX.Element => {
     };
 
     return (
-        <StyledDropdown float="right">
+        <StyledDropdown float="left">
             <StyledSearch>
                 <FaIcon src="faSearch" styling="thin"/>
-                <input type="text" placeholder="Type a command or search..." onInput={_onLiveChange} onClick={_onClick}/>
-                <span>⌘ K</span>
+                <input type="text" placeholder="Type a command or search..." onInput={_onLiveChange} onClick={_onClick} autoFocus={true}/>
+                <div className="keyboard-shortcut-dark">
+                    <mask>{getShortcutByKey("search")}</mask>
+                </div>
             </StyledSearch>
             <div ref={refObjDropdown} className={`dropdown-content ${isOpenClick
                 ? "dropdown-active"

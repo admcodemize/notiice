@@ -4,7 +4,7 @@ export const StyledSearchClick = styled("div")`
   background-color: ${({ theme }) => theme.tagBgColor};
   padding: 18px;
   border-radius: 6px;
-  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0 4px 8px -2px, rgba(9, 30, 66, 0.08) 0 0 0 1px;
   max-width: 500px;
   min-width: 400px;
   width: 100%;
@@ -33,10 +33,5 @@ export const StyledSearchClick = styled("div")`
       font-weight: 700;
       text-transform: uppercase;
     }
-  }
-  
-  .searchClick-border {
-    margin: 12px 0;
-    border-bottom: 1px solid #ffffff30;
   }
 `;

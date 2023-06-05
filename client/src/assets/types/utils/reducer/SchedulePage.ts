@@ -6,7 +6,9 @@ export interface ISchedulePageReducerState {
 export interface ISchedulePageSpace {
     id: string,
     text: string,
-    iconSrc: string
+    iconSrc: string,
+    logoSrc: string,
+    logoBgColor: string
 }
 
 export type TActionType =

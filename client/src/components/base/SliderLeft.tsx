@@ -14,15 +14,20 @@ import { Integrations } from "../sliderLeft/Integrations";
 
 import { RoleProps, RouteProps } from "../../assets/constants/Properties";
 
+import { useGlobalContext } from "../../utils/hooks/useContext";
+
 export const SliderLeft = (): JSX.Element => {
+    /** @desc Destructuring global context which handles show/hide of slider left -> ../context/Global.tsx **/
+    const { sliderLeft, toggleSliderLeft } = useGlobalContext();
+
     return (
-        <StyledSliderLeft>
+        <StyledSliderLeft sliderLeft={sliderLeft}>
             <Routes>
                 <Route path="/" element={<Landing />}>
                     {/*<Route element={<RoleBasedRoute allowedRoles={RoleProps().FREE} />} >*/}
                         <Route path={`${RouteProps().DASHBOARD}`} element={<Dashboard />} />
                         <Route path={`${RouteProps().WORKFLOW}`} element={<Workflow />} />
-                        <Route path={`${RouteProps().WORKSCHEDULE}`} element={<WorkSchedule />} />
+                        <Route path={`${RouteProps().VARIABLE}`} element={<WorkSchedule />} />
                         <Route path={`${RouteProps().SCHEDULEPAGES}/*`} element={<SchedulePages/>} />
                         <Route path={`${RouteProps().INTEGRATIONS}`} element={<Integrations />} />
                     {/*</Route>*/}

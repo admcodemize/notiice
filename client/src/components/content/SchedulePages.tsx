@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { StyledSchedulePages } from "../../assets/styles/components/content/SchedulePages.styles";
+import { ModelSpaceMenuItems } from "../../assets/models/components/content/SchedulePage";
+import { TSpaceMenuItems } from "../../assets/types/components/content/SchedulePages";
 
 import { EventTypes } from "./schedulePages/EventTypes";
 import { Events } from "./schedulePages/Events";
@@ -14,8 +17,10 @@ import { Button } from "../core/Button";
 
 import { addListItem } from "../../utils/helpers/UnorderedList";
 import { useAuthDecoder } from "../../utils/hooks/useAuthDecoder";
-import { useSchedulePageContext } from "../../utils/hooks/useSchedulePageContext";
+import { useGlobalContext, useSchedulePageContext } from "../../utils/hooks/useContext";
 import { useKeyPress } from "../../utils/hooks/useKeyPress";
+
+
 
 import { DatePicker } from "../core/DatePicker";
 import { Tag } from "../core/Tag";
@@ -32,62 +37,63 @@ import {Workflow} from "./Workflow";
 import {WorkSchedule} from "./WorkSchedule";
 import {Integrations} from "./Integrations";
 
+
+
 export const SchedulePages = (): JSX.Element => {
+    const [ isSliderToggleVisible, setIsSliderToggleVisible ] = useState<boolean>(false);
+
     /** @desc In a suspense-enabled app, the navigate function is aware of when your app is suspending. */
     const navigate = useNavigate();
+
+    /** @desc Returns the translation function for reading from the locales files */
+    const { t } = useTranslation();
 
     /** @desc Load overall schedule page information */
     const { state, dispatch } = useSchedulePageContext();
 
+    /** @desc Destructuring global context which handles show/hide of slider left/right -> ../context/Global.tsx **/
+    const { toggleSliderLeft } = useGlobalContext();
+
     useEffect(() => {
+        const obj: TSpaceMenuItems|any = ModelSpaceMenuItems.find(({ key}) => key === state.activeItem);
+        (Object.keys(obj).length !== 0 && obj.constructor === Object) ? _updSliderLeft(obj.showSliderLeft) : _updSliderLeft(false);
         navigate(state.activeItem || "pages/types");
     }, []);
 
-
-    useKeyPress(() => {}, ["Shift", "Ctrl", "KeyP"])
-
-    const _onMenuItemClick = (path: string): void => {
+    const _onMenuItemClick = (path: string, showSliderLeft: boolean): void => {
         navigate(path);
         dispatch({ type: "item", payload: { ...state, activeItem: path }});
+        _updSliderLeft(showSliderLeft);
+    };
+
+    const _updSliderLeft = (showSliderLeft: boolean): void => {
+        toggleSliderLeft(showSliderLeft);
+        setIsSliderToggleVisible(showSliderLeft);
     };
 
     return (
-        <StyledSchedulePages>
+        <StyledSchedulePages logoBgColor={state.space.logoBgColor}>
             <header className="content-pages-header">
                 <div className="content-pages-project">
                     <div className="content-pages-project-icon">
-                        <FaIcon src="faBolt" styling="thin" />
+                        <FaIcon src={state.space.logoSrc} styling="thin" />
                     </div>
                     <div className="content-pages-project-menu">
                         <div className="content-pages-project-actions">
                             <div>
-                                <Button id="spaces" text={state.space.text} iconSrc={state.space.iconSrc} styling="default" dropdown={true} dropdownCallback={(key, data) => {
-                                    dispatch({ type: "space", payload: {
-                                        ...state,
-                                        space: {
-                                            id: key,
-                                            text: data.text,
-                                            iconSrc: data.iconSrc
-                                        }
-                                    }})
-                                }} />
-                                <FaIcon src="faPipe" styling="thin" className="pipe-separator"/>
+                                {isSliderToggleVisible && <Button iconSrc="faSlidersSimple" styling="default" onClick={() => toggleSliderLeft()}/>}
+                                {isSliderToggleVisible && <FaIcon src="faPipe" styling="solid" className="pipe-separator"/>}
+                                <Button id="spaces" text={state.space.text} iconSrc={state.space.iconSrc} styling="default" dropdown={true} />
+                                <FaIcon src="faPipe" styling="solid" className="pipe-separator"/>
                                 <Button iconSrc="faPenToSquare" styling="default" />
                                 <Button iconSrc="faArrowUpRightFromSquare" styling="default" />
                             </div>
                             <div>
-
                                 <Button id="create" iconSrc="faPlus" iconStyling="solid" text="Create" styling="create" dropdown={true} dropdownFloat="right" />
-                                <FaIcon src="faPipe" styling="thin" className="pipe-separator"/>
-                                <Button id="inbox" iconSrc="faMegaphone" text="Inbox" badge={true} dropdown={true} dropdownFloat="right"/>
                             </div>
                         </div>
                         <ul className="horizontal-list">
-                            {addListItem(state.activeItem, "types", "faToolbox", "Event Types", _onMenuItemClick)}
-                            {addListItem(state.activeItem, "events", "faCalendarLines", "Events", _onMenuItemClick)}
-                            {addListItem(state.activeItem, "calendar", "faCalendar", "Calendar", _onMenuItemClick)}
-                            {addListItem(state.activeItem, "schedule", "faBusinessTime", "Work Schedule", _onMenuItemClick)}
-                            {addListItem(state.activeItem, "settings", "faCog", "Settings", _onMenuItemClick)}
+                            {ModelSpaceMenuItems.map(({ key, iconSrc, text, showSliderLeft}) => addListItem(state.activeItem, key, iconSrc, t(text), (path) => _onMenuItemClick(path, showSliderLeft)))}
                         </ul>
                     </div>
                 </div>
