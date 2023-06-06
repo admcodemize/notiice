@@ -14,7 +14,10 @@ export const Button = ({ id, iconSrc, iconStyling = "thin", text, styling = "def
     const [ isOpen, setIsOpen ] = useState<boolean>(false);
 
     const refObjDropdown = useRef(null);
-    useClickOutside(refObjDropdown, () => setIsOpen(false));
+    useClickOutside(refObjDropdown, () => {
+        setIsOpen(false);
+        dropdownCallback && dropdownCallback(id || String(), {});
+    });
 
     const _onClick = (evt: React.MouseEvent<HTMLButtonElement>): void => {
         if (dropdown) setIsOpen((prevState) => !prevState);

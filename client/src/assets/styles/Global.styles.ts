@@ -103,8 +103,50 @@ export const GlobalStyles = createGlobalStyle`
       
       :hover {
         span, svg {
-          color: ${({theme}) => theme.createBgColor};
+          color: ${({ theme }) => theme.createBgColor};
         }
+      }
+    }
+  }
+
+  li.colorize-trash {
+    span, svg {
+      color: ${({ theme }) => theme.errorColor};
+    }
+
+    :hover {
+      span, svg {
+        color: ${({ theme }) => theme.errorColor} !important;
+      }
+    }
+  }
+
+  .li-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .unorderlist-group {
+    margin: 12px 0 0 0;
+
+    :first-child {
+      margin: 0;
+    }
+
+    .unorderlist-group-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+
+      :first-child {
+        padding: 0 0 12px 0;
+      }
+
+      span {
+        font-weight: 700;
       }
     }
   }
@@ -152,40 +194,6 @@ export const GlobalStyles = createGlobalStyle`
       color: ${({ theme }) => theme.primaryColor};
       font-size: 0.775rem;
       font-weight: 500;
-    }
-  }
-  
-  .li-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-  }
-  
-  .unorderlist-group {
-    margin: 12px 0 0 0;
-
-    :first-child {
-      margin: 0;
-    }
-
-    .unorderlist-group-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 0;
-
-      :first-child {
-        padding: 0 0 12px 0;
-      }
-      
-      span {
-        font-weight: 700;
-      }
-
-      svg {
-        font-size: 0.825rem;
-      }
     }
   }
   

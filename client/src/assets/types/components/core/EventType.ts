@@ -8,7 +8,7 @@ export interface IEventTypeProps {
     tags?: TEventTypeTags[],
     location: Number,
     locationText: string,
-    dateTime: Date,
+    time: Number,
     href: string,
     hrefText: string,
     isActive: boolean
@@ -22,4 +22,10 @@ export interface IStyledEventTypeProps {
 export type TEventTypeTags = {
     text: string,
     isPayable: boolean
+}
+
+export type TEventListItems = {
+    general: string,
+    notes: string,
+    payment: string
 }

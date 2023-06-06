@@ -216,7 +216,10 @@ export const SignUp = (): JSX.Element => {
         <div className={`signup-phaseFive ${state.phases[4].isActive ? "auth-phase-active" : String()}`}>
             {_addPhaseHeader(t("signUp.phaseFive.industry"), t("signUp.phaseFive.description"))}
             <ul className="horizontal-list">
-                {ModelIndustries().map(({ key, iconSrc, text }): JSX.Element => addListItem(state.form.industry, key, iconSrc, text, _onIndustryClick))}
+                {ModelIndustries().map(({ key, iconSrc, text }): JSX.Element => addListItem({
+                    activeItem: state.form.industry, key, iconSrc, text,
+                    onClick: _onIndustryClick
+                }))}
             </ul>
         </div>
     );

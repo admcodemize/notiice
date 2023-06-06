@@ -16,7 +16,7 @@ export const ModelEventTypesMock = [<IEventTypeProps>{
     }],
     location: 0,
     locationText: "Teams-Besprechung",
-    dateTime: new Date(),
+    time: 320,
     href: "/mstoeckli/eventtype1",
     hrefText: "/mstoeckli/eventtype1",
     isActive: true

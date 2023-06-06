@@ -9,18 +9,22 @@
       "resetPassword": "Reset",
       "next": "Next",
       "back": "Back",
+      "delete": "Delete",
+      "clone": "Clone",
       "sessionExpire": "Session Expire",
       "calendar": "Calendar",
       "eventTypes": "Event Types",
       "eventType": "Event Type",
       "template": "Template",
+      "saveAsTemplate": "Save as template",
       "event": "Event",
       "survey": "Survey",
       "team": "Team",
       "workSchedule": "Work Schedule",
       "others": "Others",
       "primary": "Primary",
-      "teams": "Teams"
+      "teams": "Teams",
+      "quickActions": "Quick actions"
     },
     "buttons": {
       "support": "Support",
@@ -96,8 +100,12 @@
       }
     },
     "dropdown": {
-      "create": {
-
+      "core": {
+        "eventTypes": {
+          "settings": {
+            "saveAsTemplate": "Sichern als Template"
+          }
+        }
       }
     }
   }

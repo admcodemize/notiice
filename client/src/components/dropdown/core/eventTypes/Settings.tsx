@@ -4,18 +4,19 @@ import { StyledSettings } from "../../../../assets/styles/components/dropdown/sc
 
 import { IDropdownProps } from "../../../../assets/types/components/dropdown/Global";
 
-import { addListItem } from "../../../../utils/helpers/UnorderedList";
+import { addGroup, addListItem } from "../../../../utils/helpers/UnorderedList";
 
-export const Settings = ({ callback }: IDropdownProps): JSX.Element => {
+export const Settings = ({ callback = () => {} }: IDropdownProps): JSX.Element => {
     /** @desc Returns the translation function for reading from the locales files */
     const { t } = useTranslation();
 
     return (
         <StyledSettings>
-            <ul className="vertical-list">
-                {addListItem("", "eventType", "faToolbox", t("global.eventType"), callback)}
-                {addListItem("", "template", "faSheetPlastic", t("global.template"), callback)}
-            </ul>
+            {addGroup(t("global.quickActions"), [
+                addListItem({ key: "clone", iconSrc: "faCopy", text: t("global.clone"), onClick: callback }),
+                addListItem({ key: "template", iconSrc: "faSheetPlastic", text: t("global.saveAsTemplate"), onClick: callback }),
+                addListItem({ key: "delete", iconSrc: "faTrashCanXmark", text: t("global.delete"), className: "colorize-trash", onClick: callback })
+            ])}
         </StyledSettings>
     )
 }

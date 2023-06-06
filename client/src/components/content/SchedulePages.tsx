@@ -93,7 +93,10 @@ export const SchedulePages = (): JSX.Element => {
                             </div>
                         </div>
                         <ul className="horizontal-list">
-                            {ModelSpaceMenuItems.map(({ key, iconSrc, text, showSliderLeft}) => addListItem(state.activeItem, key, iconSrc, t(text), (path) => _onMenuItemClick(path, showSliderLeft)))}
+                            {ModelSpaceMenuItems.map(({ key, iconSrc, text, showSliderLeft}) => addListItem({
+                                activeItem: state.activeItem, key, iconSrc, text: t(text),
+                                onClick: (path) => _onMenuItemClick(path, showSliderLeft)
+                            }))}
                         </ul>
                     </div>
                 </div>

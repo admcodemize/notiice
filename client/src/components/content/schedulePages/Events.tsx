@@ -75,12 +75,12 @@ export const Events = (): JSX.Element => {
                             <Tag text="One-on-One" styling="thin" className="sliderLeft-calendar-tag" />
                         </div>
                         <ul className="horizontal-list">
-                            {addListItem(_getActiveItemByKey("/mstoeckli/event/id-129392"), "general", "faSquareInfo", "General", () => {})}
-                            {addListItem(_getActiveItemByKey("/mstoeckli/event/id-129392"), "description", "faFileLines", "Description", () => {})}
-                            {/*{addListItem(activeItem, "members", "faUsersViewfinder", "Members", () => {})}*/}
-                            {addListItem(_getActiveItemByKey("/mstoeckli/event/id-129392"), "payment", "faCreditCardFront", "Payment", () => {})}
-                            {/*{addListItem(activeItem, "documents", "faFile", "Documents", () => {})}*/}
-                            {/*{addListItem(activeItem, "notes", "faNotes", "Notizen", () => {})}*/}
+                            {/*{addListItem(_getActiveItemByKey("/mstoeckli/event/id-129392"), "general", "faSquareInfo", "General", () => {})}*/}
+                            {/*{addListItem(_getActiveItemByKey("/mstoeckli/event/id-129392"), "description", "faFileLines", "Description", () => {})}*/}
+                            {/*/!*{addListItem(activeItem, "members", "faUsersViewfinder", "Members", () => {})}*!/*/}
+                            {/*{addListItem(_getActiveItemByKey("/mstoeckli/event/id-129392"), "payment", "faCreditCardFront", "Payment", () => {})}*/}
+                            {/*/!*{addListItem(activeItem, "documents", "faFile", "Documents", () => {})}*!/*/}
+                            {/*/!*{addListItem(activeItem, "notes", "faNotes", "Notizen", () => {})}*!/*/}
                         </ul>
                         <div className="schedulePages-events-event-content">
                             <div className="flex-svg-with-text">
@@ -133,12 +133,12 @@ export const Events = (): JSX.Element => {
                             <Tag text="One-on-One" styling="thin" className="sliderLeft-calendar-tag" />
                         </div>
                         <ul className="horizontal-list">
-                            {addListItem(_getActiveItemByKey("/mstoeckli/event/id-129393"), "general", "faSquareInfo", "General", () => {})}
-                            {addListItem(_getActiveItemByKey("/mstoeckli/event/id-129393"), "description", "faFileLines", "Description", () => {})}
-                            {addListItem(_getActiveItemByKey("/mstoeckli/event/id-129393"), "participants", "faUserGroupSimple", "Participants", () => {})}
-                            {/*{addListItem(activeItem, "payment", "faCreditCardFront", "Payment", () => {})}*/}
-                            {/*{addListItem(activeItem, "documents", "faFile", "Documents", () => {})}*/}
-                            {/*{addListItem(activeItem, "notes", "faNotes", "Notizen", () => {})}*/}
+                            {/*{addListItem(_getActiveItemByKey("/mstoeckli/event/id-129393"), "general", "faSquareInfo", "General", () => {})}*/}
+                            {/*{addListItem(_getActiveItemByKey("/mstoeckli/event/id-129393"), "description", "faFileLines", "Description", () => {})}*/}
+                            {/*{addListItem(_getActiveItemByKey("/mstoeckli/event/id-129393"), "participants", "faUserGroupSimple", "Participants", () => {})}*/}
+                            {/*/!*{addListItem(activeItem, "payment", "faCreditCardFront", "Payment", () => {})}*!/*/}
+                            {/*/!*{addListItem(activeItem, "documents", "faFile", "Documents", () => {})}*!/*/}
+                            {/*/!*{addListItem(activeItem, "notes", "faNotes", "Notizen", () => {})}*!/*/}
                         </ul>
                         <div className="schedulePages-events-event-content">
                             <div className="flex-svg-with-text">
