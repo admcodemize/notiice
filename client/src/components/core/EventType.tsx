@@ -7,6 +7,7 @@ import { FaIcon } from "./FontAwesomeIcon";
 import { Button } from "./Button";
 import { Tag } from "./Tag";
 import { Switch } from "./Switch";
+import { RichTextEditor } from "./RichTextEditor";
 
 import { addListItem } from "../../utils/helpers/UnorderedList";
 
@@ -35,7 +36,7 @@ export const EventType = ({ tags = [], ...props }: IEventTypeProps): JSX.Element
 
     const _addContentItemNotes = (): JSX.Element => (
         <div className="eventType-content-item">
-
+            <RichTextEditor readOnly={true} placeholder="Capture a public note in edit mode"/>
         </div>
     );
 

@@ -21,11 +21,11 @@ export const App = (): JSX.Element => {
                 <Route path="/page/*" element={<div>schedule page</div>} />
 
                 {/** @desc Private routes */}
-                {/*<Route element={<PersistRoute />}>*/}
-                {/*    <Route element={<PrivateRoute />}>*/}
+                <Route element={<PersistRoute />}>
+                    <Route element={<PrivateRoute />}>
                         <Route path="/*" element={<BaseContainer />}/>
-                    {/*</Route>*/}
-                {/*</Route>*/}
+                    </Route>
+                </Route>
             </Routes>
         </LoaderProvider>
     )

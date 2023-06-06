@@ -13,7 +13,6 @@ export const Settings = ({ callback = () => {} }: IDropdownProps): JSX.Element =
     return (
         <StyledSettings>
             {addGroup(t("global.quickActions"), [
-                addListItem({ key: "clone", iconSrc: "faCopy", text: t("global.clone"), onClick: callback }),
                 addListItem({ key: "template", iconSrc: "faSheetPlastic", text: t("global.saveAsTemplate"), onClick: callback }),
                 addListItem({ key: "delete", iconSrc: "faTrashCanXmark", text: t("global.delete"), className: "colorize-trash", onClick: callback })
             ])}

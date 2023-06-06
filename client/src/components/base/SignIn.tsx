@@ -176,10 +176,11 @@ export const SignIn = (): JSX.Element => {
                         </header>
                         <header className="signin-phaseOne-expire">
                             <Button id="signInExpire" text={state.form.expireDate === null ? t("global.sessionExpire") : state.form.expireDate.toLocaleString()} iconSrc="faStopwatch" dropdown={true} dropdownCallback={(key, data) => {
-                                setPersist && setPersist(data.expireDate instanceof Date);
+                                const expireDate = data?.expireDate instanceof Date ? data.expireDate : null;
+                                setPersist && setPersist(expireDate instanceof Date ? true : (expireDate === null && state.form.expireDate instanceof Date));
                                 _dispatchSignInForm({
                                     ...state.form,
-                                    expireDate: data.expireDate
+                                    expireDate: expireDate instanceof Date ? expireDate : (expireDate === null && state.form.expireDate instanceof Date) ? state.form.expireDate : null
                                 });
                             }}/>
                         </header>

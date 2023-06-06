@@ -32,13 +32,13 @@ export const Content = (): JSX.Element => {
             <SchedulePageProvider>
                 <Routes>
                     <Route path="/" element={<Landing />}>
-                        {/*<Route element={<RoleBasedRoute allowedRoles={RoleProps().FREE} />} >*/}
+                        <Route element={<RoleBasedRoute allowedRoles={RoleProps().FREE} />} >
                             <Route path={`${RouteProps().DASHBOARD}`} element={<Dashboard />} />
                             <Route path={`${RouteProps().WORKFLOW}`} element={<Workflow />} />
                             <Route path={`${RouteProps().VARIABLE}`} element={<WorkSchedule />} />
                             <Route path={`${RouteProps().SCHEDULEPAGES}/*`} element={<SchedulePages/>} />
                             <Route path={`${RouteProps().INTEGRATIONS}`} element={<Integrations />} />
-                        {/*</Route>*/}
+                        </Route>
                     </Route>
                     <Route path="*" element={<div>404</div>} />
                 </Routes>
