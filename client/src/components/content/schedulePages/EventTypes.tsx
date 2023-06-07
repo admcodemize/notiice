@@ -5,7 +5,12 @@ import { ModelEventTypesMock } from "../../../assets/models/components/content/s
 import { Button } from "../../core/Button";
 import { EventType } from "../../core/EventType";
 
+import { useAuthDecoder } from "../../../utils/hooks/useAuthDecoder";
+
 export const EventTypes = (): JSX.Element => {
+    /** @desc Decode JWT access token */
+    const authDecoded = useAuthDecoder();
+
     return (
         <StyledEventTypes>
             <header className="flex-header-submenu-actions">
@@ -22,7 +27,7 @@ export const EventTypes = (): JSX.Element => {
                     <div className="schedulePages-types-content-user">
                         <div className="flex-header-block-column">
                             <div>
-                                <h2>Marc Stöckli</h2>
+                                <h2>{`${authDecoded()?.sub?.firstname} ${authDecoded()?.sub?.lastname}`}</h2>
                                 <span>Have an in-depth look at all the metrics within your workspace.</span>
                             </div>
                         </div>

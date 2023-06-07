@@ -3,20 +3,6 @@ import styled, { css } from "styled-components";
 import { IStyledInputProps } from "../../../types/components/core/Input";
 
 export const StyledInput = styled("div")<IStyledInputProps>`
-  label {
-    display: block;
-    font-size: 0.775rem;
-    font-weight: 600;
-    padding: 0 0 4px 8px;
-    color: ${({ theme }) => theme.labelColor};
-  }
-  
-  label.required:before {
-    content: "* ";
-    color: ${({ theme }) => theme.errorBgColor};
-    font-size: 0.825rem;
-  }
-  
   p {
     font-size: 0.7rem;
     margin: 4px 0 4px 8px;
@@ -33,7 +19,7 @@ export const StyledInput = styled("div")<IStyledInputProps>`
     height: ${props => props.height};
     width: 100%;
     min-width: 200px;
-    padding: 12px;
+    padding: 12px 6px;
     transition: all 0.2s ease-in;
   
     svg {
@@ -58,7 +44,7 @@ export const StyledInput = styled("div")<IStyledInputProps>`
       border: none;
       width: 100%;
       outline: none;
-      padding: 0 12px;
+      padding: 0 6px;
       transition: border 0.2s ease;
 
       ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */

@@ -26,13 +26,22 @@ export type TEventTypeTags = {
     isPayable: boolean
 }
 
-export type TEventListItems = {
-    general: string,
-    notes: string,
-    payment: string
+export type TEventTypeMenuItems = {
+    key: string,
+    iconSrc: string,
+    text: string
 }
 
-export type TEventContentPartsProps = {
+export type TEventTypeMenuKeys = {
+    general: string,
+    notes: string,
+    payment: string,
+    questions: string,
+    workflow: string,
+    confirmation: string
+}
+
+export type TEventTypeContentPartsProps = {
     iconSrc: string,
     iconStyling?: TFontAwesomeIconStyle,
     text: string,

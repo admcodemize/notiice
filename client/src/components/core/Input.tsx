@@ -6,7 +6,7 @@ import { IInputProps } from "../../assets/types/components/core/Input";
 
 import { FaIcon } from "./FontAwesomeIcon";
 
-export const Input = ({ id, label, info, required, iconSrc, message, height, messageType, onChange, ...props }: IInputProps): JSX.Element => {
+export const Input = ({ id, label, info, required, iconSrc, iconStyling = "regular", message, height, messageType, className, onChange, ...props }: IInputProps): JSX.Element => {
     const _onShowHidePasswordClick = (evt: React.MouseEvent<SVGSVGElement>|any): void => {
         evt.currentTarget.previousElementSibling.type = evt?.currentTarget?.previousElementSibling?.type === "password"
             ? "text"
@@ -16,10 +16,11 @@ export const Input = ({ id, label, info, required, iconSrc, message, height, mes
     return (
         <StyledInput
             height={height || "32px"}
-            messageType={messageType || "default"}>
+            messageType={messageType || "default"}
+            className={className}>
             <label className={required ? "required": String()}>{label}</label>
             <div className={`input-container ${props.disabled ? "input-disabled" : String()}`}>
-                {iconSrc && <FaIcon src={iconSrc} styling="regular"/>}
+                {iconSrc && <FaIcon src={iconSrc} styling={iconStyling}/>}
                 <input
                     onChange={(evt: React.ChangeEvent<HTMLInputElement>) => onChange && onChange(evt, id)}
                     {...props} />

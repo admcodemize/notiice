@@ -1,7 +1,7 @@
 import { IDialogContentProps } from "../../assets/types/components/core/Dialog";
 
-import { Edit as EventTypeEdit } from "../../components/dialog/core/eventTypes/Edit";
+import { Provide as EventTypeProvide } from "../../components/dialog/core/eventTypes/Provide";
 
 export const getDialogElemByButtonId = (props: IDialogContentProps): JSX.Element|undefined => ({
-    eventTypeEdit: <EventTypeEdit {...props}/>,
+    eventTypeProvide: <EventTypeProvide {...props}/>,
 })[props.id];

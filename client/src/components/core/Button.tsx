@@ -10,7 +10,7 @@ import { FaIcon } from "./FontAwesomeIcon";
 import { useClickOutside } from "../../utils/hooks/useClickOutside";
 import { getDropdownElemByButtonId } from "../../utils/helpers/Dropdown";
 
-export const Button = ({ id, iconSrc, iconStyling = "thin", text, styling = "default", dropdown, dropdownFloat, dropdownCallback, badge, onClick, ...props }: IButtonProps): JSX.Element => {
+export const Button = ({ id, iconSrc, iconStyling = "thin", text, styling = "default", className, dropdown, dropdownFloat, dropdownCallback, badge, onClick, ...props }: IButtonProps): JSX.Element => {
     const [ isOpen, setIsOpen ] = useState<boolean>(false);
 
     const refObjDropdown = useRef(null);
@@ -25,7 +25,7 @@ export const Button = ({ id, iconSrc, iconStyling = "thin", text, styling = "def
     };
 
     return (
-        <StyledDropdown float={dropdownFloat || "left"}>
+        <StyledDropdown float={dropdownFloat || "left"} className={className}>
             <StyledButton
                 styling={styling}
                 onClick={_onClick}

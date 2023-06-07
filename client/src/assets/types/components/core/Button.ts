@@ -9,6 +9,7 @@ export interface IButtonProps {
     iconStyling?: TFontAwesomeIconStyle
     text?: string|DefaultTFuncReturn,
     styling?: TButtonStyling,
+    className?: string,
     dropdown?: boolean,
     dropdownFloat?: TButtonDropdownFloat
     dropdownCallback?: (key: string, data: any) => void,

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 import { StyledEventType } from "../../assets/styles/components/core/EventType.styles";
-import { IEventTypeProps, TEventListItems, TEventContentPartsProps } from "../../assets/types/components/core/EventType";
+import { IEventTypeProps, TEventTypeContentPartsProps } from "../../assets/types/components/core/EventType";
+import { ModelEventTypeMenuItems, ModelEventTypeMenuKeys } from "../../assets/models/components/core/EventType";
 
 import { FaIcon } from "./FontAwesomeIcon";
 import { Button } from "./Button";
@@ -13,9 +14,8 @@ import { Dialog } from "./Dialog";
 import { addListItem } from "../../utils/helpers/UnorderedList";
 
 export const EventType = ({ tags = [], ...props }: IEventTypeProps): JSX.Element => {
-    const listItems: TEventListItems = { general: "general", notes: "notes", payment: "payment" };
     const [ isSettingsVisible, setIsSettingsVisible ] = useState<boolean>(false);
-    const [ activeItem, setActiveItem ] = useState<string>(listItems.general);
+    const [ activeItem, setActiveItem ] = useState<string>(ModelEventTypeMenuKeys.general);
     const [ showEdit, setShowEdit ] = useState<boolean>(false);
 
     const _onSettingsClick = (evt: React.MouseEvent<HTMLButtonElement>): void => {
@@ -55,7 +55,7 @@ export const EventType = ({ tags = [], ...props }: IEventTypeProps): JSX.Element
         </div>
     );
 
-    const _addContentParts = ({ iconSrc, iconStyling = "thin", text, href }: TEventContentPartsProps): JSX.Element => (
+    const _addContentParts = ({ iconSrc, iconStyling = "thin", text, href }: TEventTypeContentPartsProps): JSX.Element => (
         <div className="flex-svg-with-text">
             <FaIcon src={iconSrc} styling={iconStyling} />
             {href ? <a href={`/page${href}`} target="_blank">{text}</a> : <span>{text}</span>}
@@ -86,13 +86,11 @@ export const EventType = ({ tags = [], ...props }: IEventTypeProps): JSX.Element
                             {tags.map(({ text, isPayable }) => <Tag text={text} styling="thin" className="sliderLeft-calendar-tag" />)}
                         </div>}
                         <ul className="horizontal-list">
-                            {addListItem({ activeItem, key: listItems.general, iconSrc: "faSquareInfo", text: "General", onClick: () => setActiveItem("general") })}
-                            {addListItem({ activeItem, key: listItems.notes, iconSrc: "faNotes", text: "Notes", onClick: () => setActiveItem("notes") })}
-                            {addListItem({ activeItem, key: listItems.payment, iconSrc: "faCreditCard", text: "Payment", onClick: () => setActiveItem("payment") })}
+                            {ModelEventTypeMenuItems.map((menuItem) => addListItem({ activeItem, key: menuItem.key, iconSrc: menuItem.iconSrc, text: menuItem.text, onClick: () => setActiveItem(menuItem.key) }))}
                         </ul>
-                        {activeItem === listItems.general && _addContentItemGeneral()}
-                        {activeItem === listItems.notes && _addContentItemNotes()}
-                        {activeItem === listItems.payment && _addContentItemPayment()}
+                        {activeItem === ModelEventTypeMenuKeys.general && _addContentItemGeneral()}
+                        {activeItem === ModelEventTypeMenuKeys.notes && _addContentItemNotes()}
+                        {activeItem === ModelEventTypeMenuKeys.payment && _addContentItemPayment()}
                     </div>
                     <footer>
                         <div className="flex-justify-between-left">
@@ -105,7 +103,7 @@ export const EventType = ({ tags = [], ...props }: IEventTypeProps): JSX.Element
                     </footer>
                 </div>
             </StyledEventType>
-            {showEdit && <Dialog id="eventTypeEdit" callback={(key, isOpen) => setShowEdit(isOpen)}/>}
+            {showEdit && <Dialog id="eventTypeProvide" data={{tags, ...props}} callback={(key, isOpen) => setShowEdit(isOpen || false)}/>}
         </>
     )
 }

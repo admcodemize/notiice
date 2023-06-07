@@ -1,5 +1,6 @@
+import { TEventTypeMenuItems, TEventTypeMenuKeys } from "../../../types/components/core/EventType";
 
-export const ModelDialogEventTypeEdiMenuItems = [<any>{
+export const ModelEventTypeMenuItems = [<TEventTypeMenuItems>{
     key: "general",
     iconSrc: "faSquareInfo",
     text: "General"
@@ -24,3 +25,12 @@ export const ModelDialogEventTypeEdiMenuItems = [<any>{
     iconSrc: "faMemo",
     text: "Confirmation Page"
 }];
+
+export const ModelEventTypeMenuKeys: TEventTypeMenuKeys = {
+    general: "general",
+    notes: "notes",
+    payment: "payment",
+    questions: "questions",
+    workflow: "workflow",
+    confirmation: "confirmation"
+}

@@ -12,7 +12,7 @@ export const Dialog = ({ callback = () => {}, ...props }: IDialogProps): JSX.Ele
     return (
         <StyledDialog>
             <div className="dialog-container">
-                {getDialogElemByButtonId({ id: props.id })}
+                {getDialogElemByButtonId({...props})}
             </div>
         </StyledDialog>
     );

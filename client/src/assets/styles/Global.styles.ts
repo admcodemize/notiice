@@ -164,6 +164,20 @@ export const GlobalStyles = createGlobalStyle`
       }
     }
   }
+
+  label {
+    display: block;
+    font-size: 0.775rem;
+    font-weight: 600;
+    padding: 0 0 4px 8px;
+    color: ${({ theme }) => theme.labelColor};
+  }
+
+  label.required:before {
+    content: "* ";
+    color: ${({ theme }) => theme.errorBgColor};
+    font-size: 0.825rem;
+  }
   
   span {
     color: ${({ theme }) => theme.primaryColor};
