@@ -135,6 +135,18 @@ export const GlobalStyles = createGlobalStyle`
     gap: 6px;
   }
   
+  .li-content-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2px;
+    
+    span {
+      font-weight: 600;
+    }
+  }
+  
   .payment-qrcode {
     display: flex;
     align-items: center;
@@ -175,7 +187,7 @@ export const GlobalStyles = createGlobalStyle`
 
   label.required:before {
     content: "* ";
-    color: ${({ theme }) => theme.errorBgColor};
+    color: ${({ theme }) => theme.errorColor};
     font-size: 0.825rem;
   }
   

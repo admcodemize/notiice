@@ -3,7 +3,9 @@ import { Expire as SignInExpire } from "../../components/dropdown/base/signin/Ex
 import { SearchClick as HeaderSearchClick } from "../../components/dropdown/base/header/SearchClick";
 import { Inbox as HeaderInbox } from "../../components/dropdown/base/header/Inbox";
 
-import { Settings as EventTypesSettings } from "../../components/dropdown/core/eventTypes/Settings";
+import { Settings as EventTypeSettings } from "../../components/dropdown/core/eventTypes/Settings";
+import { Locations as EventTypeLocations } from "../../components/dropdown/dialog/core/eventTypes/Locations";
+import { Types as EventTypeTypes } from "../../components/dropdown/dialog/core/eventTypes/Types";
 
 import { Spaces as SchedulePageSpaces } from "../../components/dropdown/content/schedulePages/Spaces";
 import { Create as SchedulePageCreate } from "../../components/dropdown/content/schedulePages/Create";
@@ -20,7 +22,9 @@ export const getDropdownElemByButtonId = (props: IDropdownProps): JSX.Element|un
     calendarDatePicker: <CalendarDatePicker {...props}/>,
     calendarSettings: <CalendarSettings {...props}/>,
     signInExpire: <SignInExpire {...props}/>,
-    eventTypesSettings: <EventTypesSettings {...props} />
+    eventTypesSettings: <EventTypeSettings {...props} />,
+    eventTypeLocations: <EventTypeLocations {...props} />,
+    eventTypeTypes: <EventTypeTypes {...props} />
 })[props.id];
 
 export const getCalendarDropdownElemBySearch = (): JSX.Element => (

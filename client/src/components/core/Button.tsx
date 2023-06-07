@@ -32,8 +32,10 @@ export const Button = ({ id, iconSrc, iconStyling = "thin", text, styling = "def
                 isOpen={isOpen}
                 showBorder={props?.showBorder || true}
                 {...props}>
-                {iconSrc && <FaIcon src={iconSrc} styling={iconStyling} />}
-                {text && <span>{text}</span>}
+                <div className="button-infoLeft">
+                    {iconSrc && <FaIcon src={iconSrc} styling={iconStyling} />}
+                    {text && <span>{text}</span>}
+                </div>
                 {badge && <FaIcon src="faCircle" styling="solid" className="button-badge"/>}
                 {dropdown && text && <FaIcon src="faCaretDown" styling="thin" className="button-dropdown" />}
             </StyledButton>

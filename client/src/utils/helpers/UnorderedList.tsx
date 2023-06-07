@@ -1,4 +1,4 @@
-import { IListItemProps } from "../../assets/types/utils/helpers/UnorderedList";
+import { IListItemProps, IListItemWithNoteProps } from "../../assets/types/utils/helpers/UnorderedList";
 
 import { FaIcon } from "../../components/core/FontAwesomeIcon";
 
@@ -8,6 +8,24 @@ export const addListItem = ({ activeItem, key, iconSrc, iconStyling = "thin", te
     <li key={key} style={{ justifyContent: "flex-start" }} className={activeItem === key ? `active-list-item ${className}` : className} onClick={() => onClick(key, false, { iconSrc, text })}>
         <FaIcon src={iconSrc} styling={iconStyling}  />
         <span>{text}</span>
+    </li>
+);
+
+export const addListItemWithCheckState = ({ activeItem, key, iconSrc, iconStyling = "thin", text, className, onClick }: IListItemProps): JSX.Element => (
+    <li key={key} style={{ justifyContent: "flex-start" }} className={activeItem === key ? `active-list-item ${className}` : className} onClick={() => onClick(key, false, { iconSrc, text })}>
+        <FaIcon src={iconSrc} styling={iconStyling}  />
+        <span>{text}</span>
+        <FaIcon src="faCircle" styling="solid" style={{ fontSize: "0.5rem" }}/>
+    </li>
+);
+
+export const addListItemWithNote = ({ activeItem, key, iconSrc, iconStyling = "thin", text, note, className, onClick }: IListItemWithNoteProps): JSX.Element => (
+    <li key={key} style={{ justifyContent: "flex-start" }} className={activeItem === key ? `active-list-item ${className}` : className} onClick={() => onClick(key, false, { iconSrc, text })}>
+        <FaIcon src={iconSrc} styling={iconStyling}  />
+        <div className="li-content-vertical">
+            <span>{text}</span>
+            <p>{note}</p>
+        </div>
     </li>
 );
 

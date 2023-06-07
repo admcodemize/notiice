@@ -10,13 +10,16 @@ export interface IInputProps {
     required?: boolean,
     iconSrc?: string,
     iconStyling?: TFontAwesomeIconStyle,
+    customIcon?: string,
+    customIconStyling?: TFontAwesomeIconStyle,
+    customIconClick?: (evt: React.MouseEvent<SVGSVGElement>) => void
     message?: string,
     messageType?: TMessageTypes,
     height?: string,
     type?: string,
     placeholder?: string,
     value?: any,
-    readOnly?: any,
+    readOnly?: boolean,
     disabled?: boolean,
     className?: string,
     onChange?: (evt: React.ChangeEvent<HTMLInputElement>, id: string) => void

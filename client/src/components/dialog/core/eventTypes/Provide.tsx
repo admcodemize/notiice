@@ -9,7 +9,7 @@ import { ModelEventTypeMenuItems, ModelEventTypeMenuKeys } from "../../../../ass
 import { Button } from "../../../core/Button";
 import { Input } from "../../../core/Input";
 
-import { addListItem } from "../../../../utils/helpers/UnorderedList";
+import { addListItem, addListItemWithCheckState } from "../../../../utils/helpers/UnorderedList";
 
 export const Provide = ({ callback = () => {}, ...props }: IDialogContentProps): JSX.Element => {
     const [ activeItem, setActiveItem ] = useState<string>(ModelEventTypeMenuKeys.general);
@@ -24,7 +24,7 @@ export const Provide = ({ callback = () => {}, ...props }: IDialogContentProps):
         <StyledProvide>
             <header>
                 <ul className="horizontal-list">
-                    {ModelEventTypeMenuItems.map(({ key, iconSrc, text}) => addListItem({
+                    {ModelEventTypeMenuItems.map(({ key, iconSrc, text}) => addListItemWithCheckState({
                         activeItem, key, iconSrc, text: t(text),
                         onClick: (path) => setActiveItem(path)
                     }))}
@@ -37,21 +37,29 @@ export const Provide = ({ callback = () => {}, ...props }: IDialogContentProps):
                         <span>Have an in-depth look at all</span>
                     </div>
                     <Input id="eventName" label="Event name" required={true} iconSrc="faInputText" iconStyling="thin" className="eventType-edit-content-input" value={eventTypeProps.title} />
-                    <div>
+                    <div style={{ width: "300px" }}>
+                        <label className="required">Event type</label>
+                        <Button id="eventTypeTypes" text="Choose an event type" iconSrc="faFlag" iconStyling="solid" dropdown={true} />
+                    </div>
+                    <div style={{ width: "300px" }}>
                         <label>Location(s)</label>
                         <div className="eventType-edit-content-locations">
-                            <div className="eventType-edit-content-location">
-                                <Button id="eventLocation" text="Location" iconSrc="faLocationDot" dropdown={true} />
-                                <Button iconSrc="faTrashXmark" iconStyling="solid" styling="error"  />
-                            </div>
-                            <div className="eventType-edit-content-location">
-                                <Button id="eventLocation" text="Location" iconSrc="faLocationDot" dropdown={true} />
-                                <Button iconSrc="faTrashXmark" iconStyling="solid" styling="error"  />
-                            </div>
+                            <Button id="eventTypeLocations" text="Add Location" iconSrc="faAdd" iconStyling="solid" dropdown={true} />
+                            <Input id="locationPersonalMeeting" iconSrc="faLocationDot" iconStyling="thin" className="eventType-edit-content-input" value="Personal Meeting" disabled={true} customIcon="faXmark"/>
+                            <Input id="locationCall" iconSrc="faMobile" iconStyling="thin" className="eventType-edit-content-input" value="Call" disabled={true} customIcon="faXmark"/>
                         </div>
-                        <Button text="Add location option" styling="light" showBorder={false} iconSrc="faAdd" iconStyling="solid" />
                     </div>
                     <Input id="eventLink" label="Event link" required={true} iconSrc="faArrowUpRightFromSquare" iconStyling="thin" message="/mstoeckli/" className="eventType-edit-content-input" onChange={() => {}} />
+                </div>
+                <div className="flex-header-block-column">
+                    <div className="eventType-edit-content-groupInfo">
+                        <h4>Time Aspect</h4>
+                        <span>Have an in-depth look at all</span>
+                    </div>
+                    <div style={{ width: "300px" }}>
+                        <label className="required">Event type</label>
+                        <Button id="eventTypeDuration" text="Duration" iconSrc="faStopwatch" iconStyling="solid" dropdown={true} />
+                    </div>
                 </div>
             </div>
             <footer>

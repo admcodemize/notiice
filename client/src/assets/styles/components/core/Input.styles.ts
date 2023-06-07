@@ -32,7 +32,7 @@ export const StyledInput = styled("div")<IStyledInputProps>`
     
     svg.input-password-icon {
       cursor: pointer;
-      color: ${({ theme }) => theme.tagBgColor};
+      color: ${({ theme }) => theme.tagColor};
       background-color: transparent;
     }
     
@@ -66,7 +66,7 @@ export const StyledInput = styled("div")<IStyledInputProps>`
   }
   
   .input-disabled {
-    background: ${({ theme }) => theme.secondaryBgColor};
+    background-color: ${({ theme }) => theme.inactiveBgColor};
   }
   
   span.input-message {
@@ -84,7 +84,7 @@ export const StyledInput = styled("div")<IStyledInputProps>`
   span.input-message.hide {
     display: none;
   }
-
+  
   ${props => props.messageType === "warning" && css`
     span.input-message {
       color: yellow;
@@ -105,7 +105,7 @@ export const StyledInput = styled("div")<IStyledInputProps>`
 
   ${props => props.messageType === "error" && css`
     span.input-message {
-      color: ${({ theme }) => theme.errorBgColor};
+      color: ${({ theme }) => theme.errorColor};
     }
     
     .input-container {
@@ -113,11 +113,11 @@ export const StyledInput = styled("div")<IStyledInputProps>`
       background-color: #fff;
       
       input {
-        color: ${({ theme }) => theme.errorBgColor};
+        color: ${({ theme }) => theme.errorColor};
       }
 
       svg {
-        color: #fff;
+        color: ${({ theme }) => theme.errorColor};
         background: ${({ theme }) => `${theme.errorBgColor}`};
       }
 

@@ -18,29 +18,35 @@ export const StyledProvide = styled("div")`
   }
   
   .eventType-edit-content {
-    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
     padding: 12px 24px;
+
+    .flex-header-block-column {
+      gap: 18px;
+    }
+
+    > div button {
+      width: 300px;
+      justify-content: space-between;
+      padding: 0 16px;
+    }
     
     .eventType-edit-content-groupInfo {
       padding: 0 8px;
-      margin-bottom: 12px;
     }
     
     .eventType-edit-content-locations {
       display: flex;
       flex-direction: column;
       gap: 6px;
-      
-      //> div button {
-      //  width: 250px;
-      //  justify-content: space-between;
-      //  padding: 0 16px;
-      //}
-    }
-    
-    .eventType-edit-content-location {
-      display: flex;
-      gap: 6px;
+
+      > div button .button-infoLeft {
+        gap: 18px;
+      }
     }
     
     .eventType-edit-content-input {

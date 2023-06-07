@@ -24,11 +24,8 @@ export const Input = ({ id, label, info, required, iconSrc, iconStyling = "regul
                 <input
                     onChange={(evt: React.ChangeEvent<HTMLInputElement>) => onChange && onChange(evt, id)}
                     {...props} />
-                {props.type === "password" && <FaIcon
-                    className="input-password-icon"
-                    src="faEyeLowVision"
-                    styling="regular"
-                    onClick={_onShowHidePasswordClick}/>}
+                {props.type === "password" && <FaIcon className="input-password-icon" src="faEyeLowVision" styling="regular" onClick={_onShowHidePasswordClick}/>}
+                {props.customIcon && <FaIcon src={props.customIcon} styling={props?.customIconStyling || "thin"} onClick={props?.customIconClick} />}
             </div>
             {info && <p>{info}</p>}
             <span className={`input-message ${message ? "show" : "hide"}`}>{message}</span>

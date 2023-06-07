@@ -21,13 +21,20 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
   `}
   
   span {
-    font-size: 0.775rem;
+    font-size: 0.725rem;
   }
   
   svg {
     font-size: 1rem;
   }
 
+  .button-infoLeft {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  
   .button-badge {
     font-size: 0.5rem;
     color: ${({ theme }) => theme.errorColor};

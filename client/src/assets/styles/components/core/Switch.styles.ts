@@ -16,6 +16,7 @@ export const StyledSwitch = styled("div")`
     border-radius: 2.5em;
     transition: all .5s ease;
     cursor: pointer;
+    padding: 0;
   }
 
   span {

@@ -24,7 +24,8 @@
       "others": "Others",
       "primary": "Primary",
       "teams": "Teams",
-      "quickActions": "Quick actions"
+      "quickActions": "Quick actions",
+      "locations": "Locations"
     },
     "buttons": {
       "support": "Support",
@@ -104,6 +105,30 @@
         "eventTypes": {
           "settings": {
             "saveAsTemplate": "Sichern als Template"
+          }
+        }
+      },
+      "dialog": {
+        "core": {
+          "eventTypes": {
+            "locations": {
+              "personalMeeting": "Personal Meeting",
+              "personalMeetingNote": "Define an address or a location",
+              "call": "Call",
+              "callNote": "Incoming or outgoing calls",
+              "teams": "Microsoft Teams",
+              "meet": "Google Meet",
+              "zoom": "Zoom",
+              "webConference": "Web Conference"
+            },
+            "types": {
+              "oneOnOne": "One-on-One",
+              "oneOnOneNote": "A host with an invitee",
+              "group": "Group",
+              "groupNote": "A host with a group of invitees",
+              "roundRobin": "Round Robin",
+              "roundRobinNote": "A rotating host with one or a group of invitees"
+            }
           }
         }
       }
