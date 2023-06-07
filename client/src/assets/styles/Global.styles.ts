@@ -120,12 +120,26 @@ export const GlobalStyles = createGlobalStyle`
       }
     }
   }
+  
+  .vertical-list-scroll-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
 
   .li-content {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 6px;
+  }
+  
+  .payment-qrcode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
   }
 
   .unorderlist-group {

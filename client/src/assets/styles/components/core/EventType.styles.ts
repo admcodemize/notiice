@@ -64,10 +64,17 @@ export const StyledEventType = styled("div")<IStyledEventTypeProps>`
       .eventType-content-item {
         display: flex;
         align-items: center;
+        justify-content: center;
         flex-direction: column;
         gap: 12px;
         min-height: 80px;
         max-height: 80px;
+      }
+      
+      .eventType-content-item-payment {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 8px;
       }
       
       ul.horizontal-list {
@@ -92,6 +99,10 @@ export const StyledEventType = styled("div")<IStyledEventTypeProps>`
     background-color: ${({ theme }) => theme.inactiveBgColor};
 
     > * {
+      opacity: 0.6;
+    }
+    
+    .payment-qrcode {
       opacity: 0.6;
     }
 

@@ -102,15 +102,14 @@ export const SchedulePages = (): JSX.Element => {
                 </div>
             </header>
             <div className="content-pages-routes">
-                    <Routes>
-                        <Route path={`types`} element={<EventTypes />} />
-                        <Route path={`events`} element={<Events />} />
-                        <Route path={`calendar`} element={<Calendar />} />
-                        <Route path={`schedule`} element={<Schedule />} />
-                        <Route path={`settings`} element={<Settings />} />
-                    </Routes>
+                <Routes>
+                    <Route path={`types`} element={<EventTypes />} />
+                    <Route path={`events`} element={<Events />} />
+                    <Route path={`calendar`} element={<Calendar />} />
+                    <Route path={`schedule`} element={<Schedule />} />
+                    <Route path={`settings`} element={<Settings />} />
+                </Routes>
             </div>
-
         </StyledSchedulePages>
     );
     // /** @desc Destructuring calendar context which handles the overall current week */

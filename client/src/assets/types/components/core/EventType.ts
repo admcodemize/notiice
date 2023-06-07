@@ -1,3 +1,5 @@
+import { TFontAwesomeIconStyle } from "./FontAwesomeIcon";
+
 export interface IEventTypeProps {
     id: string,
     iconSrc: string,
@@ -28,4 +30,11 @@ export type TEventListItems = {
     general: string,
     notes: string,
     payment: string
+}
+
+export type TEventContentPartsProps = {
+    iconSrc: string,
+    iconStyling?: TFontAwesomeIconStyle,
+    text: string,
+    href?: string
 }

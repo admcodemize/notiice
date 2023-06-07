@@ -46,7 +46,7 @@ export const ThemeLight = <IThemeProps>{
     paragraphColor: "#888b97",
     surveyBgColor: "#4d7972",
     meetingBgColor: "#794d4d",
-    inactiveBgColor: "#f9f9f9",
+    inactiveBgColor: "rgb(245 245 245 / 30%)",
     linkColor: "#6585b5",
     titleColor: "#2c3e50",
     labelColor: "#464a50"
