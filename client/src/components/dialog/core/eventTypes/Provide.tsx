@@ -11,6 +11,7 @@ import { Input } from "../../../core/Input";
 
 import { addListItem, addListItemWithCheckState } from "../../../../utils/helpers/UnorderedList";
 import {FaIcon} from "../../../core/FontAwesomeIcon";
+import {Switch} from "../../../core/Switch";
 
 export const Provide = ({ callback = () => {}, ...props }: IDialogContentProps): JSX.Element => {
     const [ activeItem, setActiveItem ] = useState<string>(ModelEventTypeMenuKeys.general);
@@ -68,6 +69,47 @@ export const Provide = ({ callback = () => {}, ...props }: IDialogContentProps):
                     <div style={{ width: "300px" }}>
                         <label className="required">Duration</label>
                         <Button id="eventTypeDurations" text="Duration" iconSrc="faStopwatch" iconStyling="solid" dropdown={true} />
+                    </div>
+                    <div style={{ width: "300px" }}>
+                        <label>Buffer times</label>
+                        <span className="eventType-infoText">Give yourself some buffer time to prepare for or follow up on events.</span>
+                    </div>
+                    <div style={{ width: "300px" }}>
+                        <label>Before</label>
+                        <div className="flex-header-block-row">
+                            <Switch />
+                            <Button id="eventTypeDurations" text="15 Minutes" iconSrc="faHourglassStart" iconStyling="solid" dropdown={true} disabled={true} />
+                        </div>
+                    </div>
+                    <div style={{ width: "300px" }}>
+                        <label>After</label>
+                        <div className="flex-header-block-row">
+                            <Switch />
+                            <Button id="eventTypeDurations" text="15 Minutes" iconSrc="faHourglassEnd" iconStyling="solid" dropdown={true} disabled={true} />
+                        </div>
+                    </div>
+                    <div style={{ width: "300px" }}>
+                        <label className="required">Date range</label>
+                        <span className="eventType-infoText">Give yourself some buffer time to prepare </span>
+                    </div>
+                    <div style={{ width: "300px" }}>
+                        <div className="flex-header-block-column">
+                            <div style={{ width: "300px" }}>
+                                <label>Zukunft</label>
+                                <div className="flex-header-block-row">
+                                    <Switch />
+                                    <Input id="eventName" iconStyling="thin" className="eventType-edit-content-input" value="30" style={{ maxWidth: "47px", minWidth: "47px" }} />
+                                    <Button id="eventTypeDateRange" text="Calendar days" iconSrc="faStopwatch" iconStyling="solid" dropdown={true} />
+                                </div>
+                            </div>
+                            <div style={{ width: "300px" }}>
+                                <label>Zukunft</label>
+                                <div className="flex-header-block-row">
+                                    <Switch />
+                                    <Button id="eventTypeDateRange" text="Schedule in a certain range" iconSrc="faCalendarRange " iconStyling="solid" dropdown={true} />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

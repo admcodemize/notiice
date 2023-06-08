@@ -19,10 +19,10 @@ export const StyledDialog = styled("dialog")`
   .dialog-container {
     height: 100%;
     min-height: 300px;
-    max-height: 600px;
+    max-height: 675px;
     width: 100%;
     min-width: 364px;
-    max-width: 700px;
+    max-width: 775px;
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.14) 0 0 4px;
     background-color: #fff;

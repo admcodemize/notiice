@@ -47,6 +47,7 @@ export const GlobalStyles = createGlobalStyle`
     gap: 12px;
     list-style: none;
     overflow: auto;
+    white-space: nowrap;
 
     li {
       display: flex;
@@ -148,14 +149,13 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   .color-tile {
-    list-style: none;
-    background: rgb(255, 105, 0);
-    height: 24px;
-    width: 24px;
+    height: 28px;
+    width: 28px;
     cursor: pointer;
     position: relative;
     outline: none;
     border-radius: 4px;
+    margin: 0px 6px 6px 0px;
   }
   
   .payment-qrcode {
@@ -292,6 +292,12 @@ export const GlobalStyles = createGlobalStyle`
   .flex-header-block-column {
     display: flex;
     flex-direction: column;
+    gap: 12px;
+  }
+
+  .flex-header-block-row {
+    display: flex;
+    align-items: center;
     gap: 12px;
   }
   

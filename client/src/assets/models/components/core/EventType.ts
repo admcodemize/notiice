@@ -5,6 +5,10 @@ export const ModelEventTypeMenuItems = [<TEventTypeMenuItems>{
     iconSrc: "faSquareInfo",
     text: "General"
 }, {
+    key: "workSchedule",
+    iconSrc: "faBusinessTime",
+    text: "Work Schedule"
+}, {
     key: "notes",
     iconSrc: "faNotes",
     text: "Notes"

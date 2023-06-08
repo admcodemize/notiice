@@ -22,10 +22,10 @@ export const StyledProvide = styled("div")`
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 24px;
+    gap: 36px;
     flex-wrap: wrap;
     margin: 4px;
-    padding: 8px 20px;
+    padding: 24px 20px;
     height: 100%;
     overflow-y: auto;
 
@@ -38,10 +38,12 @@ export const StyledProvide = styled("div")`
       max-width: 300px;
       -webkit-box-pack: justify;
       justify-content: space-between;
-      padding: 0px 16px;
+      padding: 0 16px;
     }
     
+    .eventType-infoText,
     .eventType-edit-content-groupInfo {
+      display: inline-block;
       padding: 0 8px;
     }
     

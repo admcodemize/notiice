@@ -141,17 +141,8 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
   `}
 
   ${props => props.disabled && css`
-    background: #6e717a;
-    border: 1px solid #5f626a;
+    background: ${({ theme }) => theme.inactiveBgColor};
+    border: 1px solid ${({ theme }) => theme.secondaryBorderColor};
     cursor: default;
-    
-    :hover {
-      border-color: #5f626a;
-      background-color: #6e717a;
-      
-      span, svg {
-        color: #fff;
-      }
-    }
   `}
 `;
