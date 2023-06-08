@@ -3,7 +3,7 @@ import { TFontAwesomeIconStyle } from "../../components/core/FontAwesomeIcon";
 export interface IListItemProps {
     activeItem?: string,
     key: string,
-    iconSrc: string,
+    iconSrc?: string,
     iconStyling?: TFontAwesomeIconStyle
     text: string,
     className?: string

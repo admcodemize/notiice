@@ -14,6 +14,7 @@ export const StyledProvide = styled("div")`
     border-bottom: 1px solid ${({ theme }) => theme.primaryBorderColor};
     padding: 14px 24px 0 24px;
     gap: 12px;
+    height: 46px;
     width: 100%;
   }
   
@@ -23,16 +24,21 @@ export const StyledProvide = styled("div")`
     justify-content: flex-start;
     gap: 24px;
     flex-wrap: wrap;
-    padding: 12px 24px;
+    margin: 4px;
+    padding: 8px 20px;
+    height: 100%;
+    overflow-y: auto;
 
     .flex-header-block-column {
       gap: 18px;
     }
 
     > div button {
-      width: 300px;
+      width: 100%;
+      max-width: 300px;
+      -webkit-box-pack: justify;
       justify-content: space-between;
-      padding: 0 16px;
+      padding: 0px 16px;
     }
     
     .eventType-edit-content-groupInfo {
@@ -53,13 +59,25 @@ export const StyledProvide = styled("div")`
       width: 100%;
       max-width: 300px;
     }
+
+    ::-webkit-scrollbar {
+      width: 3px;
+      height: var(--webkit-scrollbar-width);
+      background: var(--webkit-scrollbar-background);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      height: var(--webkit-scrollbar-thumb-height);
+      background-color: var(--webkit-scrollbar-thumb-background-color);
+    }
   }
 
   > footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 24px;
+    padding: 0 24px;
+    height: 46px;
     border-top: 1px solid ${({ theme }) => theme.primaryBorderColor};
 
     button {

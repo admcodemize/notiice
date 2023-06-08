@@ -1,4 +1,8 @@
-import { IListItemProps, IListItemWithNoteProps } from "../../assets/types/utils/helpers/UnorderedList";
+import {
+    IListItemProps,
+    IListItemPropsWithState,
+    IListItemWithNoteProps
+} from "../../assets/types/utils/helpers/UnorderedList";
 
 import { FaIcon } from "../../components/core/FontAwesomeIcon";
 
@@ -6,12 +10,12 @@ import { getShortcutByKey } from "./Shortcuts";
 
 export const addListItem = ({ activeItem, key, iconSrc, iconStyling = "thin", text, className, onClick }: IListItemProps): JSX.Element => (
     <li key={key} style={{ justifyContent: "flex-start" }} className={activeItem === key ? `active-list-item ${className}` : className} onClick={() => onClick(key, false, { iconSrc, text })}>
-        <FaIcon src={iconSrc} styling={iconStyling}  />
+        {iconSrc && <FaIcon src={iconSrc} styling={iconStyling}  />}
         <span>{text}</span>
     </li>
 );
 
-export const addListItemWithCheckState = ({ activeItem, key, iconSrc, iconStyling = "thin", text, className, onClick }: IListItemProps): JSX.Element => (
+export const addListItemWithCheckState = ({ activeItem, key, iconSrc, iconStyling = "thin", text, className, onClick }: IListItemPropsWithState): JSX.Element => (
     <li key={key} style={{ justifyContent: "flex-start" }} className={activeItem === key ? `active-list-item ${className}` : className} onClick={() => onClick(key, false, { iconSrc, text })}>
         <FaIcon src={iconSrc} styling={iconStyling}  />
         <span>{text}</span>

@@ -147,6 +147,17 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
   
+  .color-tile {
+    list-style: none;
+    background: rgb(255, 105, 0);
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    border-radius: 4px;
+  }
+  
   .payment-qrcode {
     display: flex;
     align-items: center;

@@ -24,6 +24,7 @@ export const StyledDropdown = styled("div")<IStyledDropdownProps>`
   }
   
   .dropdown-active {
+    display: block;
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
@@ -31,6 +32,7 @@ export const StyledDropdown = styled("div")<IStyledDropdownProps>`
   }
   
   .dropdown-inactive {
+    display: none;
     visibility: hidden;
     opacity: 0;
     transform: translateY(-20px);

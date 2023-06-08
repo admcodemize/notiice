@@ -17,14 +17,12 @@ export const StyledDialog = styled("dialog")`
   outline: none;
   
   .dialog-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: calc(100% - 100px);
+    height: 100%;
+    min-height: 300px;
     max-height: 600px;
     width: 100%;
-    min-width: 700px;
-    max-width: 800px;
+    min-width: 364px;
+    max-width: 700px;
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.14) 0 0 4px;
     background-color: #fff;

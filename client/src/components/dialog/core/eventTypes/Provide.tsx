@@ -10,6 +10,7 @@ import { Button } from "../../../core/Button";
 import { Input } from "../../../core/Input";
 
 import { addListItem, addListItemWithCheckState } from "../../../../utils/helpers/UnorderedList";
+import {FaIcon} from "../../../core/FontAwesomeIcon";
 
 export const Provide = ({ callback = () => {}, ...props }: IDialogContentProps): JSX.Element => {
     const [ activeItem, setActiveItem ] = useState<string>(ModelEventTypeMenuKeys.general);
@@ -49,7 +50,15 @@ export const Provide = ({ callback = () => {}, ...props }: IDialogContentProps):
                             <Input id="locationCall" iconSrc="faMobile" iconStyling="thin" className="eventType-edit-content-input" value="Call" disabled={true} customIcon="faXmark"/>
                         </div>
                     </div>
-                    <Input id="eventLink" label="Event link" required={true} iconSrc="faArrowUpRightFromSquare" iconStyling="thin" message="/mstoeckli/" className="eventType-edit-content-input" onChange={() => {}} />
+                    <Input id="eventTypeLink" label="Event link" required={true} iconSrc="faArrowUpRightFromSquare" iconStyling="thin" message="/mstoeckli/" className="eventType-edit-content-input" onChange={() => {}} />
+                    <div style={{ width: "300px" }}>
+                        <label>Event color</label>
+                        <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+                            <Button id="eventTypeColor" text="Choose a Color" iconSrc="faBrush" iconStyling="solid" dropdown={true} />
+                            <div className="color-tile"></div>
+                        </div>
+
+                    </div>
                 </div>
                 <div className="flex-header-block-column">
                     <div className="eventType-edit-content-groupInfo">
@@ -57,15 +66,14 @@ export const Provide = ({ callback = () => {}, ...props }: IDialogContentProps):
                         <span>Have an in-depth look at all</span>
                     </div>
                     <div style={{ width: "300px" }}>
-                        <label className="required">Event type</label>
-                        <Button id="eventTypeDuration" text="Duration" iconSrc="faStopwatch" iconStyling="solid" dropdown={true} />
+                        <label className="required">Duration</label>
+                        <Button id="eventTypeDurations" text="Duration" iconSrc="faStopwatch" iconStyling="solid" dropdown={true} />
                     </div>
                 </div>
             </div>
             <footer>
                 <div className="flex-justify-between-left">
                     <Button text="Share" iconSrc="faShareAll" styling="light" />
-                    <Button text="Live Preview" iconSrc="faArrowUpRightFromSquare" styling="light" />
                 </div>
                 <div className="flex-justify-between-right">
                     <Button text="Close" iconSrc="faXmark" iconStyling="solid" styling="light" />

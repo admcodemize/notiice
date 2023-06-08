@@ -6,6 +6,8 @@ import { Inbox as HeaderInbox } from "../../components/dropdown/base/header/Inbo
 import { Settings as EventTypeSettings } from "../../components/dropdown/core/eventTypes/Settings";
 import { Locations as EventTypeLocations } from "../../components/dropdown/dialog/core/eventTypes/Locations";
 import { Types as EventTypeTypes } from "../../components/dropdown/dialog/core/eventTypes/Types";
+import { Durations as EventTypeDurations } from "../../components/dropdown/dialog/core/eventTypes/Duration";
+import { Color as EventTypeColor } from "../../components/dropdown/dialog/core/eventTypes/Color";
 
 import { Spaces as SchedulePageSpaces } from "../../components/dropdown/content/schedulePages/Spaces";
 import { Create as SchedulePageCreate } from "../../components/dropdown/content/schedulePages/Create";
@@ -24,7 +26,9 @@ export const getDropdownElemByButtonId = (props: IDropdownProps): JSX.Element|un
     signInExpire: <SignInExpire {...props}/>,
     eventTypesSettings: <EventTypeSettings {...props} />,
     eventTypeLocations: <EventTypeLocations {...props} />,
-    eventTypeTypes: <EventTypeTypes {...props} />
+    eventTypeTypes: <EventTypeTypes {...props} />,
+    eventTypeDurations: <EventTypeDurations {...props} />,
+    eventTypeColor: <EventTypeColor {...props} />
 })[props.id];
 
 export const getCalendarDropdownElemBySearch = (): JSX.Element => (
