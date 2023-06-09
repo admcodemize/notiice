@@ -29,7 +29,8 @@ export type TEventTypeTags = {
 export type TEventTypeMenuItems = {
     key: string,
     iconSrc: string,
-    text: string
+    text: string,
+    onlyProvideMode: boolean
 }
 
 export type TEventTypeMenuKeys = {

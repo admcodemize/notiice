@@ -37,7 +37,7 @@ export const Button = ({ id, iconSrc, iconStyling = "thin", text, styling = "def
                     {text && <span>{text}</span>}
                 </div>
                 {badge && <FaIcon src="faCircle" styling="solid" className="button-badge"/>}
-                {dropdown && text && <FaIcon src="faCaretDown" styling="thin" className="button-dropdown" />}
+                {dropdown && (text || iconSrc) && <FaIcon src="faCaretDown" styling="thin" className="button-dropdown" />}
             </StyledButton>
             {dropdown && <div ref={refObjDropdown} className={`dropdown-content ${isOpen 
                 ? "dropdown-active" 

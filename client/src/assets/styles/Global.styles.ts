@@ -109,7 +109,7 @@ export const GlobalStyles = createGlobalStyle`
       }
     }
   }
-
+  
   li.colorize-trash {
     span, svg {
       color: ${({ theme }) => theme.errorColor};

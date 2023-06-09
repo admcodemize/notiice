@@ -3,31 +3,38 @@ import { TEventTypeMenuItems, TEventTypeMenuKeys } from "../../../types/componen
 export const ModelEventTypeMenuItems = [<TEventTypeMenuItems>{
     key: "general",
     iconSrc: "faSquareInfo",
-    text: "General"
-}, {
-    key: "workSchedule",
-    iconSrc: "faBusinessTime",
-    text: "Work Schedule"
+    text: "General",
+    onlyProvideMode: false
 }, {
     key: "notes",
     iconSrc: "faNotes",
-    text: "Notes"
+    text: "Notes",
+    onlyProvideMode: false
+}, {
+    key: "workSchedule",
+    iconSrc: "faBusinessTime",
+    text: "Work Schedule",
+    onlyProvideMode: true
 }, {
     key: "payment",
     iconSrc: "faCreditCard",
-    text: "Payment"
+    text: "Payment",
+    onlyProvideMode: false
 }, {
     key: "questions",
     iconSrc: "faMessagesQuestion",
-    text: "Questions"
+    text: "Questions",
+    onlyProvideMode: true
 }, {
     key: "workflow",
     iconSrc: "faMicrochip",
-    text: "Workflow"
+    text: "Workflow",
+    onlyProvideMode: true
 }, {
     key: "confirmation",
     iconSrc: "faMemo",
-    text: "Confirmation Page"
+    text: "Confirmation Page",
+    onlyProvideMode: true
 }];
 
 export const ModelEventTypeMenuKeys: TEventTypeMenuKeys = {

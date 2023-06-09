@@ -12,6 +12,7 @@ import { RichTextEditor } from "./RichTextEditor";
 import { Dialog } from "./Dialog";
 
 import { addListItem } from "../../utils/helpers/UnorderedList";
+import {ScrollClickIcon} from "./ScrollClickIcon";
 
 export const EventType = ({ tags = [], ...props }: IEventTypeProps): JSX.Element => {
     const [ isSettingsVisible, setIsSettingsVisible ] = useState<boolean>(false);
@@ -86,7 +87,9 @@ export const EventType = ({ tags = [], ...props }: IEventTypeProps): JSX.Element
                             {tags.map(({ text, isPayable }) => <Tag text={text} styling="thin" className="sliderLeft-calendar-tag" />)}
                         </div>}
                         <ul className="horizontal-list">
-                            {ModelEventTypeMenuItems.map((menuItem) => addListItem({ activeItem, key: menuItem.key, iconSrc: menuItem.iconSrc, text: menuItem.text, onClick: () => setActiveItem(menuItem.key) }))}
+                            {ModelEventTypeMenuItems.map((menuItem) => !menuItem.onlyProvideMode && addListItem({
+                                activeItem, key: menuItem.key, iconSrc: menuItem.iconSrc, text: menuItem.text, onClick: () => setActiveItem(menuItem.key)
+                            }))}
                         </ul>
                         {activeItem === ModelEventTypeMenuKeys.general && _addContentItemGeneral()}
                         {activeItem === ModelEventTypeMenuKeys.notes && _addContentItemNotes()}

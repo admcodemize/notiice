@@ -7,7 +7,7 @@ export const StyledDropdown = styled("div")<IStyledDropdownProps>`
   
   .dropdown-content {
     position: absolute;
-    top: 42px;
+    top: 36px;
     background-color: transparent;
     width: auto;
     height: auto;

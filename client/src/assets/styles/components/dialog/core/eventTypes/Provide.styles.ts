@@ -22,10 +22,10 @@ export const StyledProvide = styled("div")`
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 36px;
+    gap: 48px;
     flex-wrap: wrap;
     margin: 4px;
-    padding: 24px 20px;
+    padding: 12px 20px;
     height: 100%;
     overflow-y: auto;
 
