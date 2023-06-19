@@ -10,8 +10,8 @@ export const StyledSliderLeft = styled("aside")<IStyledSliderLeftProps>`
   height: calc(100% - ${SidebarProps().HEADER}px);
   width: ${SidebarProps().LEFT}px;
   border-right: 1px solid ${({ theme }) => theme.primaryBorderColor};
-  background-color: #fff;
-  padding: 6px 24px;
+  background-color: ${({ theme }) => theme.primaryBgColor};
+  padding: 12px 24px;
   transform: translate3d(-${SidebarProps().LEFT}px, 0, 0);
   transition: all 0.2s ease .1s;
 

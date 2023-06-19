@@ -24,7 +24,7 @@ export const ModelSpaceMenuItems = [<TSpaceMenuItems>{
     key: "settings",
     iconSrc: "faCog",
     text: "content.schedulePages.menuItems.settings",
-    showSliderLeft: false
+    showSliderLeft: true
 }];
 
 export const ModelCallbacks: TCallback = {

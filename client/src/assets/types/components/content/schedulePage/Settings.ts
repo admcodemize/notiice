@@ -5,6 +5,7 @@ export type TSettingsSubActions = {
 }
 
 export type TSettingsSubActionsKeys = {
-    profile: string,
-    branding: string
+    space: string,
+    branding: string,
+    palette: string
 }

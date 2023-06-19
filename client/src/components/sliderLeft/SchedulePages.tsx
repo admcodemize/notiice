@@ -9,7 +9,7 @@ import {EventTypes} from "../sliderLeft/schedulePages/EventTypes";
 import {Events} from "./schedulePages/Events";
 import {Calendar} from "../sliderLeft/schedulePages/Calendar";
 import {Schedule} from "../content/schedulePages/Schedule";
-import {Settings} from "../content/schedulePages/Settings";
+import { Settings } from "../sliderLeft/schedulePages/Settings";
 import React from "react";
 
 export const SchedulePages = (): JSX.Element => {
