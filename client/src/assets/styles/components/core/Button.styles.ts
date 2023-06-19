@@ -8,12 +8,11 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
   align-items: center;
   gap: 6px;
   height: 32px;
-    border: 1px solid ${({ theme }) => theme.secondaryBorderColor};
+  border: 1px solid ${({ theme }) => theme.secondaryBorderColor};
   outline: none;
   background-color: #fff;
   padding: 4px 8px;
   border-radius: 6px;
-  transition: all 0.2s ease-in-out;
   
   ${props => !props.showBorder && css`
     border: none;

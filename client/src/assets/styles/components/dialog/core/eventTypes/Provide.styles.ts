@@ -7,17 +7,6 @@ export const StyledProvide = styled("div")`
   width: 100%;
   height: 100%;
   
-  > header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    border-bottom: 1px solid ${({ theme }) => theme.primaryBorderColor};
-    padding: 14px 24px 0 24px;
-    gap: 12px;
-    height: 46px;
-    width: 100%;
-  }
-  
   .eventType-edit-content {
     display: flex;
     align-items: flex-start;
@@ -29,6 +18,13 @@ export const StyledProvide = styled("div")`
     height: 100%;
     overflow-y: auto;
 
+    .ql-formats {
+      button{
+        width: auto;
+        padding: 3px 5px;
+      }
+    }
+    
     .flex-header-block-column {
       gap: 18px;
     }
@@ -71,19 +67,6 @@ export const StyledProvide = styled("div")`
     ::-webkit-scrollbar-thumb {
       height: var(--webkit-scrollbar-thumb-height);
       background-color: var(--webkit-scrollbar-thumb-background-color);
-    }
-  }
-
-  > footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
-    height: 46px;
-    border-top: 1px solid ${({ theme }) => theme.primaryBorderColor};
-
-    button {
-      height: 28px;
     }
   }
 `;

@@ -8,3 +8,9 @@ export type TSpaceMenuItems = {
     text: string,
     showSliderLeft: boolean
 }
+
+export type TCallback = {
+    [key: string]: boolean|undefined,
+    schedulePageSpaceProvide?: boolean,
+    eventTypeProvide?: boolean
+}

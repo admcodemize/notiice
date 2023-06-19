@@ -1,19 +1,18 @@
 import { TFontAwesomeIconStyle } from "./FontAwesomeIcon";
 
 export interface IEventTypeProps {
-    id: string,
-    iconSrc: string,
+    id?: string,
+    iconSrc?: string,
     iconBgColor?: string,
-    title: string,
-    eventType: Number,
-    eventTypeText: string,
+    title?: string,
+    eventType?: Number,
+    eventTypeText?: string,
     tags?: TEventTypeTags[],
-    location: Number,
-    locationText: string,
-    time: Number,
-    href: string,
-    hrefText: string,
-    isActive: boolean
+    location?: Number,
+    locationText?: string,
+    time?: Number,
+    href?: string,
+    isActive?: boolean
 }
 
 export interface IStyledEventTypeProps {
@@ -48,3 +47,11 @@ export type TEventTypeContentPartsProps = {
     text: string,
     href?: string
 }
+
+export type TEventTypeInputPayload = {
+    id: string,
+    value: string|Number
+}
+
+export type TEventTypeActionType =
+    | { type: "input", payload: TEventTypeInputPayload }

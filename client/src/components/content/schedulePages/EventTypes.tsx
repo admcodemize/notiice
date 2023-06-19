@@ -36,7 +36,6 @@ export const EventTypes = (): JSX.Element => {
                             {ModelEventTypesMock.map((eventTypeMock) => <EventType {...eventTypeMock} />)}
                         </div>
                     </div>
-
                 </div>
             </div>
         </StyledEventTypes>

@@ -28,7 +28,7 @@ export const StyledDropdown = styled("div")<IStyledDropdownProps>`
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
-    transition: 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
   }
   
   .dropdown-inactive {
@@ -36,6 +36,6 @@ export const StyledDropdown = styled("div")<IStyledDropdownProps>`
     visibility: hidden;
     opacity: 0;
     transform: translateY(-20px);
-    transition: 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
   }
 `;

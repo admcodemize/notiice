@@ -101,7 +101,7 @@ export const EventType = ({ tags = [], ...props }: IEventTypeProps): JSX.Element
                             <Button text="Copy" iconSrc="faCopy" styling="light" />
                         </div>
                         <div className="flex-justify-between-right">
-                            <Switch />
+                            <Switch htmlFor="eventType" checked={props.isActive} setChecked={() => {}}/>
                         </div>
                     </footer>
                 </div>

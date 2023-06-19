@@ -15,8 +15,11 @@ export const Button = ({ id, iconSrc, iconStyling = "thin", text, styling = "def
 
     const refObjDropdown = useRef(null);
     useClickOutside(refObjDropdown, () => {
-        setIsOpen(false);
-        dropdownCallback && dropdownCallback(id || String(), {});
+        /** @ts-ignore */
+        if (!refObjDropdown?.current?.className.includes("dropdown-inactive")) {
+            setIsOpen(false);
+            dropdownCallback && dropdownCallback(id || String(), {});
+        }
     });
 
     const _onClick = (evt: React.MouseEvent<HTMLButtonElement>): void => {
@@ -44,6 +47,7 @@ export const Button = ({ id, iconSrc, iconStyling = "thin", text, styling = "def
                 : "dropdown-inactive"}`}>
                 {id && getDropdownElemByButtonId({
                     id, callback: (key, isOpen, data) => {
+                        debugger
                         setIsOpen(isOpen || false);
                         dropdownCallback && dropdownCallback(key, data);
                     }

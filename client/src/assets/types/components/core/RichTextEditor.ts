@@ -3,9 +3,16 @@ export interface IRichTextEditorProps {
     readOnly?: boolean,
     placeholder?: string,
     isToolbarVisible?: boolean,
-    toolbarConfig?: string[]
+    modules?: TRichTextEditorModulesProps
 }
 
 export interface IStyledRichTextEditorProps {
     height?: string
+}
+
+export type TRichTextEditorModulesProps = {
+    toolbarConfig?: any[],
+    customToolbar?: {
+        container: string
+    },
 }

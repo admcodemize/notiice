@@ -36,7 +36,7 @@ export const StyledSwitch = styled("div")`
       font-weight: 900;
       content: "\f00d";
       color: #fff;
-      font-size: 1rem;
+      font-size: 0.775rem;
     }
   }
 

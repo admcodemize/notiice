@@ -1,4 +1,4 @@
-import { TSpaceMenuItems } from "../../../types/components/content/SchedulePages";
+import { TCallback, TSpaceMenuItems } from "../../../types/components/content/SchedulePages";
 
 export const ModelSpaceMenuItems = [<TSpaceMenuItems>{
     key: "types",
@@ -26,3 +26,8 @@ export const ModelSpaceMenuItems = [<TSpaceMenuItems>{
     text: "content.schedulePages.menuItems.settings",
     showSliderLeft: false
 }];
+
+export const ModelCallbacks: TCallback = {
+    schedulePageSpaceProvide: false,
+    eventTypeProvide: false
+}

@@ -3,8 +3,8 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { StyledSchedulePages } from "../../assets/styles/components/content/SchedulePages.styles";
-import { ModelSpaceMenuItems } from "../../assets/models/components/content/SchedulePage";
-import { TSpaceMenuItems } from "../../assets/types/components/content/SchedulePages";
+import { ModelSpaceMenuItems, ModelCallbacks } from "../../assets/models/components/content/SchedulePage";
+import { TSpaceMenuItems, TCallback } from "../../assets/types/components/content/SchedulePages";
 
 import { EventTypes } from "./schedulePages/EventTypes";
 import { Events } from "./schedulePages/Events";
@@ -14,33 +14,15 @@ import { Settings } from "./schedulePages/Settings";
 
 import { FaIcon } from "../core/FontAwesomeIcon";
 import { Button } from "../core/Button";
+import { Dialog } from "../core/Dialog";
 
 import { addListItem } from "../../utils/helpers/UnorderedList";
-import { useAuthDecoder } from "../../utils/hooks/useAuthDecoder";
 import { useGlobalContext, useSchedulePageContext } from "../../utils/hooks/useContext";
 import { useKeyPress } from "../../utils/hooks/useKeyPress";
 
-
-
-import { DatePicker } from "../core/DatePicker";
-import { Tag } from "../core/Tag";
-import { Search } from "../core/Search";
-
-import { getDateOfWeekByIdx, getDaysOfWeek, getHoursOfDay } from "../../utils/helpers/Calendar";
-
-import { useCalendarContext } from "../../utils/hooks/useCalendarContext";
-import {Landing} from "../base/Landing";
-import {RoleBasedRoute} from "../routes/RoleBasedRoute";
-import {RoleProps, RouteProps} from "../../assets/constants/Properties";
-import {Dashboard} from "./Dashboard";
-import {Workflow} from "./Workflow";
-import {WorkSchedule} from "./WorkSchedule";
-import {Integrations} from "./Integrations";
-
-
-
 export const SchedulePages = (): JSX.Element => {
     const [ isSliderToggleVisible, setIsSliderToggleVisible ] = useState<boolean>(false);
+    const [ callback, setCallback ] = useState<TCallback>(ModelCallbacks);
 
     /** @desc In a suspense-enabled app, the navigate function is aware of when your app is suspending. */
     const navigate = useNavigate();
@@ -60,6 +42,8 @@ export const SchedulePages = (): JSX.Element => {
         navigate(state.activeItem || "pages/types");
     }, []);
 
+    useKeyPress(() => _updCallbackState("eventTypeProvide"), ["MetaLeft", "KeyE"])
+
     const _onMenuItemClick = (path: string, showSliderLeft: boolean): void => {
         navigate(path);
         dispatch({ type: "item", payload: { ...state, activeItem: path }});
@@ -70,6 +54,18 @@ export const SchedulePages = (): JSX.Element => {
         toggleSliderLeft(showSliderLeft);
         setIsSliderToggleVisible(showSliderLeft);
     };
+
+    const _onCreateDropdownCallback = (key: string): void => {
+        _updCallbackState(key);
+    };
+
+    const _updCallbackState = (key: string): void => {
+        let obj: TCallback = {};
+        Object.keys(ModelCallbacks).forEach((callbackKey: string) => {
+            obj[callbackKey] = callbackKey === key
+        });
+        setCallback(() => (obj))
+    }
 
     return (
         <StyledSchedulePages logoBgColor={state.space.logoBgColor}>
@@ -85,11 +81,10 @@ export const SchedulePages = (): JSX.Element => {
                                 {isSliderToggleVisible && <FaIcon src="faPipe" styling="solid" className="pipe-separator"/>}
                                 <Button id="schedulePageSpaces" text={state.space.text} iconSrc={state.space.iconSrc} styling="default" dropdown={true} />
                                 <FaIcon src="faPipe" styling="solid" className="pipe-separator"/>
-                                <Button iconSrc="faPenToSquare" styling="default" />
                                 <Button iconSrc="faArrowUpRightFromSquare" styling="default" />
                             </div>
                             <div>
-                                <Button id="schedulePageCreate" iconSrc="faPlus" iconStyling="solid" text="Create" styling="create" dropdown={true} dropdownFloat="right" />
+                                <Button id="schedulePageCreate" iconSrc="faPlus" iconStyling="solid" text="Create" styling="create" dropdown={true} dropdownFloat="right" dropdownCallback={_onCreateDropdownCallback} />
                             </div>
                         </div>
                         <ul className="horizontal-list">
@@ -110,6 +105,8 @@ export const SchedulePages = (): JSX.Element => {
                     <Route path={`settings`} element={<Settings />} />
                 </Routes>
             </div>
+            {callback.schedulePageSpaceProvide && <Dialog id="schedulePageSpaceProvide" callback={(key, isOpen) => setCallback((prevState) => ({ ...prevState, spaceEdit: false }))}/>}
+            {callback.eventTypeProvide && <Dialog id="eventTypeProvide" callback={(key, isOpen) => setCallback((prevState) => ({ ...prevState, eventType: false }))}/>}
         </StyledSchedulePages>
     );
     // /** @desc Destructuring calendar context which handles the overall current week */
