@@ -22,10 +22,6 @@ export const Content = (): JSX.Element => {
     /** @desc Destructuring global context which handles show/hide of slider left/right -> ../context/Global.tsx **/
     const { sliderLeft, sliderRight } = useGlobalContext();
 
-    useKeyPress(() => {
-
-    }, ["Shift", "KeyS"]);
-
     return (
         <StyledContent sliderLeft={sliderLeft} sliderRight={sliderRight}>
             <CalendarProvider>

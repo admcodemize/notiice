@@ -6,6 +6,7 @@ import { TFontAwesomeIconStyle } from "./FontAwesomeIcon";
 export interface IInputProps {
     id: string,
     label?: string|DefaultTFuncReturn,
+    labelInside?: boolean,
     info?: string|DefaultTFuncReturn,
     required?: boolean,
     iconSrc?: string,
@@ -28,7 +29,8 @@ export interface IInputProps {
 
 export interface IStyledInputProps {
     messageType: TMessageTypes,
-    height: string
+    height: string,
+    labelInside: boolean
 }
 
 export type TMessageTypes = "success" | "warning" | "error" | "information" | "default";

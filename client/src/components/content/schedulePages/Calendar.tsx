@@ -9,7 +9,7 @@ import { Tag } from "../../core/Tag";
 
 import { getHoursOfDay, getDaysOfWeek, getDateOfWeekByIdx, compareDates } from "../../../utils/helpers/Calendar";
 
-import { useCalendarContext } from "../../../utils/hooks/useCalendarContext";
+import { useCalendarContext } from "../../../utils/hooks/useContext";
 
 export const Calendar = (): JSX.Element => {
     let top: number = 0;

@@ -1,6 +1,7 @@
 export interface IRichTextEditorProps {
     height?: string,
     readOnly?: boolean,
+    value?: string,
     placeholder?: string,
     isToolbarVisible?: boolean,
     modules?: TRichTextEditorModulesProps

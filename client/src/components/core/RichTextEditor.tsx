@@ -7,7 +7,7 @@ import { IRichTextEditorProps, TRichTextEditorModulesProps } from "../../assets/
 
 export const RichTextEditor = ({ isToolbarVisible = true, ...props }: IRichTextEditorProps): JSX.Element => {
     const refQuill = useRef(null);
-    const [ value, setValue ] = useState<string>(String());
+    const [ value, setValue ] = useState<string>(props.value || String());
 
     const _onHandlerVariablesClick = (): void => {
 

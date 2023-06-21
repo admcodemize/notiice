@@ -5,13 +5,17 @@ import { Sidebar } from "./Sidebar";
 import { SliderLeft } from "./SliderLeft";
 import { Content } from "./Content";
 
+import { BaseProvider } from "../../utils/context/Base";
+
 export const BaseContainer = (): JSX.Element => {
     return (
         <StyledBaseContainer>
-            <Header />
-            <Sidebar />
-            <SliderLeft />
-            <Content />
+            <BaseProvider>
+                <Header />
+                <Sidebar />
+                <SliderLeft />
+                <Content />
+            </BaseProvider>
         </StyledBaseContainer>
     )
 }

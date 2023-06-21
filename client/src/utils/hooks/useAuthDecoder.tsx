@@ -1,6 +1,6 @@
 import jwtDecode from "jwt-decode";
 
-import { useAuthContext } from "./useAuthContext";
+import { useAuthContext } from "./useContext";
 
 import { IRouteJWT } from "../../assets/types/components/routes/PrivateBasedRoute";
 

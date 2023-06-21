@@ -2,7 +2,7 @@ import { StyledDatePicker } from "../../../../../assets/styles/components/dropdo
 
 import { IDropdownProps } from "../../../../../assets/types/components/dropdown/Global";
 
-import { useCalendarContext } from "../../../../../utils/hooks/useCalendarContext";
+import { useCalendarContext } from "../../../../../utils/hooks/useContext";
 
 export const DatePicker = ({ callback }: IDropdownProps): JSX.Element => {
     /** @desc Destructuring calendar context which handles the overall current week */

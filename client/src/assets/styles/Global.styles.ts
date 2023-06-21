@@ -292,7 +292,7 @@ export const GlobalStyles = createGlobalStyle`
   .flex-header-block-column {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 6px;
   }
 
   .flex-header-block-row {

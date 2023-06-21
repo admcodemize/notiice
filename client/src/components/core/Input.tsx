@@ -6,7 +6,7 @@ import { IInputProps } from "../../assets/types/components/core/Input";
 
 import { FaIcon } from "./FontAwesomeIcon";
 
-export const Input = ({ id, label, info, required, iconSrc, iconStyling = "regular", message, height, messageType, className, style, onChange, ...props }: IInputProps): JSX.Element => {
+export const Input = ({ id, label, labelInside, info, required, iconSrc, iconStyling = "regular", message, height, messageType, className, style, onChange, ...props }: IInputProps): JSX.Element => {
     const _onShowHidePasswordClick = (evt: React.MouseEvent<SVGSVGElement>|any): void => {
         evt.currentTarget.previousElementSibling.type = evt?.currentTarget?.previousElementSibling?.type === "password"
             ? "text"
@@ -17,11 +17,13 @@ export const Input = ({ id, label, info, required, iconSrc, iconStyling = "regul
         <StyledInput
             height={height || "32px"}
             messageType={messageType || "default"}
+            labelInside={labelInside || false}
             style={style}
             className={className}>
-            {label && <label className={required ? "required": String()}>{label}</label>}
+            {label && !labelInside && <label className={required ? "required": String()}>{label}</label>}
             <div className={`input-container ${props.disabled ? "input-disabled" : String()}`} style={style}>
                 {iconSrc && <FaIcon src={iconSrc} styling={iconStyling}/>}
+                {labelInside && <label className="input-label-inside">{label}</label>}
                 <input
                     onChange={(evt: React.ChangeEvent<HTMLInputElement>) => onChange && onChange(evt, id)}
                     {...props} />

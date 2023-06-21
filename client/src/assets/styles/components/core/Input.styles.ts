@@ -19,9 +19,24 @@ export const StyledInput = styled("div")<IStyledInputProps>`
     height: ${props => props.height};
     width: 100%;
     min-width: 200px;
-    padding: 12px 6px;
     transition: all 0.2s ease-in;
-  
+    
+    ${props => !props.labelInside && css `
+      padding: 12px 6px;
+    `}
+    
+    .input-label-inside {
+      display: flex;
+      align-items: center;
+      color: #6f717a;
+      font-size: 0.725rem;
+      font-weight: 500;
+      border-right: 1px solid ${({ theme }) => theme.secondaryBorderColor};
+      height: 100%;
+      padding: 0 12px;
+      background: ${({ theme }) => theme.secondaryBgColor};
+    }
+    
     svg {
       padding: 6px;
       border-radius: 6px;
@@ -46,6 +61,10 @@ export const StyledInput = styled("div")<IStyledInputProps>`
       outline: none;
       padding: 0 6px;
       transition: border 0.2s ease;
+
+      ${props => props.labelInside && css `
+        padding: 0 12px;
+      `}
 
       ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
         color: ${({theme}) => theme.paragraphColor};

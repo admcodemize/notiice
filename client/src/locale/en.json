@@ -11,6 +11,7 @@
       "back": "Back",
       "delete": "Delete",
       "clone": "Clone",
+      "inbox": "Inbox",
       "sessionExpire": "Session Expire",
       "calendar": "Calendar",
       "eventTypes": "Event Types",
@@ -26,6 +27,15 @@
       "teams": "Teams",
       "quickActions": "Quick actions",
       "locations": "Locations"
+    },
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "schedulePages": "Schedule Pages",
+      "workflow": "Workflow",
+      "integrations": "Integrations",
+      "variables": "Variables",
+      "theme": "Theme",
+      "signOut": "Sign Out"
     },
     "buttons": {
       "support": "Support",

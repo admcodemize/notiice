@@ -16,7 +16,7 @@ import { signInReducer, signInReducerInitState } from "../../utils/reducer/SignI
 import { coreRegexExp } from "../../utils/helpers/RegexExp";
 import { useLoader } from "../../utils/hooks/useLoader";
 import { useMessage } from "../../utils/hooks/useMessage";
-import { useAuthContext } from "../../utils/hooks/useAuthContext";
+import { useAuthContext } from "../../utils/hooks/useContext";
 
 export const SignIn = (): JSX.Element => {
     /** @desc Load reducer state which handles the signup data like patternMatches, phases or messages */

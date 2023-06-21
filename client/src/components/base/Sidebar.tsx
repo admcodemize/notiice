@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { StyledSidebar } from "../../assets/styles/components/base/Sidebar.styles";
 
 import { Logo } from "../core/Logo";
@@ -10,6 +11,9 @@ import { TFontAwesomeIconStyle } from "../../assets/types/components/core/FontAw
 
 export const Sidebar = (): JSX.Element => {
     const [ activeItem, setActiveItem ] = useState<string>(RouteProps().SCHEDULEPAGES);
+
+    /** @desc Returns the translation function for reading from the locales files */
+    const { t } = useTranslation();
 
     /** @desc In a suspense-enabled app, the navigate function is aware of when your app is suspending. */
     const navigate = useNavigate();
@@ -33,17 +37,17 @@ export const Sidebar = (): JSX.Element => {
             <header>
                 <Logo />
                 <menu>
-                    {_addMenuItem(RouteProps().DASHBOARD, "faGrid2", "Dashboard")}
-                    {_addMenuItem(RouteProps().SCHEDULEPAGES, "faLayerGroup", "Schedule Pages")}
-                    {_addMenuItem(RouteProps().WORKFLOW, "faMicrochip", "Workflow")}
-                    {_addMenuItem(RouteProps().INTEGRATIONS, "faTrowelBricks", "Integrations")}
-                    {_addMenuItem(RouteProps().VARIABLE, "faPenField", "Variables")}
+                    {_addMenuItem(RouteProps().DASHBOARD, "faGrid2", t("sidebar.dashboard"))}
+                    {_addMenuItem(RouteProps().SCHEDULEPAGES, "faLayerGroup", t("sidebar.schedulePages"))}
+                    {_addMenuItem(RouteProps().WORKFLOW, "faMicrochip", t("sidebar.workflow"))}
+                    {_addMenuItem(RouteProps().INTEGRATIONS, "faTrowelBricks", t("sidebar.integrations"))}
+                    {_addMenuItem(RouteProps().VARIABLE, "faPenField", t("sidebar.variables"))}
                 </menu>
             </header>
             <footer>
                 <menu>
-                    {_addMenuItem("theme", "faMoon", "Theme")}
-                    {_addMenuItem("signOut", "faRightFromBracket", "Sign Out", "thin", { color: "#bf6464" })}
+                    {_addMenuItem("theme", "faMoon", t("sidebar.theme"))}
+                    {_addMenuItem("signOut", "faRightFromBracket", t("sidebar.signOut"), "thin", { color: "#bf6464" })}
                 </menu>
             </footer>
         </StyledSidebar>

@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from "axios";
 import { axiosConfig } from "./useAxiosPublic";
 
 import { useRefreshToken } from "./useRefreshToken";
-import { useAuthContext } from "./useAuthContext";
+import { useAuthContext } from "./useContext";
 
 import { TAxiosGet, TAxiosPost } from "../../assets/types/utils/hooks/useAxios";
 

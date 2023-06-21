@@ -4,13 +4,17 @@ import { Outlet } from "react-router-dom";
 import { Loader } from "../core/Loader";
 
 import { useRefreshToken } from "../../utils/hooks/useRefreshToken";
-import { useAuthContext } from "../../utils/hooks/useAuthContext";
+import { useAuthContext } from "../../utils/hooks/useContext";
+import { useMessage } from "../../utils/hooks/useMessage";
 
 export const PersistRoute = (): JSX.Element => {
     const [ isLoading, setIsLoading ] = useState(true);
 
     /** @desc Returns refresh token for authentication */
     const refreshToken = useRefreshToken();
+
+    /** @desc Get function for displaying alert dialog */
+    const { setMessageDialog } = useMessage();
 
     /** @desc Destructuring auth context -> ../context/Auth.tsx */
     const { auth, persist } = useAuthContext();
@@ -19,9 +23,11 @@ export const PersistRoute = (): JSX.Element => {
         const checkRefreshToken = async () => {
             try {
                 await refreshToken();
-            } catch (err) {
-                /** @todo: Output message */
-                console.log(err);
+            } catch (err: any) {
+                setMessageDialog({
+                    title: err.name,
+                    info: err.message
+                });
             } finally {
                 /** @desc Prevent from endless loading, because finally is called allways! */
                 setIsLoading(false);
