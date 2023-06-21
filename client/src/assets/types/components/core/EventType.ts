@@ -11,7 +11,6 @@ export interface IEventTypeProps {
     location?: Number,
     locationText?: string,
     time?: Number,
-    href?: string,
     isActive?: boolean
 }
 

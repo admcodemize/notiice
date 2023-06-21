@@ -47,7 +47,6 @@ export const Button = ({ id, iconSrc, iconStyling = "thin", text, styling = "def
                 : "dropdown-inactive"}`}>
                 {id && getDropdownElemByButtonId({
                     id, callback: (key, isOpen, data) => {
-                        debugger
                         setIsOpen(isOpen || false);
                         dropdownCallback && dropdownCallback(key, data);
                     }

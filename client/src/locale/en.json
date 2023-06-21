@@ -28,6 +28,10 @@
       "quickActions": "Quick actions",
       "locations": "Locations"
     },
+    "core": {
+      "imageUpload": "Upload a Photo",
+      "imageTypes": "*.JP(E)G, *.PNG up to 5MB"
+    },
     "sidebar": {
       "dashboard": "Dashboard",
       "schedulePages": "Schedule Pages",
@@ -40,7 +44,8 @@
     "buttons": {
       "support": "Support",
       "cancel": "Cancel",
-      "ok": "OK"
+      "ok": "OK",
+      "save": "Save"
     },
     "times": {
       "15minutes": "15 Minutes",
@@ -90,9 +95,7 @@
       "phaseFour": {
         "photos": "Profile Photos",
         "avatar": "Avatar",
-        "companyImage": "Company Image",
-        "upload": "Upload a Photo",
-        "types": "*.JP(E)G, *.PNG up to 5MB"
+        "companyImage": "Company Image"
       },
       "phaseFive": {
         "industry": "Industry",
@@ -107,6 +110,9 @@
           "calendar": "Calendar",
           "schedule": "Work Schedule",
           "settings": "Settings"
+        },
+        "settings": {
+          "initialWelcomeMessage": "Welcome to my scheduling page. Please follow the instructions to add an event to my calendar."
         }
       }
     },
@@ -114,7 +120,7 @@
       "core": {
         "eventTypes": {
           "settings": {
-            "saveAsTemplate": "Sichern als Template"
+            "saveAsTemplate": "Save as template"
           }
         }
       },
