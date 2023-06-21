@@ -10,6 +10,8 @@ export const StyledSettings = styled("div")`
     
     > svg {
       width: 24px;
+      min-width: 24px;
+      max-width: 24px;
       font-size: 1.25rem;
       padding: 2px 0 0 0;
     }
@@ -17,7 +19,7 @@ export const StyledSettings = styled("div")`
   
   .settings-info-block {
     width: 400px;
-    min-width: 300px;
+    min-width: 400px;
   }
   
   .quill {

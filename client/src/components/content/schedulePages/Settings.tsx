@@ -25,7 +25,7 @@ export const Settings = (): JSX.Element => {
                     <p>Displaying the schedule page of current space</p>
                     <p>Changing your public URL will result in all your copied links breaking and needing to be updated.</p>
                 </div>
-                <Input id="test" label="/localhost/pages/" labelInside={true}/>
+                <Input id="test" label={`www.${window.location.hostname}.ch/page/`} labelInside={true}/>
             </div>
             <div className="flex-header-block-row">
                 <FaIcon src="faSignature" styling="thin"/>
@@ -44,9 +44,16 @@ export const Settings = (): JSX.Element => {
                 <RichTextEditor value="Welcome to my scheduling page. Please follow the instructions to add an event to my calendar."/>
             </div>
             <div className="flex-header-block-row">
-                <FaIcon src="faWallet" styling="thin"/>
+                <FaIcon src="faWavePulse" styling="thin"/>
                 <div className="flex-header-block-column settings-info-block">
-                    <h5>Billing</h5>
+                    <h5>Activity Log</h5>
+                    <p>Welcome message on the scheduling page. Display in the upper left corner</p>
+                </div>
+            </div>
+            <div className="flex-header-block-row">
+                <FaIcon src="faCalendarUsers" styling="thin"/>
+                <div className="flex-header-block-column settings-info-block">
+                    <h5>Calendar Connections</h5>
                     <p>Welcome message on the scheduling page. Display in the upper left corner</p>
                 </div>
             </div>

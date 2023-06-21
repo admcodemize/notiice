@@ -41,11 +41,12 @@ export const PersistRoute = (): JSX.Element => {
     /** @desc Outlet represents all the child components/routes inside the persist route -> Home.tsx */
     return (
         <>
-            {!persist
-                ? <Outlet />
-                : isLoading
-                    ? <Loader />
-                    : <Outlet />}
+            <Outlet />
+            {/*{!persist*/}
+            {/*    ? <Outlet />*/}
+            {/*    : isLoading*/}
+            {/*        ? <Loader />*/}
+            {/*        : <Outlet />}*/}
         </>
     )
 }

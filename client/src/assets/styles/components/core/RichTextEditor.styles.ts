@@ -19,6 +19,14 @@ export const StyledRichTextEditor = styled("div")<IStyledRichTextEditorProps>`
   .ql-toolbar.ql-snow {
     display: flex;
     align-items: center;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+  
+  .ql-container,
+  .ql-editor {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
   }
 
   .ql-editor {

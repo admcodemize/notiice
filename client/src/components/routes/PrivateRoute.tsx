@@ -12,9 +12,10 @@ export const PrivateRoute = (): JSX.Element => {
 
     /** @desc <Outlet> represents each private component which is defined nested in private route */
     return (
-        /** @ts-ignore */
-        authDecoded()?.sub?.userId
-            ? <Outlet />
-            : <Navigate to="/signin" state={{ from: location }} replace />
+        <Outlet />
+        // /** @ts-ignore */
+        // authDecoded()?.sub?.userId
+        //     ? <Outlet />
+        //     : <Navigate to="/signin" state={{ from: location }} replace />
     )
 };

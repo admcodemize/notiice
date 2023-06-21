@@ -14,9 +14,10 @@ export const RoleBasedRoute = ({ allowedRoles }: IRoleBasedRouteProps): JSX.Elem
 
     /** @desc <Outlet> represents each private component which is defined nested in private route */
     return (
-        /** @ts-ignore */
-        authDecoded()?.sub?.roles?.find((role: number) => allowedRoles?.includes(role))
-            ? <Outlet />
-            : <Navigate to="/unauthorized" state={{ from: location }} replace />
+        <Outlet />
+        // /** @ts-ignore */
+        // authDecoded()?.sub?.roles?.find((role: number) => allowedRoles?.includes(role))
+        //     ? <Outlet />
+        //     : <Navigate to="/unauthorized" state={{ from: location }} replace />
     )
 };
