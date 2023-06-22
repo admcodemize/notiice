@@ -74,7 +74,7 @@ export const SchedulePages = (): JSX.Element => {
             <header className="content-pages-header">
                 <div className="content-pages-project">
                     <div className="content-pages-project-icon">
-                        <FaIcon src={state.space.logoSrc} styling="solid" />
+                        <FaIcon src={state.space.logoSrc} styling="solid" style={{ color: state.space.logoColor }} />
                     </div>
                     <div className="content-pages-project-menu">
                         <div className="content-pages-project-actions">

@@ -6,6 +6,7 @@ export const schedulePageReducerInitState: ISchedulePageReducerState = {
         name: String(),
         iconSrc: "faLockKeyhole",
         logoSrc: "faBolt",
+        logoColor: "#fff",
         logoBgColor: "#2c3e50",
         logoBorderColor: "#2c3e50",
         publicUrl: String(),

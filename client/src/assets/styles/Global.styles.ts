@@ -155,7 +155,6 @@ export const GlobalStyles = createGlobalStyle`
     position: relative;
     outline: none;
     border-radius: 4px;
-    margin: 0px 6px 6px 0px;
   }
   
   .payment-qrcode {

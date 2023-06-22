@@ -90,11 +90,13 @@ export const Settings = (): JSX.Element => {
                     <div className="flex-header-block-row">
                         <FaIcon src="faBorderOuter" styling="thin"/>
                         <div className="flex-header-block-column settings-info-block">
-                            <h5>Border Color</h5>
+                            <h5>Logo Border</h5>
                             <p>Welcome message on the scheduling page. Display in the upper left corner</p>
                         </div>
                         <div className="settings-palette-colorPicker">
-                            <Button id="coreColorPicker" iconSrc="faBrush" iconStyling="solid" dropdown={true} />
+                            <Button id="coreColorPicker" iconSrc="faBrush" iconStyling="solid" dropdown={true} dropdownCallback={(key, data) => {
+                                _dispatchSpace({ logoBorderColor: data?.hexColor || schedulePageProps.state.space.logoBorderColor });
+                            }}/>
                             <div className="color-tile" style={{ backgroundColor: schedulePageProps.state.space.logoBorderColor, margin: "0"}}></div>
                             <Button id="coreInfoBlock" iconSrc="faInfo" showBorder={false} iconStyling="solid" dropdown={true} />
                         </div>
@@ -102,12 +104,28 @@ export const Settings = (): JSX.Element => {
                     <div className="flex-header-block-row">
                         <FaIcon src="faBlockBrick" styling="thin"/>
                         <div className="flex-header-block-column settings-info-block">
-                            <h5>Background Color</h5>
+                            <h5>Logo Background</h5>
                             <p>Welcome message on the scheduling page. Display in the upper left corner</p>
                         </div>
                         <div className="settings-palette-colorPicker">
-                            <Button id="coreColorPicker" iconSrc="faBrush" iconStyling="solid" dropdown={true} />
+                            <Button id="coreColorPicker" iconSrc="faBrush" iconStyling="solid" dropdown={true} dropdownCallback={(key, data) => {
+                                _dispatchSpace({ logoBgColor: data?.hexColor || schedulePageProps.state.space.logoBgColor });
+                            }}/>
                             <div className="color-tile" style={{ backgroundColor: schedulePageProps.state.space.logoBgColor, margin: "0"}}></div>
+                            <Button id="coreInfoBlock" iconSrc="faInfo" showBorder={false} iconStyling="solid" dropdown={true} />
+                        </div>
+                    </div>
+                    <div className="flex-header-block-row">
+                        <FaIcon src="faIcons" styling="thin"/>
+                        <div className="flex-header-block-column settings-info-block">
+                            <h5>Logo Icon</h5>
+                            <p>Welcome message on the scheduling page. Display in the upper left corner</p>
+                        </div>
+                        <div className="settings-palette-colorPicker">
+                            <Button id="coreColorPicker" iconSrc="faBrush" iconStyling="solid" dropdown={true} dropdownCallback={(key, data) => {
+                                _dispatchSpace({ logoColor: data?.hexColor || schedulePageProps.state.space.logoColor });
+                            }}/>
+                            <div className="color-tile" style={{ backgroundColor: schedulePageProps.state.space.logoColor, margin: "0"}}></div>
                             <Button id="coreInfoBlock" iconSrc="faInfo" showBorder={false} iconStyling="solid" dropdown={true} />
                         </div>
                     </div>
@@ -198,7 +216,7 @@ export const Settings = (): JSX.Element => {
                 </div>
                 <div className="flex-justify-between-right">
                     <Button text={t("buttons.cancel")} iconSrc="faXmark"/>
-                    <Button text={t("buttons.save")} styling="tag" iconSrc="faSave" />
+                    <Button text={t("buttons.save")} styling="tag" iconSrc="faSave" iconStyling="solid" />
                 </div>
             </header>
             <div className="schedulePages-settings-content">

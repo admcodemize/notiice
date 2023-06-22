@@ -8,6 +8,7 @@ export interface ISchedulePageSpace {
     name: string,
     iconSrc: string,
     logoSrc: string,
+    logoColor: string,
     logoBgColor: string,
     logoBorderColor: string,
     publicUrl: string,
