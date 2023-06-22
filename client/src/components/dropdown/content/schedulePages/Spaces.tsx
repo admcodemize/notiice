@@ -28,7 +28,7 @@ export const Spaces = ({ callback }: IDropdownProps): JSX.Element => {
             payload: { ...state, space: {
                 ...schedulePageReducerInitState.space,
                 id: primaryKeyUser,
-                text: `${authDecoded()?.sub?.firstname} ${authDecoded()?.sub?.lastname}`
+                name: `${authDecoded()?.sub?.firstname} ${authDecoded()?.sub?.lastname}`
             }}
         });
     }, []);
@@ -40,7 +40,7 @@ export const Spaces = ({ callback }: IDropdownProps): JSX.Element => {
 
     const _getSpaceState = (key: string, data: any): ISchedulePageSpace => ({ ...state.space,
         id: key,
-        text: data?.text || schedulePageReducerInitState.space.text,
+        name: data?.name || schedulePageReducerInitState.space.name,
         iconSrc: data?.iconSrc || schedulePageReducerInitState.space.iconSrc
     });
 

@@ -9,14 +9,13 @@ import { ModelProviders } from "../../assets/models/components/base/User";
 import { TSignUpInputPhases, TSignUpForm, TDispatchSignUpFormPatternMatches, TSignUpPhase } from "../../assets/types/utils/reducer/SignUp";
 
 import { Button } from "../core/Button";
-import { FaIcon } from "../core/FontAwesomeIcon";
 import { Input } from "../core/Input";
+import { ImageUpload } from "../core/ImageUpload";
 
 import { create as createUser } from "../../utils/api/components/base/User";
 import { generatePassword } from "../../utils/helpers/User";
 import { signUpReducer, signUpReducerInitState } from "../../utils/reducer/SignUp";
 import { coreRegexExp } from "../../utils/helpers/RegexExp";
-import { base64Converter, checkFileSizeMb, sizeConverter } from "../../utils/helpers/Files";
 import { addListItem } from "../../utils/helpers/UnorderedList";
 import { useLoader } from "../../utils/hooks/useLoader";
 import { useMessage } from "../../utils/hooks/useMessage";
@@ -92,29 +91,6 @@ export const SignUp = (): JSX.Element => {
 
         /** @desc Check if regex pattern is matching */
         _patternMatches(id, evt?.target?.value);
-    };
-
-    const _onProfileImageClick = (evt: React.MouseEvent<HTMLFormElement>): void => {
-        /** @ts-ignore */
-        const inputUpload = evt.target.firstChild;
-        if (inputUpload instanceof HTMLInputElement) {
-            /** @desc Open file browser */
-            inputUpload.click();
-        }
-    };
-
-    const _onProfileImageChange = async (id: string, evt: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-        if (evt?.target?.files) {
-            if (checkFileSizeMb(evt.target.files[0].size || 0)) {
-                _dispatchSignUpForm({
-                    ...state.form,
-                    [id]: evt?.target?.files && await base64Converter(evt.target.files[0])
-                });
-            } else setMessageDialog({
-                title: "413",
-                info: `Uploaded profile picture "${evt.target.files[0].name}" with a size of "${sizeConverter(evt.target.files[0].size)}" to large`
-            });
-        }
     };
 
     const _onIndustryClick = (key: string): void => _dispatchSignUpForm({
@@ -225,15 +201,10 @@ export const SignUp = (): JSX.Element => {
     );
 
     const _addImageContainer = (id: string) => (
-        <form action="#" method="POST" encType="multipart/form-data" className="signup-phaseFour-img-container" onClick={_onProfileImageClick}>
-            <div>
-                <input className="file-input" type="file" name="file" accept=".jpeg, .png, .jpg" onChange={(evt) => _onProfileImageChange(id, evt)} hidden />
-                <FaIcon src="faImagePolaroid" styling="thin" />
-                <span>{t("signUp.phaseFour.upload")}</span>
-                <p>{t("signUp.phaseFour.types")}</p>
-            </div>
-            <img src={state.form[id]} height="80px" width="80px" hidden={!state.form[id]} alt={id}/>
-        </form>
+        <ImageUpload callback={(file) => _dispatchSignUpForm({
+            ...state.form,
+            [id]: file
+        })} />
     );
 
     return (

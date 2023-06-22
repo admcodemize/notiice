@@ -1,7 +1,9 @@
+import { DefaultTFuncReturn } from "i18next";
+
 export interface IRichTextEditorProps {
     height?: string,
     readOnly?: boolean,
-    value?: string,
+    value?: string|DefaultTFuncReturn,
     placeholder?: string,
     isToolbarVisible?: boolean,
     modules?: TRichTextEditorModulesProps

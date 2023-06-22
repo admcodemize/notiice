@@ -79,7 +79,7 @@ export const SchedulePages = (): JSX.Element => {
                             <div>
                                 {isSliderToggleVisible && <Button iconSrc="faSlidersSimple" styling="default" onClick={() => toggleSliderLeft()}/>}
                                 {isSliderToggleVisible && <FaIcon src="faPipe" styling="solid" className="pipe-separator"/>}
-                                <Button id="schedulePageSpaces" text={state.space.text} iconSrc={state.space.iconSrc} styling="default" dropdown={true} />
+                                <Button id="schedulePageSpaces" text={state.space.name} iconSrc={state.space.iconSrc} styling="default" dropdown={true} />
                                 <FaIcon src="faPipe" styling="solid" className="pipe-separator"/>
                                 <Button iconSrc="faArrowUpRightFromSquare" styling="default" />
                             </div>

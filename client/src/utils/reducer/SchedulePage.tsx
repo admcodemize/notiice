@@ -3,10 +3,12 @@ import { ISchedulePageReducerState, TActionType } from "../../assets/types/utils
 export const schedulePageReducerInitState: ISchedulePageReducerState = {
     space: {
         id: String(),
-        text: String(),
+        name: String(),
         iconSrc: "faLockKeyhole",
         logoSrc: "faBolt",
-        logoBgColor: "#2c3e50"
+        logoBgColor: "#2c3e50",
+        publicUrl: "test",
+        welcomeMessage: String()
     },
     activeItem: "types"
 }

@@ -12,12 +12,15 @@ import { RichTextEditor } from "./RichTextEditor";
 import { Dialog } from "./Dialog";
 
 import { addListItem } from "../../utils/helpers/UnorderedList";
-import {ScrollClickIcon} from "./ScrollClickIcon";
+import { useSchedulePageContext } from "../../utils/hooks/useContext";
 
 export const EventType = ({ tags = [], ...props }: IEventTypeProps): JSX.Element => {
     const [ isSettingsVisible, setIsSettingsVisible ] = useState<boolean>(false);
     const [ activeItem, setActiveItem ] = useState<string>(ModelEventTypeMenuKeys.general);
     const [ showEdit, setShowEdit ] = useState<boolean>(false);
+
+    /** @desc Load overall schedule page information */
+    const schedulePageProps = useSchedulePageContext();
 
     const _onSettingsClick = (evt: React.MouseEvent<HTMLButtonElement>): void => {
         setIsSettingsVisible(true);
@@ -31,7 +34,7 @@ export const EventType = ({ tags = [], ...props }: IEventTypeProps): JSX.Element
         <div className="eventType-content-item">
             {_addContentParts({ iconSrc: "faLocationDot", text: props.locationText })}
             {_addContentParts({ iconSrc: "faStopwatch", text: props.time.toString() })}
-            {_addContentParts({ iconSrc: "faArrowUpRightFromSquare", text: props.hrefText, href: props.href })}
+            {_addContentParts({ iconSrc: "faArrowUpRightFromSquare", text: schedulePageProps.state.space.publicUrl, href: schedulePageProps.state.space.publicUrl })}
         </div>
     );
 
@@ -59,7 +62,7 @@ export const EventType = ({ tags = [], ...props }: IEventTypeProps): JSX.Element
     const _addContentParts = ({ iconSrc, iconStyling = "thin", text, href }: TEventTypeContentPartsProps): JSX.Element => (
         <div className="flex-svg-with-text">
             <FaIcon src={iconSrc} styling={iconStyling} />
-            {href ? <a href={`/page${href}`} target="_blank">{text}</a> : <span>{text}</span>}
+            {href ? <a href={`/page${href}`} target="_blank">/{text}</a> : <span>{text}</span>}
         </div>
     );
 
