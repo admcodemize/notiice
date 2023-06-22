@@ -22,6 +22,18 @@ export const StyledSettings = styled("div")`
     min-width: 400px;
   }
   
+  .settings-palette-colorPicker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .settings-palette {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
   .quill {
     width: 400px;
 
@@ -32,7 +44,26 @@ export const StyledSettings = styled("div")`
   }
   
   .schedulePages-settings-content {
+    height: calc(100% - 120px);
     padding: 12px 24px;
+    
+    .settings-space,
+    .settings-branding,
+    .settings-palette {
+      height: 100%;
+      overflow: auto;
+
+      ::-webkit-scrollbar {
+        width: 3px;
+        height: var(--webkit-scrollbar-width);
+        background: var(--webkit-scrollbar-background);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        height: var(--webkit-scrollbar-thumb-height);
+        background-color: var(--webkit-scrollbar-thumb-background-color);
+      }
+    }
     
     > div .input-container,
     > div .input-message {

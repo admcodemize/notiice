@@ -13,6 +13,7 @@ export const StyledButton = styled("button")<IStyledButtonProps>`
   background-color: #fff;
   padding: 4px 8px;
   border-radius: 6px;
+  cursor: pointer;
   
   ${props => !props.showBorder && css`
     border: none;

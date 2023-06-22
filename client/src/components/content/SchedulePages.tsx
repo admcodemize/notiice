@@ -68,11 +68,13 @@ export const SchedulePages = (): JSX.Element => {
     }
 
     return (
-        <StyledSchedulePages logoBgColor={state.space.logoBgColor}>
+        <StyledSchedulePages
+            logoBgColor={state.space.logoBgColor}
+            logoBorderColor={state.space.logoBorderColor}>
             <header className="content-pages-header">
                 <div className="content-pages-project">
                     <div className="content-pages-project-icon">
-                        <FaIcon src={state.space.logoSrc} styling="thin" />
+                        <FaIcon src={state.space.logoSrc} styling="solid" />
                     </div>
                     <div className="content-pages-project-menu">
                         <div className="content-pages-project-actions">

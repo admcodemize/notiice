@@ -3,15 +3,15 @@ import { TSettingsSubActions, TSettingsSubActionsKeys } from "../../../../types/
 export const ModelSettingsSubActions = [<TSettingsSubActions>{
     key: "space",
     iconSrc: "faRocket",
-    text: "Space"
+    text: "content.schedulePages.settings.space"
 }, {
     key: "branding",
     iconSrc: "faSwatchbook",
-    text: "Branding"
+    text: "content.schedulePages.settings.branding"
 }, {
     key: "palette",
     iconSrc: "faPalette",
-    text: "Presentation"
+    text: "content.schedulePages.settings.palette"
 }]
 
 export const ModelSettingsSubActionsKeys: TSettingsSubActionsKeys = {

@@ -29,7 +29,7 @@ export const StyledSchedulePages = styled("div")<IStyledSchedulePage>`
         height: 50px;
         width: 50px;
         border-radius: 12px;
-        border: 1px solid ${({ theme }) => theme.tagBorderColor};
+        border: 1px solid ${props => props.logoBorderColor ? props.logoBorderColor : props.theme.tagBorderColor};
         background-color: ${props => props.logoBgColor ? props.logoBgColor : props.theme.tagBgColor};
 
         svg {

@@ -9,8 +9,16 @@ export interface ISchedulePageSpace {
     iconSrc: string,
     logoSrc: string,
     logoBgColor: string,
+    logoBorderColor: string,
     publicUrl: string,
-    welcomeMessage: string
+    pageWelcomeMessage: string,
+    base64Avatar: string,
+    base64CompanyLogo: string,
+    pageBackgroundColor: string,
+    pageHeadingTextColor: string,
+    pageWelcomeMessageColor: string,
+    pageDateSelectionColor: string,
+    pageTimeSelectionColor: string
 }
 
 export type TActionType =

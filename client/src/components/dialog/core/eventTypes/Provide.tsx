@@ -68,7 +68,7 @@ export const Provide = ({ callback = () => {}, ...props }: IDialogContentProps):
                     <div>
                         <label>Event color</label>
                         <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-                            <Button id="eventTypeColor" iconSrc="faBrush" iconStyling="solid" dropdown={true} />
+                            <Button id="coreColorPicker" iconSrc="faBrush" iconStyling="solid" dropdown={true} />
                             <div className="color-tile" style={{ backgroundColor: "#2c3e50", margin: "0"}}></div>
                         </div>
                     </div>

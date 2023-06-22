@@ -1,5 +1,6 @@
 export interface IStyledSchedulePage {
-    logoBgColor: string
+    logoBgColor: string,
+    logoBorderColor: string
 }
 
 export type TSpaceMenuItems = {

@@ -7,8 +7,16 @@ export const schedulePageReducerInitState: ISchedulePageReducerState = {
         iconSrc: "faLockKeyhole",
         logoSrc: "faBolt",
         logoBgColor: "#2c3e50",
-        publicUrl: "test",
-        welcomeMessage: String()
+        logoBorderColor: "#2c3e50",
+        publicUrl: String(),
+        base64Avatar: String(),
+        base64CompanyLogo: String(),
+        pageWelcomeMessage: String(),
+        pageBackgroundColor: "#2c3e50",
+        pageHeadingTextColor: "#464a50",
+        pageWelcomeMessageColor: "#6e717a",
+        pageDateSelectionColor: "#6585b5",
+        pageTimeSelectionColor: "#6585b5"
     },
     activeItem: "types"
 }

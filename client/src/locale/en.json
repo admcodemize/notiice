@@ -112,7 +112,10 @@
           "settings": "Settings"
         },
         "settings": {
-          "initialWelcomeMessage": "Welcome to my scheduling page. Please follow the instructions to add an event to my calendar."
+          "initialWelcomeMessage": "Welcome to my scheduling page. Please follow the instructions to add an event to my calendar.",
+          "space": "Space",
+          "branding": "Branding",
+          "palette": "Palette"
         }
       }
     },

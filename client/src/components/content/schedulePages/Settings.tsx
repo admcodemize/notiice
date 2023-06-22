@@ -3,14 +3,16 @@ import { useTranslation } from "react-i18next";
 
 import { StyledSettings } from "../../../assets/styles/components/content/schedulePages/Settings.styles";
 import { ModelSettingsSubActionsKeys } from "../../../assets/models/components/content/schedulePage/Settings";
+import { ISchedulePageSpace } from "../../../assets/types/utils/reducer/SchedulePage";
 
 import { Input } from "../../core/Input";
 import { RichTextEditor } from "../../core/RichTextEditor";
+import { Button } from "../../core/Button";
 import { FaIcon } from "../../core/FontAwesomeIcon";
 
+import { ImageUpload } from "../../core/ImageUpload";
 import { useBaseContext, useSchedulePageContext } from "../../../utils/hooks/useContext";
-import {Button} from "../../core/Button";
-import {ImageUpload} from "../../core/ImageUpload";
+import {Panel} from "../../core/Panel";
 
 export const Settings = (): JSX.Element => {
     /** @desc Returns the translation function for reading from the locales files */
@@ -22,8 +24,16 @@ export const Settings = (): JSX.Element => {
     /** @desc Load overall schedule page information */
     const schedulePageProps = useSchedulePageContext();
 
+    const _dispatchSpace = (obj: any): void => schedulePageProps.dispatch({ type: "space", payload: {
+            ...schedulePageProps.state,
+            space: {
+                ...schedulePageProps.state.space,
+                ...obj
+            }
+        }});
+
     const _addContentSpace = (): JSX.Element => (
-        <>
+        <div className="settings-space">
             <div className="flex-header-block-row">
                 <FaIcon src="faArrowUpRightFromSquare" styling="thin"/>
                 <div className="flex-header-block-column settings-info-block">
@@ -47,27 +57,13 @@ export const Settings = (): JSX.Element => {
                     <h5>Welcome message</h5>
                     <p>Welcome message on the scheduling page. Display in the upper left corner</p>
                 </div>
-                <RichTextEditor value={schedulePageProps.state.space.welcomeMessage || t("content.schedulePages.settings.initialWelcomeMessage")}/>
+                <RichTextEditor value={schedulePageProps.state.space.pageWelcomeMessage || t("content.schedulePages.settings.initialWelcomeMessage")}/>
             </div>
-            {/*<div className="flex-header-block-row">*/}
-            {/*    <FaIcon src="faWavePulse" styling="thin"/>*/}
-            {/*    <div className="flex-header-block-column settings-info-block">*/}
-            {/*        <h5>Activity Log</h5>*/}
-            {/*        <p>Welcome message on the scheduling page. Display in the upper left corner</p>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-            {/*<div className="flex-header-block-row">*/}
-            {/*    <FaIcon src="faCalendarUsers" styling="thin"/>*/}
-            {/*    <div className="flex-header-block-column settings-info-block">*/}
-            {/*        <h5>Calendar Connections</h5>*/}
-            {/*        <p>Welcome message on the scheduling page. Display in the upper left corner</p>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-        </>
+        </div>
     );
 
     const _addContentBranding = (): JSX.Element => (
-        <>
+        <div className="settings-branding">
             <div className="flex-header-block-row">
                 <FaIcon src="faImagePolaroidUser" styling="thin"/>
                 <div className="flex-header-block-column settings-info-block">
@@ -84,24 +80,125 @@ export const Settings = (): JSX.Element => {
                 </div>
                 <ImageUpload callback={() => {}} containerWidth="250px"/>
             </div>
-        </>
+        </div>
     );
 
     const _addContentPalette= (): JSX.Element => (
-        <div>palette 123</div>
+        <div className="settings-palette">
+            <Panel title="Space" info="Welcome message on the scheduling page. Display in the upper left corner" expanded={false} children={
+                <>
+                    <div className="flex-header-block-row">
+                        <FaIcon src="faBorderOuter" styling="thin"/>
+                        <div className="flex-header-block-column settings-info-block">
+                            <h5>Border Color</h5>
+                            <p>Welcome message on the scheduling page. Display in the upper left corner</p>
+                        </div>
+                        <div className="settings-palette-colorPicker">
+                            <Button id="coreColorPicker" iconSrc="faBrush" iconStyling="solid" dropdown={true} />
+                            <div className="color-tile" style={{ backgroundColor: schedulePageProps.state.space.logoBorderColor, margin: "0"}}></div>
+                            <Button id="coreInfoBlock" iconSrc="faInfo" showBorder={false} iconStyling="solid" dropdown={true} />
+                        </div>
+                    </div>
+                    <div className="flex-header-block-row">
+                        <FaIcon src="faBlockBrick" styling="thin"/>
+                        <div className="flex-header-block-column settings-info-block">
+                            <h5>Background Color</h5>
+                            <p>Welcome message on the scheduling page. Display in the upper left corner</p>
+                        </div>
+                        <div className="settings-palette-colorPicker">
+                            <Button id="coreColorPicker" iconSrc="faBrush" iconStyling="solid" dropdown={true} />
+                            <div className="color-tile" style={{ backgroundColor: schedulePageProps.state.space.logoBgColor, margin: "0"}}></div>
+                            <Button id="coreInfoBlock" iconSrc="faInfo" showBorder={false} iconStyling="solid" dropdown={true} />
+                        </div>
+                    </div>
+                </>
+            } />
+
+            <Panel title="Scheduling Page" info="Welcome message on the scheduling page. Display in the upper left corner" expanded={false} children={
+                <>
+                    <div className="flex-header-block-row">
+                        <FaIcon src="faBlockBrick" styling="thin"/>
+                        <div className="flex-header-block-column settings-info-block">
+                            <h5>Background Color</h5>
+                            <p>Welcome message on the scheduling page. Display in the upper left corner</p>
+                        </div>
+                        <div className="settings-palette-colorPicker">
+                            <Button id="coreColorPicker" iconSrc="faBrush" iconStyling="solid" dropdown={true} dropdownCallback={(key, data) => {
+                                _dispatchSpace({ pageBackgroundColor: data?.hexColor || schedulePageProps.state.space.pageBackgroundColor });
+                            }}/>
+                            <div className="color-tile" style={{ backgroundColor: schedulePageProps.state.space.pageBackgroundColor, margin: "0"}}></div>
+                            <Button id="coreInfoBlock" iconSrc="faInfo" showBorder={false} iconStyling="solid" dropdown={true} />
+                        </div>
+                    </div>
+                    <div className="flex-header-block-row">
+                        <FaIcon src="faHeading" styling="thin"/>
+                        <div className="flex-header-block-column settings-info-block">
+                            <h5>Heading Text</h5>
+                            <p>Welcome message on the scheduling page. Display in the upper left corner Display in the upper left corner Display in the upper left cornerDisplay in the upper left cornerDisplay in the upper left corner</p>
+                        </div>
+                        <div className="settings-palette-colorPicker">
+                            <Button id="coreColorPicker" iconSrc="faBrush" iconStyling="solid" dropdown={true} />
+                            <div className="color-tile" style={{ backgroundColor: schedulePageProps.state.space.pageHeadingTextColor, margin: "0"}}></div>
+                            <Button iconSrc="faInfo" showBorder={false} iconStyling="solid" />
+                        </div>
+                    </div>
+                    <div className="flex-header-block-row">
+                        <FaIcon src="faMessageCaptions" styling="thin"/>
+                        <div className="flex-header-block-column settings-info-block">
+                            <h5>Welcome Message</h5>
+                            <p>Welcome message on the scheduling page. Display in the upper left corner</p>
+                        </div>
+                        <div className="settings-palette-colorPicker">
+                            <Button id="coreColorPicker" iconSrc="faBrush" iconStyling="solid" dropdown={true} />
+                            <div className="color-tile" style={{ backgroundColor: schedulePageProps.state.space.pageWelcomeMessageColor, margin: "0"}}></div>
+                            <Button iconSrc="faInfo" showBorder={false} iconStyling="solid" />
+                        </div>
+                    </div>
+                    <div className="flex-header-block-row">
+                        <FaIcon src="faCalendar" styling="thin"/>
+                        <div className="flex-header-block-column settings-info-block">
+                            <h5>Date Selection</h5>
+                            <p>Welcome message on the scheduling page. Display in the upper left corner</p>
+                        </div>
+                        <div className="settings-palette-colorPicker">
+                            <Button id="coreColorPicker" iconSrc="faBrush" iconStyling="solid" dropdown={true} />
+                            <div className="color-tile" style={{ backgroundColor: schedulePageProps.state.space.pageDateSelectionColor, margin: "0"}}></div>
+                            <Button iconSrc="faInfo" showBorder={false} iconStyling="solid" />
+                        </div>
+                    </div>
+                    <div className="flex-header-block-row">
+                        <FaIcon src="faClock" styling="thin"/>
+                        <div className="flex-header-block-column settings-info-block">
+                            <h5>Time Selection</h5>
+                            <p>Welcome message on the scheduling page. Display in the upper left corner</p>
+                        </div>
+                        <div className="settings-palette-colorPicker">
+                            <Button id="coreColorPicker" iconSrc="faBrush" iconStyling="solid" dropdown={true} />
+                            <div className="color-tile" style={{ backgroundColor: schedulePageProps.state.space.pageTimeSelectionColor, margin: "0"}}></div>
+                            <Button iconSrc="faInfo" showBorder={false} iconStyling="solid" />
+                        </div>
+                    </div>
+                </>
+            } />
+
+
+
+
+
+        </div>
     );
 
     return (
         <StyledSettings>
             <header className="flex-header-submenu-actions">
                 <div className="flex-justify-between-left">
-                    {state.content.activeSettingMenu === ModelSettingsSubActionsKeys.space && <h5>Space</h5>}
-                    {state.content.activeSettingMenu === ModelSettingsSubActionsKeys.branding && <h5>Branding</h5>}
-                    {state.content.activeSettingMenu === ModelSettingsSubActionsKeys.palette && <h5>Palette</h5>}
+                    {state.content.activeSettingMenu === ModelSettingsSubActionsKeys.space && <h5>{t("content.schedulePages.settings.space")}</h5>}
+                    {state.content.activeSettingMenu === ModelSettingsSubActionsKeys.branding && <h5>{t("content.schedulePages.settings.branding")}</h5>}
+                    {state.content.activeSettingMenu === ModelSettingsSubActionsKeys.palette && <h5>{t("content.schedulePages.settings.palette")}</h5>}
                 </div>
                 <div className="flex-justify-between-right">
-                    <Button text={t("buttons.cancel")} />
-                    <Button text={t("buttons.save")} styling="tag" />
+                    <Button text={t("buttons.cancel")} iconSrc="faXmark"/>
+                    <Button text={t("buttons.save")} styling="tag" iconSrc="faSave" />
                 </div>
             </header>
             <div className="schedulePages-settings-content">
